@@ -1,3 +1,6 @@
+//I write only the boiler plate of this ,not the actual code
+
+
 const mongoose = require("mongoose");
 
 const {Schema}=mongoose;
