@@ -1,6 +1,7 @@
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 const Events = require("../models/eventsModel");
 const ErrorHandler = require("../utils/errorHandler");
+const ApiFeatures = require("../utils/apiFeatures");
 const cloudinary = require("cloudinary").v2;
 const dotenv = require("dotenv");
 dotenv.config({ path: "config/config.env" });
@@ -18,7 +19,14 @@ exports.homePage = catchAsyncErrors(async (req, res, next) => {
 //* GET ALL EVENTS
 exports.getAllEvents = catchAsyncErrors(async (req, res, next) => {
 
-    const events = await Events.find();
+    const resultPerPage = 4;
+    const eventCount = await Events.countDocuments();
+
+    const apiFeatures = new ApiFeatures(Events.find(), req.query).search().filter();
+    
+    apiFeatures.pagination(resultPerPage);
+
+    let events = await apiFeatures.query;
 
     if (!events) {
         return next(new ErrorHandler("Events not found!!", 404));
@@ -26,12 +34,16 @@ exports.getAllEvents = catchAsyncErrors(async (req, res, next) => {
 
     res.status(200).json({
         success: true,
-        events
+        events,
+        eventCount,
+        resultPerPage,
     })
 })
 
 //* CREATE NEW EVENT
 exports.createNewEvent = catchAsyncErrors(async (req, res, next) => {
+
+    console.log(req.body);
     
     const img = req.files.image;
 
@@ -64,3 +76,82 @@ exports.createNewEvent = catchAsyncErrors(async (req, res, next) => {
 
 //* GET SPECIFIC EVENT DETAILS
 
+exports.getEventDetails = catchAsyncErrors(async (req, res, next) => {
+
+    const eventDetails = await Events.findById(req.params.id);
+
+    if (!eventDetails) {
+        return next(new ErrorHandler(`Event details with event id: ${req.params.id} not found !!`), 404);
+    }
+
+    res.status(200).json({
+        success: true,
+        eventDetails
+    });
+});
+
+//* DELETE EVENT
+
+exports.deleteEvent = catchAsyncErrors(async (req, res, next) => {
+    
+    const event = await Events.findById(req.params.id);
+
+    if (!event) {
+        return next(new ErrorHandler(`Event details with event id: ${req.params.id} not found !!`), 404);
+    }
+
+    // deleting event image from cloudinary
+    await cloudinary.uploader.destroy(event.image.public_id);
+
+    await event.remove();
+
+    res.status(200).json({
+        success: true,
+        message: "Event deleted successfully"
+    })
+})
+
+
+//* UPDATE EVENT
+
+exports.updateEvent = catchAsyncErrors(async (req, res, next) => {
+    
+    let event = await Events.findById(req.params.id);
+
+    const newEventData = req.body;
+    
+    if (!event) {
+        return next(new ErrorHandler(`Event details with event id: ${req.params.id} not found !!`), 404);
+    }
+
+
+    if (req.files.image !== undefined) {
+
+        await cloudinary.uploader.destroy(event.image.public_id);
+
+        const newImage = await cloudinary.uploader.upload(req.files.image.tempFilePath, {
+          folder: "Events",
+        });
+
+
+        newEventData.image = {
+            public_id: newImage.public_id,
+            url: newImage.secure_url
+        };
+    }
+    
+
+    event = await Events.findByIdAndUpdate(req.params.id, newEventData, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+    });
+
+
+    res.status(200).json({
+        success: true,
+        message: "Event details updated"
+    });
+
+
+});
