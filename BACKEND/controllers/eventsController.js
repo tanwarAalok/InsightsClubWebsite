@@ -42,8 +42,6 @@ exports.getAllEvents = catchAsyncErrors(async (req, res, next) => {
 
 //* CREATE NEW EVENT
 exports.createNewEvent = catchAsyncErrors(async (req, res, next) => {
-
-    console.log(req.body);
     
     const img = req.files.image;
 
@@ -117,15 +115,15 @@ exports.deleteEvent = catchAsyncErrors(async (req, res, next) => {
 exports.updateEvent = catchAsyncErrors(async (req, res, next) => {
     
     let event = await Events.findById(req.params.id);
-
-    const newEventData = req.body;
+    
+    let newEventData = req.body;
     
     if (!event) {
         return next(new ErrorHandler(`Event details with event id: ${req.params.id} not found !!`), 404);
     }
 
 
-    if (req.files.image !== undefined) {
+    if (req.files !== null && req.files.image !== undefined) {
 
         await cloudinary.uploader.destroy(event.image.public_id);
 
