@@ -1,11 +1,8 @@
-//I write only the boiler plate of this ,not the actual code
-
-
 const mongoose = require("mongoose");
 
 const {Schema}=mongoose;
 
-const blogSchema=new Schema({
+const contentSchema=new Schema({
    
     title:{
         type:String,
@@ -20,12 +17,12 @@ const blogSchema=new Schema({
     },
 
 
-    date:{
+    upcomingDate:{
         type:Date,
-        default:Date.now
+        require:true
     }
 
 })
 
-const Blog=mongoose.model("blog",blogSchema)
-module.exports=Blog
+const Content=mongoose.model("content",contentSchema)
+module.exports=Content
