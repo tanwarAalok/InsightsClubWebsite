@@ -1,22 +1,31 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getEvents } from "../../actions/events";
+import React, { useEffect, useState } from "react";
+import Logo from "../../media/logo.png";
+// import { useDispatch, useSelector } from "react-redux";
+// import { getEvents } from "../../actions/events";
 import "./Navbar.css";
-//menu-toggler
-function Navbar() {
-	const dispatch = useDispatch();
 
-	useEffect(() => {
-		dispatch(getEvents());
-	}, [dispatch]);
-	const events = useSelector((state) => state.events);
-	console.log(events);
+function Navbar() {
+	const [menu, setMenu] = useState(false);
+	// const dispatch = useDispatch();
+	// useEffect(() => {
+	// 	dispatch(getEvents());
+	// }, [dispatch]);
+	// const events = useSelector((state) => state.events);
+
 	return (
 		<>
-			<nav className='navbar'>
-				<div className='logo'>{/* logo goes here */}</div>
+			<nav className={menu ? "menu-active" : "navbar"}>
+				<div className='nav-logo'>
+					<img src={Logo} className='logo' alt='logo' />
+					<span className='logo-name'>Insights Club</span>
+				</div>
 				<div className='push-left'>
-					<button id='menu-toggler' className='hamburger'>
+					<button
+						id='menu-toggler'
+						className='hamburger'
+						onClick={() =>
+							setMenu((prev) => (prev ? (prev = false) : (prev = true)))
+						}>
 						<span className='hamburger-line hamburger-line-top'></span>
 						<span className='hamburger-line hamburger-line-middle'></span>
 						<span className='hamburger-line hamburger-line-bottom'></span>
@@ -46,8 +55,6 @@ function Navbar() {
 					</ul>
 				</div>
 			</nav>
-			{/* Test */}
-			{/* <img src={events.events[0].image.url} alt='test' /> */}
 		</>
 	);
 }
