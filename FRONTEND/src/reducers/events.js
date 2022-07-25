@@ -5,7 +5,7 @@ import {
 	DELETE,
 } from "../constants/blogsActionTypes";
 
-const eventsReducer = (events = [1, 2], action) => {
+const eventsReducer = (events = [], action) => {
 	switch (action.type) {
 		case FETCH_ALL:
 			return action.payload;

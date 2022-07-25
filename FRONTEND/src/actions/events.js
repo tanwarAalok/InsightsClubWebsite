@@ -6,12 +6,12 @@ import {
 } from "../constants/eventsActionTypes";
 import { Fetch, Create, Update, Delete } from "../api/index.js";
 
-const eventsUrl = "";
+const eventsUrl = "http://localhost:8080/events";
 
 export const getEvents = () => async (dispatch) => {
 	try {
 		const { data } = await Fetch(eventsUrl);
-
+		console.log(data);
 		dispatch({ type: FETCH_ALL, payload: data });
 	} catch (error) {
 		console.log(error.message);
