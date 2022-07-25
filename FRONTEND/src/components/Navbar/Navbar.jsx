@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getEvents } from "../../actions/events";
 import "./Navbar.css";
 //menu-toggler
 function Navbar() {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getEvents());
+	}, [dispatch]);
+	const events = useSelector((state) => state.events);
+	console.log(events);
 	return (
 		<>
 			<nav className='navbar'>
@@ -37,6 +46,8 @@ function Navbar() {
 					</ul>
 				</div>
 			</nav>
+			{/* Test */}
+			{/* <img src={events.events[0].image.url} alt='test' /> */}
 		</>
 	);
 }
