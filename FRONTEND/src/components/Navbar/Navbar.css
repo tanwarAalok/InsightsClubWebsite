@@ -5,11 +5,25 @@ body {
 	font-size: 14px;
 	margin: 0;
 }
-
+.nav-logo {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
 .logo {
 	max-width: 200px;
+	width: 4rem;
+	height: 4rem;
 }
-
+.navbar-logo-name {
+	text-align: center;
+	color: #444444;
+	display: block;
+	line-height: 30px;
+	margin: 0px 10px;
+	text-decoration: none;
+	font-size: 1.2rem;
+}
 .navbar {
 	align-items: center;
 	background: #fff;
