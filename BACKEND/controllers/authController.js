@@ -45,7 +45,7 @@ const getRandomText = () => {
 
 
 exports.login = catchAsyncErrors(async (req, res, next) => {
-    if (req.cookies.hasOwnProperty('token') && req.body.hasOwnProperty('logout') && req.body.logout) {
+    if (Object.keys(req.cookies).length !== 0 && req.cookies.hasOwnProperty('token') && req.body.hasOwnProperty('logout') && req.body.logout) {
         if (req.cookies.token == 'loggedout')
             res.status(200).json({ success: true, message: 'User was already logged out !' });
         else
@@ -91,7 +91,7 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
             return next(new ErrorHandler('Some error occured !!', 500));
         }
     } else {
-        return next(new ErrorHandler('Username/password/token is missing OR already signed in !!', 400));
+        return next(new ErrorHandler('Username/password/token is missing OR already logged out !!', 400));
     }
 });
 
