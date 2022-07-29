@@ -72,7 +72,7 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
             else if (!doc.verified)
                 return next(new ErrorHandler('Email not verified !!', 400));
             else if (bcrypt.compareSync(user.password, doc.password)) {
-                const payload = { username: user.username, password: user.password, admin: doc.isAdmin }
+                const payload = { username: user.username, password: user.password, isAdmin: doc.isAdmin }
                 const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '28d' })
 
                 let expiry_date = new Date()
