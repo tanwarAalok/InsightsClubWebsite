@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Logo from "../../media/logo.png";
 // import { useDispatch, useSelector } from "react-redux";
 // import { getEvents } from "../../actions/events";
 import "./Navbar.css";
+import { Outlet } from "react-router-dom";
 
 function Navbar() {
 	const [menu, setMenu] = useState(false);
@@ -13,7 +14,7 @@ function Navbar() {
 	// const events = useSelector((state) => state.events);
 
 	return (
-		<>
+		<Fragment>
 			<nav className={menu ? "menu-active" : "navbar"}>
 				<div className='nav-logo'>
 					<img src={Logo} className='logo' alt='logo' />
@@ -55,7 +56,8 @@ function Navbar() {
 					</ul>
 				</div>
 			</nav>
-		</>
+			<Outlet/>
+		</Fragment>
 	);
 }
 
