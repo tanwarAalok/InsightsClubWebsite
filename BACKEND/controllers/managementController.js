@@ -141,7 +141,7 @@ exports.deleteEvent = catchAsyncErrors(async (req, res, next) => {
     if(req.user.isAdmin || req.user.isCoAdmin) {
         const event = await Events.findById(req.params.id);
         if (!event) {
-            return next(new ErrorHandler(`Event details with event id: ${req.params.id} not found !!`), 404);
+            return next(new ErrorHandler(`Event details with event id: ${req.params.id} not found !!`, 404));
         }
         // deleting event image from cloudinary
         await cloudinary.uploader.destroy(event.image.public_id);
@@ -163,7 +163,7 @@ exports.updateEvent = catchAsyncErrors(async (req, res, next) => {
         let event = await Events.findById(req.params.id);
         let newEventData = req.body;
         if (!event) {
-            return next(new ErrorHandler(`Event details with event id: ${req.params.id} not found !!`), 404);
+            return next(new ErrorHandler(`Event details with event id: ${req.params.id} not found !!`, 404));
         }
         if (req.files !== null && req.files.image !== undefined) {
             await cloudinary.uploader.destroy(event.image.public_id);
