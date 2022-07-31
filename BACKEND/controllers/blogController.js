@@ -13,16 +13,30 @@ cloudinary.config({
 });
 
 
-const isAuthor = (blogId, UserId) => {
+const canEdit = async (blogID, userID) => {
+    const isValid = mongoose.Types.ObjectId.isValid(blogID);
+    if (!isValid)
+        return next(new ErrorHandler(`${blogID} is not valid !!`, 400));
 
+    const blog = await Blogs.findById(blogID).populate('author', '-password -verified').exec();
+    if (userID.localeCompare(blog.author.id) == 0)
+        return { _canEdit: true, blog };
+    return { _canEdit: false };
 }
+
+
+exports.getAllBlogs = catchAsyncErrors(async (req, res, next) => {
+    const blogs = await Blogs.find({}, {_id: 1, title: 1, description: 1, tags: 1, author: 1}).populate('author', '-password -verified').lean();
+    res.status(200).json(blogs);
+});
+
 
 
 exports.getBlog = catchAsyncErrors(async (req, res, next) => {
     const isValid = mongoose.Types.ObjectId.isValid(req.params.id);
     if (!isValid)
-        return next(new ErrorHandler(`${req.params.id} is not valid !!`, 400))
-    const blog = await Blogs.findById(req.params.id).populate('author').lean();
+        return next(new ErrorHandler(`${req.params.id} is not valid !!`, 400));
+    const blog = await Blogs.findById(req.params.id).populate('author', '-password -verified').lean();
     if (!blog) {
         return next(new ErrorHandler(`Blog with id: ${req.params.id} not found !!`, 404));
     }
@@ -47,13 +61,11 @@ exports.createBlog = catchAsyncErrors(async (req, res, next) => {
 
 
 exports.deleteBlog = catchAsyncErrors(async (req, res, next) => {
-    try {
-        const isValid = mongoose.Types.ObjectId.isValid(req.params.id);
-        if (!isValid)
-            return next(new ErrorHandler(`${req.params.id} is not valid !!`, 400));
-        const deletedBlog = await Blogs.findByIdAndDelete(id);
-        if (!deletedBlog)
-            return next(new ErrorHandler(`Blog with id: ${req.params.id} not found !!`, 404));
+    const CanEdit = await canEdit(req.params.id, req.user.id);
+    if (!CanEdit._canEdit)
+        return next(new ErrorHandler('You cannot edit this blog !!', 400));
+    else try {
+        await Blogs.findByIdAndDelete(CanEdit.blog._id).lean();
         res.status(200).json({ success: true, message: "Blog deleted successfully !!" });
     } catch (e) {
         return next(new ErrorHandler(`Some error occured !!`, 500));
@@ -63,14 +75,19 @@ exports.deleteBlog = catchAsyncErrors(async (req, res, next) => {
 
 
 exports.updateBlog = catchAsyncErrors(async (req, res, next) => {
-    try {
-        const isValid = mongoose.Types.ObjectId.isValid(req.params.id);
-        if (!isValid)
-            return next(new ErrorHandler(`${req.params.id} is not valid !!`, 400));
-
+    const CanEdit = await canEdit(req.params.id, req.user.id);
+    if (!CanEdit._canEdit)
+        return next(new ErrorHandler('You cannot edit this blog !!', 400));
+    else try {
+        const blog = CanEdit.blog;
         const { title, description, tags, content } = req.body;
-        const newBlog = await Blogs.findByIdAndUpdate(req.user.id, { title, description, tags, content }).populate('author').lean();
-        res.status(200).json({ success: true, newBlog });
+        blog.title = title;
+        blog.description = description;
+        blog.tags = tags;
+        blog.content = content;
+
+        await blog.save();
+        res.status(200).json({ success: true, blog });
     } catch (e) {
         return next(new ErrorHandler(`Some error occured !!`, 500));
     }

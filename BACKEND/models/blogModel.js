@@ -32,12 +32,12 @@ const contentSchema = new Schema({
     },
 
     isReviewed: {
-        type: boolean,
+        type: Boolean,
         require: true,
         default: false
     },
 
-    isReviewedBy: {
+    ReviewedBy: {
         type: Schema.Types.ObjectId,
         ref: 'Users'
     }
