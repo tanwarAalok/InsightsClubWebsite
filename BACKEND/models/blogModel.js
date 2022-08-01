@@ -32,7 +32,7 @@ const contentSchema = new Schema({
     },
 
     isReviewed: {
-        type: boolean,
+        type: Boolean,
         require: true,
         default: false
     },
