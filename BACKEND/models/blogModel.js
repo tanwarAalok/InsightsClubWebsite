@@ -37,7 +37,7 @@ const contentSchema = new Schema({
         default: false
     },
 
-    isReviewedBy: {
+    ReviewedBy: {
         type: Schema.Types.ObjectId,
         ref: 'Users'
     }
