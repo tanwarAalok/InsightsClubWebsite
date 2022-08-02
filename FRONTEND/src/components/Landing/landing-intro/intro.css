@@ -119,6 +119,7 @@
 }
 
 .objective-2 {
+    margin-top: 60px;
     min-height: 440px;
     display: flex;
     flex-direction: row-reverse;

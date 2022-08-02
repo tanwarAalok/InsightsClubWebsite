@@ -37,11 +37,6 @@ function Navbar() {
 									</span>
 								</a>
 							</li>
-							<li className='menu-item menu-news'>
-								<a className='nav__link' href='/news'>
-									News
-								</a>
-							</li>
 							<li className='menu-item menu-about'>
 								<a className='nav__link' href='/about'>
 									About
@@ -50,6 +45,11 @@ function Navbar() {
 							<li className='menu-item menu-domains'>
 								<a className='nav__link' href='/domains'>
 									Domains
+								</a>
+							</li>
+							<li className='menu-item menu-news'>
+								<a className='nav__link' href='/news'>
+									News
 								</a>
 							</li>
 							<li className='menu-item menu-events'>

@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import Graphics from '../../../media/undraw_newspaper.png';
-// import { useDispatch, useSelector } from "react-redux";
 import "@fontsource/mulish";
 import "@fontsource/palanquin-dark";
 import "@fontsource/inter";
@@ -31,25 +30,25 @@ function Intro() {
             <div className="objective">
                 <h2 className="objective-heading">What&nbsp;is Insights&nbsp;Club?</h2>
                 <p className="objective-text">
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat.
                     <br />
                     Duis aute irure dolor in reprehenderit
                     <br />
                     in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
                     <br />
-                    ui officia deserunt mollit anim id est laborum."
+                    ui officia deserunt mollit anim id est laborum.
                 </p>
             </div>
             <div className="objective-2">
                 <h2 className="objective-2-heading">Our&nbsp;objective</h2>
                 <p className="objective-2-text">
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat.
                     <br />
                     Duis aute irure dolor in reprehenderit
                     <br />
                     in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
                     <br />
-                    ui officia deserunt mollit anim id est laborum."
+                    ui officia deserunt mollit anim id est laborum.
                 </p>
             </div>
             <Outlet />
