@@ -4,6 +4,7 @@ const { login, signup, resetPassword, reset, verify } = require("../controllers/
 const { homePage, getAllEvents, getEventDetails } = require("../controllers/eventsController");
 const { createNewEvent, updateEvent, deleteEvent } = require("../controllers/managementController");
 const { createBlog, getAllBlogs, getBlog, deleteBlog, updateBlog } = require("../controllers/blogController");
+const { getAllVideos, createVideo, deleteVideo } = require("../controllers/videoController");
 const verifyUser = require("../middlewares/verifyUser");
 
 router.route("/home").get(homePage);
@@ -22,4 +23,7 @@ router.route("/blog/all").get(getAllBlogs)
 router.route("/blog/new").post(verifyUser, createBlog)
 router.route("/blog/:id").get(getBlog).delete(verifyUser, deleteBlog).put(verifyUser, updateBlog)
 
+router.route("/video/all").get(getAllVideos)
+router.route("/video/new").post(verifyUser, createVideo);
+router.route("/video/:id").delete(verifyUser, deleteVideo);
 module.exports = router;
