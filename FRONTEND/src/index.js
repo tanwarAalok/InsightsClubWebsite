@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { CookiesProvider } from 'react-cookie';
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { reducers } from "./reducers/index";
@@ -17,7 +18,9 @@ root.render(
 	// <React.StrictMode>
 	<BrowserRouter>
 		<Provider store={store}>
-			<App />
+			<CookiesProvider>
+				<App />
+			</CookiesProvider>
 		</Provider>
 	</BrowserRouter>
 	// </React.StrictMode>

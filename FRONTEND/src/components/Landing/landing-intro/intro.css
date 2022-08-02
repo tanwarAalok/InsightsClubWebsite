@@ -1,0 +1,172 @@
+.intro-block {
+    box-sizing: border-box;
+    background-color: white;
+    padding: 8rem 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    font-family: 'Palanquin Dark';
+}
+
+.intro-text {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.intro-heading {
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    font-family: 'Palanquin Dark';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 77px;
+    letter-spacing: 0.005em;
+    color: #000000;
+}
+
+.intro-para {
+    box-sizing: border-box;
+    margin: 20px 0;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24.2641px;
+    line-height: 30px;
+    color: #666666;
+}
+
+.intro-button {
+    box-sizing: border-box;
+    margin: 20px 0;
+    padding: 15px 33px;
+    gap: 10px;
+    width: 210px;
+    height: 50px;
+    background: #FFB45F;
+    border: none;
+    border-radius: 18.0556px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17.3333px;
+    line-height: 21px;
+    color: #000000;
+    transition: all 0.2s ease-out;
+}
+.intro-button:hover {
+    cursor: pointer;
+    scale: 1.1 1.1;
+}
+
+.intro-graphics {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1024px) {
+    .intro-graphics {
+        display: none;
+    }
+
+    .intro-text,
+    .intro-heading,
+    .intro-para {
+        text-align: center;
+        align-items: center;
+    }
+}
+
+.objective {
+    background: radial-gradient(61.01% 61.01% at 50% 50%, #FFBD6A 0%, #FFF4C3 100%);
+    /* padding: 1rem 6rem; */
+    min-height: 440px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.objective-heading {
+    font-family: 'Mulish';
+    text-shadow: 1.5px 0 0 #000000;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 65px;
+    line-height: 80px;
+    max-width: 436px;
+    margin: 0 10px;
+    color: #000000;
+}
+
+.objective-text {
+    font-family: 'Martel';
+    font-style: normal;
+    font-weight: light;
+    font-size: 25px;
+    line-height: 34px;
+    text-align: justify;
+    letter-spacing: 0.015em;
+    max-width: 652px;
+    margin: 0 10px;
+    color: #000000;
+}
+
+.objective-2 {
+    min-height: 440px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.objective-2-heading {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 65px;
+    line-height: 80px;
+    max-width: 436px;
+    margin: 0 10px;
+    color: #666666;
+}
+
+.objective-2-text {
+    font-family: 'Martel';
+    font-style: normal;
+    font-weight: light;
+    font-size: 25px;
+    line-height: 34px;
+    text-align: justify;
+    letter-spacing: 0.015em;
+    max-width: 652px;
+    margin: 0 10px;
+    color: #000000;
+}
+
+@media screen and (max-width: 1024px) {
+
+    .objective,
+    .objective-2 {
+        flex-direction: column;
+    }
+
+    .objective-text, .objective-2-text {
+        font-size: 20px;
+    }
+
+    .objective-2-heading,
+    .objective-heading {
+        font-size: 50px;
+        line-height: normal;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+}
