@@ -2,18 +2,29 @@
 .events{
     width: 100%;
     color: black;
+    font-style: normal;
 
     .top{
         width: 100%;
-        height: 100px;
+        height: 6.25rem;
+        margin: 1.25rem 0px;
 
         display: flex;
         justify-content: center;
         align-items: center;
 
         button{
-            padding: 10px;
-            margin-left: 20px;
+            padding: 0px 1.25rem;
+            margin-left: 1.25rem;
+            background: radial-gradient(67.41% 67.41% at 50% 58.93%, #FFB25D 0%, #FFEBAD 100%);
+            border-radius: 2.8rem;
+            font-family: 'Mulish';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 1.1rem;
+            line-height: 2.875rem;
+            border: 0px;
+            cursor: pointer;
         }
     }
 }
