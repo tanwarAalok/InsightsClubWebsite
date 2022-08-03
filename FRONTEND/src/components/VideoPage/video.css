@@ -40,7 +40,7 @@
     justify-content: center;
 }
 .prev-button:hover, .next-button:hover {
-    scale: 1.2 1.2;
+    transform: scale(1.2);
     cursor: pointer;
 }
 .prev-button::before {
@@ -52,7 +52,7 @@
     transition: all 0.2s ease-out;
 }
 .prev-button:active::before, .next-button:active::after {
-    scale: 2 1;
+    transform: scale(2, 1);
     cursor: pointer;
 }
 

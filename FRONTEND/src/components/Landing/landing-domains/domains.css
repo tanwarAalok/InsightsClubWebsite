@@ -44,7 +44,7 @@
     transition: all 0.2s ease-out;
 }
 .tile-border-wrapper:hover {
-    scale: 1.1 1.1;
+    transform: scale(1.1);
 }
 .tile-text-wrapper {
     box-sizing: border-box;
