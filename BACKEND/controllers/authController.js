@@ -52,7 +52,7 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
             try {
                 jwt.verify(req.cookies.token, process.env.JWT_SECRET);
                 // verified successfully
-                res.setHeader('set-cookie', 'token=loggedout; path=/; samesite=lax; httponly;'/*Secure;'*/);
+                res.setHeader('set-cookie', ['token=loggedout; path=/; samesite=lax; httponly;'/*Secure;'*/, 'user={}; path=/; samesite=lax; httponly;'/*Secure;'*/]);
                 res.status(200).json({ success: true, message: "User logged out !!" });
                 // or redirect
             } catch (e) {
@@ -72,18 +72,21 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
             else if (!doc.verified)
                 return next(new ErrorHandler('Email not verified !!', 400));
             else if (bcrypt.compareSync(user.password, doc.password)) {
-                const payload = { id: doc._id, username: user.username, password: user.password, isAdmin: doc.isAdmin }
+                const payload = { id: doc._id, username: user.username, password: user.password, isAdmin: doc.isAdmin, isCoAdmin: doc.isCoAdmin }
                 const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '28d' })
 
                 let expiry_date = new Date()
                 expiry_date.setDate(expiry_date.getDate() + 28)
 
-                res.setHeader('set-cookie', `token=${token}; path=/; expires=${expiry_date}; samesite=lax; httponly;`/*Secure;`*/)
+                delete payload.password;
+                payload.email = doc.email;
+                payload.name = doc.name;
+                res.setHeader('set-cookie', [`token=${token}; path=/; expires=${expiry_date}; samesite=lax; httponly;`/*Secure;`*/, `user=${JSON.stringify(payload)}; path=/; expires=${expiry_date}; samesite=lax; httponly;`/*Secure;`*/]);
                 res.status(200).json({ success: true, message: 'User logged in !!' });
                 // or redirect
             }
             else {
-                res.setHeader('set-cookie', 'token=loggedout; path=/; samesite=lax; httponly;'/*Secure;'*/);
+                res.setHeader('set-cookie', ['token=loggedout; path=/; samesite=lax; httponly;'/*Secure;'*/, 'user={}; path=/; samesite=lax; httponly;'/*Secure;'*/]);
                 return next(new ErrorHandler('Invalid credentials !!', 400));
             }
         } catch (e) {

@@ -1,12 +1,17 @@
 import { Routes, Route } from "react-router-dom";
-import Landing from "./pages/Landing/Landing";
-import BlogsLanding from "./pages/BlogsLanding/BlogsLanding";
+import Navbar from "./components/Navbar/Navbar";
+import EventsPage from "./pages/EventsPage/eventsPage";
+import Landing from "./components/Landing/Landing";
+import VideoPage from "./components/VideoPage/Video";
 
 function App() {
 	return (
 		<Routes>
-			<Route path='/' element={<Landing />} />
-			<Route path='/blogs' element={<BlogsLanding />} />
+			<Route path='/' element={<Navbar />}>
+				<Route exact path='' element={<Landing />} />
+				<Route path='events' element={<EventsPage />} />
+				<Route path='videos' element={<VideoPage />} />
+			</Route>
 		</Routes>
 	);
 }

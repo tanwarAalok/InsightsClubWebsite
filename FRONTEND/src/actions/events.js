@@ -6,13 +6,39 @@ import {
 } from "../constants/eventsActionTypes";
 import { Fetch, Create, Update, Delete } from "../api/index.js";
 
-const eventsUrl = "http://localhost:8080/events";
+const eventsUrl = "http://localhost:8080/event";
 
 export const getEvents = () => async (dispatch) => {
 	try {
-		const { data } = await Fetch(eventsUrl);
-		console.log(data);
-		dispatch({ type: FETCH_ALL, payload: data });
+		const { data } = await Fetch(`${eventsUrl}/all`);
+		dispatch({ type: FETCH_ALL, payload: data.events });
+	} catch (error) {
+		console.log(error.message);
+	}
+};
+export const getOngoingEvents = () => async (dispatch) => {
+	try {
+		const { data } = await Fetch(`${eventsUrl}/all?status=ongoing`);
+		// console.log(data.events);
+		dispatch({ type: FETCH_ALL, payload: data.events });
+	} catch (error) {
+		console.log(error.message);
+	}
+};
+export const getUpcomingEvents = () => async (dispatch) => {
+	try {
+		const { data } = await Fetch(`${eventsUrl}/all?status=upcoming`);
+		// console.log(data.events);
+		dispatch({ type: FETCH_ALL, payload: data.events });
+	} catch (error) {
+		console.log(error.message);
+	}
+};
+export const getPastEvents = () => async (dispatch) => {
+	try {
+		const { data } = await Fetch(`${eventsUrl}/all?status=past`);
+		// console.log(data.events);
+		dispatch({ type: FETCH_ALL, payload: data.events });
 	} catch (error) {
 		console.log(error.message);
 	}
