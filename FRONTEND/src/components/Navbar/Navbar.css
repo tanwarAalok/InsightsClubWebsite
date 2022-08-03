@@ -1,9 +1,7 @@
-/* Extra */
-body {
+.nav-body {
 	background: #ccc;
 	color: #272727;
-	font-size: 14px;
-	margin: 0;
+	font-size: 1rem;
 }
 .nav-logo {
 	display: flex;
@@ -15,18 +13,15 @@ body {
 	width: 4rem;
 	height: 4rem;
 }
-.navbar-logo-name {
-	text-align: center;
-	color: #444444;
-	display: block;
-	line-height: 30px;
-	margin: 0px 10px;
-	text-decoration: none;
-	font-size: 1.2rem;
-}
 .navbar {
 	align-items: center;
-	background: #fff;
+	background: linear-gradient(
+		90.49deg,
+		#c57cff 3.96%,
+		rgba(255, 191, 182, 0.908333) 97.97%,
+		rgba(255, 85, 85, 0) 105.03%
+	);
+	/* background-color: rgb(250, 199, 149); */
 	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 	display: flex;
 	flex-direction: row;
@@ -38,7 +33,6 @@ body {
 	margin-left: auto;
 }
 
-/* Menu */
 .hamburger {
 	background: transparent;
 	border: none;
@@ -126,7 +120,7 @@ body {
 }
 .nav-menu .menu-item a:hover {
 	color: #777777;
-	text-decoration: underline;
+	text-decoration: none;
 }
 @media screen and (max-width: 768px) {
 	.nav-menu .menu-item a {
@@ -153,11 +147,45 @@ body {
 		box-sizing: border-box;
 	}
 }
-
-.nav__link:hover + .sub-nav {
+.nav_link:hover + .sub-nav {
 	display: block;
+	text-decoration: none;
 }
-
+.nav_link:hover {
+	transition: ease 0.3s;
+	transform: scale(1.1) translateY(-3px);
+}
 .sub-nav:hover {
 	display: block;
+}
+.navbar-login {
+	background: #b072ff;
+	border-radius: 25px;
+	border: none;
+	padding: 0.2rem 1.2rem;
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1rem;
+	line-height: 24px;
+	color: #f2f6ff;
+	align-self: flex-start;
+	transition: ease 0.3s;
+}
+.navbar-signup {
+	background: #b072ff;
+	border-radius: 25px;
+	border: none;
+	padding: 0.2rem 1.2rem;
+	font-family: "Inter";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1rem;
+	line-height: 24px;
+	color: #f2f6ff;
+	align-self: flex-start;
+	transition: ease 0.3s;
+}
+.navbar-signup .navbar-signup:hover {
+	transform: scale(1.1) translateY(-3px);
 }
