@@ -8,9 +8,9 @@ function App() {
 	return (
 		<Routes>
 			<Route path='/' element={<Navbar />}>
-				<Route exact path="" element={<Landing />} />
-				<Route path="events" element={<EventsPage />} />
-				<Route path="videos" element={<VideoPage />} />
+				<Route exact path='' element={<Landing />} />
+				<Route path='events' element={<EventsPage />} />
+				<Route path='videos' element={<VideoPage />} />
 			</Route>
 		</Routes>
 	);
