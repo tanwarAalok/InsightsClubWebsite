@@ -11,6 +11,10 @@ body {
 	max-width: 200px;
 	width: 5rem;
 	height: 5rem;
+	transition: all 0.2s ease-out;
+}
+.logo:hover {
+	transform: scale(1.1);
 }
 
 .profilepic {
@@ -18,16 +22,11 @@ body {
 	width: 4rem;
 	height: 4rem;
 	border-radius: 50%;
+	transition: all 0.2s ease-out;
 }
 
-.navbar-logo-name {
-	text-align: center;
-	color: #444444;
-	display: block;
-	line-height: 30px;
-	margin: 0px 10px;
-	text-decoration: none;
-	font-size: 1.2rem;
+.profilepic:hover {
+	transform: scale(1.1);
 }
 
 .navbar {
@@ -186,9 +185,11 @@ body {
 	color: #000000;
 	text-decoration: none;
 }
-
-.nav-menu .menu-item a:hover {
-	text-decoration: underline;
+.nav-menu .menu-item {
+	transition: all 0.2s ease-out;
+}
+.nav-menu .menu-item:hover {
+	transform: scale(1.1);
 }
 
 @media screen and (max-width: 1024px) {

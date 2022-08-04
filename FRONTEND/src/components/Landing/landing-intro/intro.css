@@ -60,7 +60,7 @@
 }
 .intro-button:hover {
     cursor: pointer;
-    scale: 1.1 1.1;
+    transform: scale(1.1);
 }
 
 .intro-graphics {

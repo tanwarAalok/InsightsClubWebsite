@@ -3,7 +3,7 @@
 .container{
     width: 80%;
     min-height: 31.25rem;
-    margin: 20px 10%;
+    margin: 1.28rem 10%;
     display: flex;
     background-color: white;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -11,6 +11,7 @@
     .left{
         width: 60%;
         min-height: 31.25rem;
+        background-color: #FFF7ED;
 
         display: flex;
         align-items: center;
@@ -18,10 +19,21 @@
         padding: 20px 60px;
         font-size: 20px;
 
+        p{
+            font-family: 'Martel';
+        }
+
         button{
-            padding: 10px 20px;
+            padding: 0.5rem 1.2rem;
             margin-top: 20px;
             align-self: flex-start;
+            background: #FFB45F;
+            border-radius: 18.0556px;
+            border: 0px;
+            font-family: 'Inter';
+            font-weight: 400;
+            font-size: 1rem;
+            line-height: 21px;
         }
     }
 

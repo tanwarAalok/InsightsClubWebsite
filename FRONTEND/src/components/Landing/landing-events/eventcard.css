@@ -40,19 +40,23 @@
     transition: all 0.2s ease-out;
     z-index: 3;
 }
-.slide-button:hover {
-    cursor: pointer;
-    scale: 1.2 1.2;
-}
 .slide-left {
     position: absolute;
     left: 1.7%;
     transform: rotate(135deg);
 }
+.slide-left:hover {
+    cursor: pointer;
+    transform: rotate(135deg) scale(1.2);
+}
 .slide-right {
     position: absolute;
     right: 1.7%;
     transform: rotate(-45deg);
+}
+.slide-right:hover {
+    cursor: pointer;
+    transform: rotate(-45deg) scale(1.2);
 }
 
 /* Slides */
@@ -129,7 +133,8 @@
     transition: all 0.2s ease-out;
 }
 .slide-info-button:hover {
-    scale: 1.1 1.1;
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 @media screen and (max-width: 1024px) {
