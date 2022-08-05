@@ -1,0 +1,27 @@
+.blogsnavbar-nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5rem 1rem;
+	background: linear-gradient(
+		269.54deg,
+		#ffa852 -9.52%,
+		rgba(255, 226, 90, 0.35) 100%
+	);
+}
+.blogsnavbar-logo img {
+	width: 15%;
+	height: 15%;
+}
+.blogsnavbar-search_box {
+	width: 700px;
+}
+.blogsnavbar-search_box input {
+	width: 90%;
+	padding: 0.7rem;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+.blogsnavbar-hambugermenu {
+}

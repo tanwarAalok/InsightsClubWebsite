@@ -6,12 +6,11 @@ import {
 } from "../constants/blogsActionTypes";
 import { Fetch, Create, Update, Delete } from "../api/index.js";
 
-const blogsUrl = "";
+const blogsUrl = "http://localhost:8080/blog/all";
 
 export const getBlogs = () => async (dispatch) => {
 	try {
 		const { data } = await Fetch(blogsUrl);
-
 		dispatch({ type: FETCH_ALL, payload: data });
 	} catch (error) {
 		console.log(error.message);

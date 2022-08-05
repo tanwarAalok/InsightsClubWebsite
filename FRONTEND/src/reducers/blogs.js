@@ -5,7 +5,7 @@ import {
 	DELETE,
 } from "../constants/blogsActionTypes";
 
-const blogsReducer = (blogs = [3, 4], action) => {
+const blogsReducer = (blogs = [], action) => {
 	switch (action.type) {
 		case FETCH_ALL:
 			return action.payload;
