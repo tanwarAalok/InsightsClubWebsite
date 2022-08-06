@@ -16,7 +16,17 @@
     background-color: #FFF7ED;
 }
 
+.slider-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    padding: 0 20px;
+}
 .slider-heading {
+    flex: 0 0 60%;
+    text-align: end;
     box-sizing: border-box;
     font-family: 'Mulish';
     font-style: normal;
@@ -25,6 +35,21 @@
     font-size: 65px;
     line-height: 82px;
     color: #000000;
+}
+.slider-subheading {
+    flex: 0 0 40%;
+    text-align: end;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+    color: #666666;
+    text-decoration: none;
+}
+.slider-subheading:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 /* Slide buttons */

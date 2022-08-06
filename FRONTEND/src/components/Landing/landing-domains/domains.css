@@ -14,6 +14,7 @@
     font-size: 65px;
     line-height: 82px;
     color: #000000;
+    margin-top: 114px;
 }
 .tile-row {
     box-sizing: border-box;
@@ -31,14 +32,17 @@
     margin: 60px 0;
 }
 .tile-border-wrapper {
+    position: relative;
     box-sizing: border-box;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 22vw;
     height: 19vw;
     border-radius: 20%;
     background: linear-gradient(269.54deg, #FFA852 -9.52%, rgba(255, 226, 90, 0.35) 100%);
+    padding: 2.5vw;
     margin: 0 35px;
     text-decoration: none;
     transition: all 0.2s ease-out;
@@ -48,8 +52,8 @@
 }
 .tile-text-wrapper {
     box-sizing: border-box;
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     border-radius: 20%;
     background: white;
     display: flex;
@@ -57,6 +61,11 @@
     justify-content: center;
     flex-wrap: wrap;
     padding: 10px;
+    transition: all 0.2s ease-out;
+}
+.tile-border-wrapper:hover .tile-text-wrapper {
+    box-shadow: 0px 50px 100px -20px rgba(255, 168, 82, 0.5), 0px 20px 40px -30px rgba(255, 226, 90, 0.5);
+    transform: translateY(-78%);
 }
 .tile-text {
     box-sizing: border-box;
@@ -68,6 +77,28 @@
     font-style: normal;
     font-weight: bold;
     font-size: 24px;
+}
+.tile-description {
+    visibility: none;
+    position: absolute;
+    opacity: 0;
+    padding: 0 2vw; /* equal to tile-border-wrapper */
+    transition: opacity 0.2s ease-out;
+    transform: translateY(20px);
+    z-index: -1;
+}
+.tile-border-wrapper:hover .tile-description {
+    opacity: 1;
+}
+.tile-description-text {
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 19px;
+    color: #000000;
 }
 
 @media screen and (max-width: 1024px) {
@@ -92,6 +123,19 @@
 }
 
 @media screen and (max-width: 768px) {
+    .tile-description-text {
+        display: none;
+        /* disable this effect on smartphones */
+    }
+    .tile-border-wrapper:hover .tile-text-wrapper {
+        transform: none;
+        box-shadow: none;
+        /* disable this effect on smartphones */
+    }
+    .tile-text {
+        font-size: 4.6vw;
+        line-height: none;
+    }
     .tile-border-wrapper {
         margin: 30px 0;
         width: 58vw;
