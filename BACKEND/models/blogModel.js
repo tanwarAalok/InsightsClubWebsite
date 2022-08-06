@@ -31,6 +31,11 @@ const contentSchema = new Schema({
         require: true,
     },
 
+    likes: {
+        type: [Schema.Types.ObjectId],
+        ref: 'Users',
+        require: true,
+    },
     isReviewed: {
         type: Boolean,
         require: true,
