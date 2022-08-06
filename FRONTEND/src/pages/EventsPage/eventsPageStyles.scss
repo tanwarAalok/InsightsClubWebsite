@@ -4,27 +4,59 @@
     color: black;
     font-style: normal;
 
-    .top{
-        width: 100%;
-        height: 6.25rem;
-        margin: 1.25rem 0px;
+    .content{
+
+        width: 80%;
+        margin: 1.875rem 10%;
 
         display: flex;
-        justify-content: center;
-        align-items: center;
+        flex-direction: column;
 
-        button{
-            padding: 0px 1.25rem;
-            margin-left: 1.25rem;
-            background: radial-gradient(67.41% 67.41% at 50% 58.93%, #FFB25D 0%, #FFEBAD 100%);
-            border-radius: 2.8rem;
+        h1{
             font-family: 'Mulish';
             font-style: normal;
-            font-weight: 600;
-            font-size: 1.1rem;
-            line-height: 2.875rem;
-            border: 0px;
-            cursor: pointer;
+            font-weight: 700;
+            font-size: 3rem;
+            line-height: 6rem;
+            margin-bottom: 1.8rem;
+        }
+
+
+        .pageContainer{
+
+            background: #FFFFFF;
+            border: 1px solid #B9B9B9;
+            display: flex;
+            flex-direction: column;
+
+            .divButtons{
+                width: 100%;
+
+                button{
+                    width: 33.33%;
+                    cursor: pointer;
+                    font-family: 'Mulish';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 2rem;
+                    line-height: 3rem;
+                    padding: 0.8rem;
+                    color: #000000;
+                    background-color: #FFFFFF;
+                }
+                button:hover{
+                    opacity: 0.8;
+                }
+            }
+
+
+            .bottomEventContainer{
+                width: 100%;
+                padding: 4rem;
+            }
         }
     }
+
+    
 }
+
