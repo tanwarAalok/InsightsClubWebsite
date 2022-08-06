@@ -43,13 +43,11 @@ const getRandomText = () => {
 }
 
 
-
-exports.login = catchAsyncErrors(async (req, res, next) => {
-    if (Object.keys(req.cookies).length !== 0 && req.cookies.hasOwnProperty('token') && req.body.hasOwnProperty('logout') && req.body.logout) {
+exports.logout = catchAsyncErrors(async (req, res, next) => {
+    if (Object.keys(req.cookies).length !== 0 && req.cookies.hasOwnProperty('token')) {
         if (req.cookies.token == 'loggedout')
             res.status(200).json({ success: true, message: 'User was already logged out !' });
-        else
-            try {
+        else try {
                 jwt.verify(req.cookies.token, process.env.JWT_SECRET);
                 // verified successfully
                 res.setHeader('set-cookie', ['token=loggedout; path=/; samesite=lax; httponly;'/*Secure;'*/, 'user={}; path=/; samesite=lax; httponly;'/*Secure;'*/]);
@@ -61,7 +59,15 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
                 else
                     return next(new ErrorHandler('Some error occured !!', 500));
             }
-    } else if (req.body.hasOwnProperty('username') && req.body.hasOwnProperty('password')) {
+    } else {
+        return next(new ErrorHandler('Token is missing !!', 400));
+    }
+});
+
+
+
+exports.login = catchAsyncErrors(async (req, res, next) => {
+    if (req.body.hasOwnProperty('username') && req.body.hasOwnProperty('password')) {
         var user = {}
         user.username = req.body.username;
         user.password = req.body.password;
@@ -94,7 +100,7 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
             return next(new ErrorHandler('Some error occured !!', 500));
         }
     } else {
-        return next(new ErrorHandler('Username/password/token is missing OR already logged out !!', 400));
+        return next(new ErrorHandler('Username/password is missing !!', 400));
     }
 });
 

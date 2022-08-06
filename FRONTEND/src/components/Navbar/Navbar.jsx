@@ -7,9 +7,11 @@ import "./Navbar.css";
 import "@fontsource/mulish";
 import { useCookies } from "react-cookie";
 import { Outlet } from "react-router-dom";
+import AuthModal from "../AuthCards/Auth";
 
 function Navbar() {
 	const [menu, setMenu] = useState(false);
+	const [showAuthModal, displayAuthModal] = useState(false);
 	const [userCookie] = useCookies(["user"]);
 	useEffect(() => {
 		console.log(userCookie);
@@ -30,21 +32,19 @@ function Navbar() {
 					<div className='nav-menu-wrapper'>
 						<ul id='primary-menu' className='menu nav-menu'>
 							<li className='pp-mobile menu-item'>
-								<a
+								<button
 									id='profile-picture'
 									className='profile-picture-mobile'
-									href={
-										Object.keys(userCookie).length !== 0
-											? "/profile"
-											: "/signin"
-									}>
+									onClick={() => {
+										displayAuthModal(true)
+									}}>
 									<img src={User_Image} className='profilepic' alt='Profile' />
 									<span className='nav__link'>
 										{Object.keys(userCookie).length !== 0
 											? userCookie.username
 											: "Sign In"}
 									</span>
-								</a>
+								</button>
 							</li>
 							<li className='menu-item menu-about'>
 								<a className='nav__link' href='/about'>
@@ -78,12 +78,14 @@ function Navbar() {
 							</li>
 						</ul>
 					</div>
-					<a
+					<button
 						id='profile-picture'
 						className='profile-picture pp-desktop'
-						href='/profile'>
+						onClick={() => {
+							displayAuthModal(true)
+						}}>
 						<img src={User_Image} className='profilepic' alt='Profile' />
-					</a>
+					</button>
 					<button
 						id='menu-toggler'
 						className='hamburger'
@@ -96,6 +98,7 @@ function Navbar() {
 					</button>
 				</div>
 			</nav>
+			{showAuthModal && <AuthModal displayModal={displayAuthModal} />}
 			<Outlet />
 		</Fragment>
 	);
