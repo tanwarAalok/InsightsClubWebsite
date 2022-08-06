@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String,
+        required: [true, "User description is required"],   
+    },
     verified: {
         type: Boolean,
         default: false,
