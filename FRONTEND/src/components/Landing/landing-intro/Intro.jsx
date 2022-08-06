@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Graphics from '../../../media/undraw_newspaper.png';
+import AuthModal from "../../AuthCards/Auth";
 import "@fontsource/mulish";
 import "@fontsource/palanquin-dark";
 import "@fontsource/inter";
@@ -8,8 +9,11 @@ import './intro.css'
 import { Outlet } from "react-router-dom";
 
 function Intro() {
+    const [showAuthModal, displayAuthModal] = useState(false)
+    const [AuthModalPage, setPage] = useState('SignIn')
     return (
         <Fragment>
+            {showAuthModal && <AuthModal displayModal={displayAuthModal} authPage={AuthModalPage} />}
             <div className="intro-block">
                 <div className="intro-text">
                     <h1 className="intro-heading">
@@ -20,7 +24,21 @@ function Intro() {
                     <p className="intro-para">Dive in the vast ocean of data,
                         <br />
                         to gain the pearl of insights.</p>
-                    <button className="intro-button">Get daily updates</button>
+                    <div className="intro-button-group">
+                        <button className="intro-button intro-primary-button"
+                            onClick={async () => {
+                                setPage('SignIn')
+                                displayAuthModal(true)
+                            }}>Log in</button>
+                        <button className="intro-button intro-secondary-button"
+                            onClick={
+                                async () => {
+                                    setPage('SignUp')
+                                    displayAuthModal(true)
+                                }}>
+                            Sign Up
+                        </button>
+                    </div>
                 </div>
                 <div className="intro-graphics">
                     <img src={Graphics} alt="" />
