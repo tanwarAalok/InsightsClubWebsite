@@ -4,6 +4,8 @@ import EventsPage from "./pages/EventsPage/eventsPage";
 import Landing from "./components/Landing/Landing";
 import VideoPage from "./components/VideoPage/Video";
 import BlogsLanding from "./pages/BlogsLanding/BlogsLanding";
+import ArticleLanding from "./pages/ArticleLanding/ArticleLanding";
+import DetailedArticle from "./components/Articles/DetailedArticles/DetailedArticle";
 
 function App() {
 	return (
@@ -12,6 +14,8 @@ function App() {
 				<Route exact path='' element={<Landing />} />
 				<Route path='events' element={<EventsPage />} />
 				<Route path='videos' element={<VideoPage />} />
+				<Route path='articles' element={<ArticleLanding />} />
+				<Route path='article/id' element={<DetailedArticle />} />
 			</Route>
 			<Route path='blogs' element={<BlogsLanding />} />
 		</Routes>

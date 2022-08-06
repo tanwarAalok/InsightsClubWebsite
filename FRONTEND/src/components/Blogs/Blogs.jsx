@@ -5,13 +5,13 @@ import { getBlogs } from "../../actions/blogs";
 import { useSelector, useDispatch } from "react-redux";
 // import axios from "axios";
 
-const blog = {
-	name: "jon wic",
-	time: "3d",
-	content:
-		"aklsjdaslkd jasjddklal sjdlkasjddlkassjddlk asjdlkasjdklas jsdklajsdk askldjaksjddklasjdlk lkassjdklasjadd",
-	likes: 10,
-};
+// const blog = {
+// 	name: "jon wic",
+// 	time: "3d",
+// 	content:
+// 		"aklsjdaslkd jasjddklal sjdlkasjddlkassjddlk asjdlkasjdklas jsdklajsdk askldjaksjddklasjdlk lkassjdklasjadd",
+// 	likes: 10,
+// };
 
 function Blogs() {
 	const dispatch = useDispatch();
@@ -21,7 +21,8 @@ function Blogs() {
 	}, [dispatch]);
 
 	const Blogs = useSelector((state) => state.blogs);
-	console.log(Blogs);
+	// console.log(Blogs);
+	// console.log(Blogs.author);
 
 	return (
 		<>
@@ -36,10 +37,11 @@ function Blogs() {
 					</ul>
 				</div>
 				<div className='blogs-container'>
-					<Blog blog={blog} />
-					<Blog blog={blog} />
-					<Blog blog={blog} />
-					<Blog blog={blog} />
+					{Blogs.map((blog, key) => (
+						<>
+							<Blog blog={blog} key={key} />
+						</>
+					))}
 				</div>
 				<div className='blogs-recently-queried'>
 					<ul>
