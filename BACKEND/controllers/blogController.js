@@ -92,3 +92,28 @@ exports.updateBlog = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler(`Some error occured !!`, 500));
     }
 });
+
+//Like / dislike a blog
+exports.likeBlog = catchAsyncErrors(async (req, res, next) => {
+    const isValid = mongoose.Types.ObjectId.isValid(req.params.id);
+    if (!isValid)
+        return next(new ErrorHandler(`${req.params.id} is not valid !!`, 400));
+    const blog = await Blogs.findById(req.params.id).lean();
+    if (!blog) {
+        return next(new ErrorHandler(`Blog with id: ${req.params.id} not found !!`, 404));
+    }
+    const user = await User.findById(req.user.id).lean();
+    if (!user) {
+        return next(new ErrorHandler(`User with id: ${req.user.id} not found !!`, 404));
+    }
+    if (blog.likes.includes(user.id)){
+        blog.likes.splice(blog.likes.indexOf(user.id), 1);
+        await blog.save();
+        res.status(200).json({ success: true, message: "Blog disliked successfully !!" });
+    }
+    else{
+        blog.likes.push(user.id);
+        await blog.save();
+        res.status(200).json({ success: true, message: "Blog liked successfully !!" });
+    }
+});
