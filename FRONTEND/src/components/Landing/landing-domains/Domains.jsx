@@ -8,6 +8,9 @@ function TileRow({ row }) {
         <div className="tile-row">{
             row.map((tile, index) => (
                 <a className="tile-border-wrapper" href={tile.link} key={index}>
+                    <span className="tile-description">
+                        <span className="tile-description-text">{tile.descr}</span>
+                    </span>
                     <span className="tile-text-wrapper">
                         <span className="tile-text">{tile.title}</span>
                     </span>
@@ -19,14 +22,32 @@ function TileRow({ row }) {
 
 function Domains() {
     const tilesRow1 = [
-        { title: 'Technical', link: '/team/technical' },
-        { title: 'Design', link: '/team/design' },
-        { title: 'Editing', link: '/team/editing' }
+        {
+            title: 'Technical', link: '/team/technical',
+            descr: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat. lla pariatur. Lorem ipsum dolor sit amet.'
+        },
+        {
+            title: 'Design', link: '/team/design',
+            descr: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat. lla pariatur. Lorem ipsum dolor sit amet.'
+        },
+        {
+            title: 'Editing', link: '/team/editing',
+            descr: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat. lla pariatur. Lorem ipsum dolor sit amet.'
+        }
     ];
     const tilesRow2 = [
-        { title: 'Content', link: '/team/content' },
-        { title: 'PR and Outreach', link: '/team/proutreach' },
-        { title: 'Event and Resource', link: '/team/event' }
+        {
+            title: 'Content', link: '/team/content',
+            descr: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat. lla pariatur. Lorem ipsum dolor sit amet.'
+        },
+        {
+            title: 'PR and Outreach', link: '/team/proutreach',
+            descr: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat. lla pariatur. Lorem ipsum dolor sit amet.'
+        },
+        {
+            title: 'Event and Resource', link: '/team/event',
+            descr: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat. lla pariatur. Lorem ipsum dolor sit amet.'
+        }
     ]
     return (
         <Fragment>

@@ -31,7 +31,10 @@ function EventSlides() {
     return (
         <Fragment>
             <div className="slider">
+                <div className="slider-header">
                 <h2 className="slider-heading">Our Events</h2>
+                <a href="/events" className="slider-subheading">View all</a>
+                </div>
                 <div className="slide-box">
                     <button className="slide-button slide-left"
                         onClick={() => slideClickHandler('left')}>
