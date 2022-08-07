@@ -33,7 +33,8 @@ function EventSlides() {
             <div className="slider">
                 <div className="slider-header">
                 <h2 className="slider-heading">Our Events</h2>
-                <a href="/events" className="slider-subheading">View all</a>
+                <span href="/events" className="slider-subheading">
+                    <a href="" className="subheading-link">View all</a></span>
                 </div>
                 <div className="slide-box">
                     <button className="slide-button slide-left"
