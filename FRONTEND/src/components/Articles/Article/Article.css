@@ -1,0 +1,43 @@
+.article-container {
+	margin-bottom: 1.2rem;
+	display: flex;
+	padding: 0.7rem;
+	font-family: "Martel";
+	flex-direction: row;
+	align-items: center;
+	border: 1px solid black;
+	border-radius: 15px;
+	outline: none;
+	transition: 0.2s ease;
+}
+.article-container:hover {
+	transform: translateY(-3px) scale(1.1);
+	-webkit-box-shadow: 7px 17px 21px -7px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 7px 17px 21px -7px rgba(0, 0, 0, 0.75);
+	box-shadow: 7px 17px 21px -7px rgba(0, 0, 0, 0.75);
+}
+.article-image {
+	flex: 1;
+	max-width: 26%;
+}
+.article-content {
+	flex: 3;
+	padding: 0.5rem 0;
+}
+.article-header {
+	margin-bottom: 0.7rem;
+	font-size: 1.5rem;
+}
+.article-main {
+	margin-bottom: 0.7rem;
+}
+.article-footer {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	font-size: 1.01rem;
+}
+.article-footer-createdAt {
+	padding-right: 1rem;
+	margin-left: 0.7rem;
+}

@@ -1,0 +1,7 @@
+.detailedArticle-main {
+	display: flex;
+	flex-direction: column;
+}
+.detailedArticle-main-upper {
+	display: flex;
+}
