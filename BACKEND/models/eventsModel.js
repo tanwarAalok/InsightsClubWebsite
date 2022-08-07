@@ -6,6 +6,10 @@ const eventsSchema = new mongoose.Schema({
     type: String,
     required: [true, "Event name is Required."],
   },
+  shortDescription: {
+    type: String,
+    required: [true, "Event description is required"],
+  },
   description: {
     type: String,
     required: [true, "Event description is required"],
@@ -35,6 +39,13 @@ const eventsSchema = new mongoose.Schema({
   status: {
     type: String,
     required: [true, "Event status is required"],
+  },
+  mode: {
+    type: String,
+    required: [true, "Mode of event is required"],
+  },
+  venue: {
+    type: String,
   },
 });
 

@@ -6,7 +6,7 @@ import {
 } from "../constants/eventsActionTypes";
 import { Fetch, Create, Update, Delete } from "../api/index.js";
 
-const eventsUrl = "http://localhost:8080/event";
+let eventsUrl = "http://localhost:8080/event";
 
 export const getEvents = () => async (dispatch) => {
 	try {
@@ -16,6 +16,37 @@ export const getEvents = () => async (dispatch) => {
 		console.log(error.message);
 	}
 };
+export const getEventByType = (type) => async (dispatch) => {
+	try {
+		switch(type){
+			case "Ongoing":
+				eventsUrl = `${eventsUrl}/all?status=ongoing`;
+				break;
+			case "Upcoming":
+				eventsUrl = `${eventsUrl}/all?status=upcoming`;
+				break;
+			case "Past":
+				eventsUrl = `${eventsUrl}/all?status=past`;
+				break;
+			default:
+				eventsUrl = `${eventsUrl}/all`;
+		}
+		const { data } = await Fetch(eventsUrl);
+		dispatch({ type: FETCH_ALL, payload: data.events });
+	} catch (error) {
+		console.log(error.message);
+	}
+};
+
+export const getEventDetail = ({id}) => async (dispatch) => {
+  try {
+    const { data } = await Fetch(`${eventsUrl}/id`);
+    dispatch({ type: FETCH_ALL, payload: data.events });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 export const getOngoingEvents = () => async (dispatch) => {
 	try {
 		const { data } = await Fetch(`${eventsUrl}/all?status=ongoing`);

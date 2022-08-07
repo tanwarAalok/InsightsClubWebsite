@@ -1,0 +1,155 @@
+.modal-root {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    backdrop-filter: blur(25px) brightness(50%);
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fade 0.2s linear;
+}
+@keyframes fade {
+    from {opacity: 0.5;}
+    to {opacity: 1;}
+}
+.auth-card {
+    box-sizing: border-box;
+    padding: 30px 0;
+    width: 760px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+}
+.auth-card  * {
+    box-sizing: border-box;
+}
+.auth-card-heading {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 45px;
+    color: #FFB45F;
+    margin: 0 0 50px 0;
+}
+
+.auth-card-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.auth-card-brand {
+    width: 202px;
+    height: 202px;
+    margin: 0 50px;
+}
+.auth-card-form {
+    display: flex;
+    flex-direction: column;
+}
+.auth-field-heading {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    color: #B9B9B9;
+}
+.auth-input-field {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    color: #3A3A3A;
+    background: none;
+    margin: 0 0 30px 0;
+    border: none;
+    border-bottom: 2px solid #B9B9B9;
+    transition: border-color 0.2s ease-out;
+}
+.auth-input-field.invalid-input {
+    border-bottom-color: #EC4646;
+}
+.auth-input-field:focus {
+    outline: none;
+    border-bottom: 2px solid #7176FC;
+}
+
+.auth-card-muted-button {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 19px;
+    color: #000000;
+    background: none;
+    border: none;
+    width: 150px;
+    text-align: left;
+    padding: 0;
+    margin: 0 0 30px 0;
+}
+.auth-card-muted-button:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.auth-card-button-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+.auth-card-primary-button {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17.3333px;
+    line-height: 21px; /* identical to box height */
+    color: #000000;
+    
+    background: #FFB45F;
+    border: none;
+    border-radius: 18.0556px;
+    width: 90px;
+    height: 50px;
+    
+    transition: all 0.2s ease-out;
+    margin: 0 30px 0 0;
+}
+.auth-card-primary-button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.auth-card-secondary-button {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17.3333px;
+    line-height: 21px;
+    color: #FFB45F;
+    background: none;
+    border: 1px solid #FFB45F;
+    border-radius: 18.0556px;
+    width: 90px;
+    height: 50px;
+    transition: all 0.2s ease-out;
+}
+.auth-card-secondary-button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}

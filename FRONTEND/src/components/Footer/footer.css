@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     margin: 100px 0 0 0;
     padding: 10px;
 }
@@ -68,6 +68,7 @@
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 .contacts {
     box-sizing: border-box;
@@ -125,6 +126,9 @@
 }
 
 @media screen and (max-width: 1024px){
+    .contacts {
+        margin-bottom: 85px;
+    }
     .footer-brand {
         display: none;
     }
@@ -141,8 +145,12 @@
         padding: 0;
         align-items: center;
     }
+    .contacts {
+        margin-bottom: 0;
+    }
     .footer-heading {
         text-align: center;
+        margin-top: 30px;
     }
     .social-links {
         padding: 0;
