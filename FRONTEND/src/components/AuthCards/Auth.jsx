@@ -41,7 +41,8 @@ function SignInCard({ changeCard, handleClick, closeModal }) {
                         <button className="auth-card-primary-button"
                             onClick={() => {
                                 if (/^[a-zA-Z0-9]+$/.test(username))
-                                    axios.post(`${authUrl}/signin`, { username, password })
+                                    axios.post(`${authUrl}/signin`, { username, password },
+                                        { withCredentials: true })
                                         .then((data) => {
                                             // logged in close the modal
                                             console.log(data.data)
@@ -136,7 +137,8 @@ function SignUpCard({ changeCard, handleClick, closeModal }) {
                                     setErrPsswd(true)
                                 }
                                 if (pass) {
-                                    axios.post(`${authUrl}/signup`, { name, username, email, password })
+                                    axios.post(`${authUrl}/signup`, { name, username, email, password },
+                                        { withCredentials: true })
                                         .then((data) => {
                                             console.log(data.data)
                                             closeModal()
@@ -199,7 +201,8 @@ function ForgotPasswordCard({ changeCard, handleClick, closeModal }) {
                                 if (!(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email))) {
                                     console.error('Invalid email address')
                                     setErrMail(true)
-                                } else axios.post(`${authUrl}/resetPassword`, { email })
+                                } else axios.post(`${authUrl}/resetPassword`, { email },
+                                    { withCredentials: true })
                                     .then((data) => {
                                         console.log(data.data)
                                         closeModal()

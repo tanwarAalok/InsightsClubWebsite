@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import Graphics from '../../../media/undraw_newspaper.png';
 import AuthModal from "../../AuthCards/Auth";
+import { useCookies } from 'react-cookie'
 import "@fontsource/mulish";
 import "@fontsource/palanquin-dark";
 import "@fontsource/inter";
@@ -11,6 +12,7 @@ import { Outlet } from "react-router-dom";
 function Intro() {
     const [showAuthModal, displayAuthModal] = useState(false)
     const [AuthModalPage, setPage] = useState('SignIn')
+    const [cookies] = useCookies(["user"]);
     return (
         <Fragment>
             {showAuthModal && <AuthModal displayModal={displayAuthModal} authPage={AuthModalPage} />}
@@ -27,17 +29,29 @@ function Intro() {
                     <div className="intro-button-group">
                         <button className="intro-button intro-primary-button"
                             onClick={async () => {
-                                setPage('SignIn')
-                                displayAuthModal(true)
-                            }}>Log in</button>
-                        <button className="intro-button intro-secondary-button"
-                            onClick={
-                                async () => {
-                                    setPage('SignUp')
+                                if (!(cookies.hasOwnProperty('user') && Object.keys(cookies.user).length !== 0)) {
+                                    setPage('SignIn')
                                     displayAuthModal(true)
-                                }}>
-                            Sign Up
+                                } else {
+                                    //@TODO: HANDLE BUTTON CLICK WHEN USER HAS LOGGED IN
+                                    // REDIRECT TO PROFILE
+                                }
+                            }}>
+                            {
+                                !(cookies.hasOwnProperty('user') && Object.keys(cookies.user).length !== 0) ?
+                                    'Log in' : "Profile"
+                            }
                         </button>
+                        {!(cookies.hasOwnProperty('user') && Object.keys(cookies.user).length !== 0) &&
+                            <button className="intro-button intro-secondary-button"
+                                onClick={
+                                    async () => {
+                                        setPage('SignUp')
+                                        displayAuthModal(true)
+                                    }}>
+                                Sign Up
+                            </button>
+                        }
                     </div>
                 </div>
                 <div className="intro-graphics">

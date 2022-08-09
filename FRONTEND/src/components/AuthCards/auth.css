@@ -153,3 +153,26 @@
     cursor: pointer;
     transform: scale(1.1);
 }
+
+@media screen and (max-width: 1024px) {
+    .auth-card-brand {
+        display: none;
+    }
+    .auth-card {
+        width: 75vw;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .auth-card {
+        width: 100vw;
+    }
+    .auth-card-heading {
+        font-size: 30px;
+        line-height: normal;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+    }
+}

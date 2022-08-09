@@ -1,4 +1,5 @@
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
 //blogs
 export const Fetch = (url) => axios.get(url);

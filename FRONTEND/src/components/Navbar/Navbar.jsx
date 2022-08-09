@@ -12,10 +12,7 @@ import AuthModal from "../AuthCards/Auth";
 function Navbar() {
 	const [menu, setMenu] = useState(false);
 	const [showAuthModal, displayAuthModal] = useState(false);
-	const [userCookie] = useCookies(["user"]);
-	useEffect(() => {
-		console.log(userCookie);
-	}, [userCookie]);
+	const [cookies] = useCookies(["user"]);
 	// const dispatch = useDispatch();
 	// useEffect(() => {
 	// 	dispatch(getEvents());
@@ -36,13 +33,19 @@ function Navbar() {
 									id='profile-picture'
 									className='profile-picture-mobile'
 									onClick={() => {
-										displayAuthModal(true)
+										// display login panel only when not logged in
+										!(cookies.hasOwnProperty('user')
+											&& Object.keys(cookies.user).length !== 0)
+											&& displayAuthModal(true)
+										//@TODO: HANDLE CLICK WHEN LOGGED IN
+										// redirect to profile
 									}}>
 									<img src={User_Image} className='profilepic' alt='Profile' />
 									<span className='nav__link'>
-										{Object.keys(userCookie).length !== 0
-											? userCookie.username
-											: "Sign In"}
+										{(cookies.hasOwnProperty('user') && Object.keys(cookies.user).length !== 0)
+											? cookies.user.name
+											: "Sign In"
+										}
 									</span>
 								</button>
 							</li>
@@ -82,7 +85,12 @@ function Navbar() {
 						id='profile-picture'
 						className='profile-picture pp-desktop'
 						onClick={() => {
-							displayAuthModal(true)
+							// display login panel only when not logged in
+							!(cookies.hasOwnProperty('user')
+								&& Object.keys(cookies.user).length !== 0)
+								&& displayAuthModal(true)
+							//@TODO: HANDLE CLICK WHEN LOGGED IN
+							// redirect to profile
 						}}>
 						<img src={User_Image} className='profilepic' alt='Profile' />
 					</button>
