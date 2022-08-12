@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Logo from "../../media/logo.png";
 import axios from 'axios';
+import { useCookies } from 'react-cookie'
 import "./auth.css";
 import "@fontsource/mulish";
 import "@fontsource/inter";
+
 const authUrl = 'http://localhost:8080/auth'
 
 function SignInCard({ changeCard, handleClick, closeModal }) {
@@ -11,6 +13,7 @@ function SignInCard({ changeCard, handleClick, closeModal }) {
     const [password, setPassword] = useState('')
     const [InvalidInput, setInvalid] = useState(false)
     const [DNE, setDNE] = useState(false) // user does not exist
+    const [_, setCookies] = useCookies()
 
     return (
         <div className="auth-card" onClick={handleClick}>
@@ -46,6 +49,8 @@ function SignInCard({ changeCard, handleClick, closeModal }) {
                                         .then((data) => {
                                             // logged in close the modal
                                             console.log(data.data)
+                                            // THIS SIMPLY UPDATES COOKIES VARIBALE FOR THE OTHER COMPONENTS
+                                            setCookies('TO_REFRESH_COOKIES', `This simply update the cookies variable !! ${Math.random()}`)
                                             closeModal()
                                         })
                                         .catch((err) => {
@@ -77,7 +82,7 @@ function SignInCard({ changeCard, handleClick, closeModal }) {
     )
 }
 
-function SignUpCard({ changeCard, handleClick, closeModal }) {
+function SignUpCard({ changeCard, handleClick }) {
     const [name, setName] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -141,7 +146,7 @@ function SignUpCard({ changeCard, handleClick, closeModal }) {
                                         { withCredentials: true })
                                         .then((data) => {
                                             console.log(data.data)
-                                            closeModal()
+                                            changeCard('SignIn')
                                         })
                                         .catch((err) => {
                                             console.error(err.response)
