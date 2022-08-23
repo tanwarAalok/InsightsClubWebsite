@@ -1,0 +1,20 @@
+.editor-container {
+	margin: 5% 10%;
+}
+.createBlog-container {
+	font-family: "Mulish";
+}
+
+.publishbutton {
+	padding: 1rem 1.2rem;
+	color: black;
+	background-color: #ffc776;
+	border: none;
+	border-radius: 10px;
+	outline: none;
+	font-size: 1rem;
+}
+
+.createBlog-heading {
+	font-size: 1.4rem;
+}

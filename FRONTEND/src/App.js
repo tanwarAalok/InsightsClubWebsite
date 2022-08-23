@@ -7,6 +7,7 @@ import BlogsLanding from "./pages/BlogsLanding/BlogsLanding";
 import ArticleLanding from "./pages/ArticleLanding/ArticleLanding";
 import DetailedArticle from "./components/Articles/DetailedArticles/DetailedArticle";
 import EventDetails from "./components/DetailEvent/eventDetails";
+import CreateBlog from "./components/Blogs/CreateBlog/CreateBlog";
 
 function App() {
 	return (
@@ -20,6 +21,7 @@ function App() {
 				<Route path='article/:id' element={<DetailedArticle />} />
 			</Route>
 			<Route path='blogs' element={<BlogsLanding />} />
+			<Route path='write' element={<CreateBlog />} />
 		</Routes>
 	);
 }
