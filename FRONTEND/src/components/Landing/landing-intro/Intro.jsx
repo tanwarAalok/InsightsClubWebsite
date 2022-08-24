@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Graphics from '../../../media/undraw_newspaper.png';
 import AuthModal from "../../AuthCards/Auth";
 import { useCookies } from 'react-cookie'
@@ -13,6 +13,15 @@ function Intro() {
     const [showAuthModal, displayAuthModal] = useState(false)
     const [AuthModalPage, setPage] = useState('SignIn')
     const [cookies] = useCookies(["user"]);
+
+    useEffect(() => {
+        if(showAuthModal === true)
+            document.getElementsByTagName('body')[0].style.overflowY = 'hidden';
+        else
+            document.getElementsByTagName('body')[0].style.overflowY = 'scroll';
+    });
+    
+
     return (
         <Fragment>
             {showAuthModal && <AuthModal displayModal={displayAuthModal} authPage={AuthModalPage} />}
