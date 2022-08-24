@@ -10,7 +10,6 @@
     font-family: 'Mulish';
     font-style: normal;
     font-weight: 700;
-    text-shadow: 2px 0 0 #000000;
     font-size: 65px;
     line-height: 82px;
     color: #000000;
@@ -40,14 +39,15 @@
     justify-content: center;
     width: 22vw;
     height: 19vw;
+    border: none;
     border-radius: 20%;
     background: linear-gradient(269.54deg, #FFA852 -9.52%, rgba(255, 226, 90, 0.35) 100%);
     padding: 2.5vw;
     margin: 0 35px;
-    text-decoration: none;
     transition: all 0.2s ease-out;
 }
 .tile-border-wrapper:hover {
+    cursor: pointer;
     transform: scale(1.1);
 }
 .tile-text-wrapper {

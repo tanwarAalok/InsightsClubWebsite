@@ -19,6 +19,13 @@ function Navbar() {
 	// }, [dispatch]);
 	// const events = useSelector((state) => state.events);
 
+	useEffect(() => {
+        if(showAuthModal === true)
+            document.getElementsByTagName('body')[0].style.overflowY = 'hidden';
+        else
+            document.getElementsByTagName('body')[0].style.overflowY = 'scroll';
+    });
+
 	return (
 		<Fragment>
 			<nav className={menu ? "menu-active" : "navbar"}>

@@ -1,0 +1,150 @@
+.modal-root {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    backdrop-filter: blur(25px) brightness(50%);
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fade 0.2s linear;
+}
+
+
+
+.domain-modal-card::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+.domain-modal-card::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 20px;
+}
+
+.domain-modal-card::-webkit-scrollbar-thumb {
+    background-color: rgb(50, 50, 50, 0.8);
+    border-radius: 20px;
+    border: 1px solid rgb(246, 246, 246, 0.5);
+}
+
+
+
+.domain-modal-card {
+    box-sizing: border-box;
+    padding: 85px;
+    width: 90vw;
+    height: 90vh;
+    border-radius: 20px;
+    overflow-y: scroll;
+    background-color: white;
+}
+
+.domain-modal-cross-button {
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    left: 100%; /* to move it out of content box and into the padding box */
+    top: -42.5px; /* half of padding-top */
+    border: none;
+    background: none;
+}
+
+.domain-modal-cross-button:hover {
+    cursor: pointer;
+    transition: transform 1s ease; /* transition applies only on 'mouseenter' event */
+    transform: rotate(720deg);
+}
+
+.domain-details {
+    box-sizing: border-box;
+    font-family: 'Martel';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    text-align: justify;
+    letter-spacing: 0.015em;
+    color: #000000;
+    margin-bottom: 40px;
+}
+
+.member-grid {
+    box-sizing: border-box;
+    display: grid;
+    gap: 40px 75px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* auto-fill allows grid to fit as many columns as possible, thereby wrapping up 
+    columns when screen width is less */
+}
+
+.member-card {
+    box-sizing: border-box;
+    background-color: white;
+    border: 1px solid #B9B9B9;
+}
+
+.member-pfp {
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.member-card-text {
+    padding: 20px;
+}
+
+.member-name {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
+    letter-spacing: 0.015em;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+.member-description {
+    font-family: 'Martel';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.015em;
+    color: #000000;
+}
+
+@media screen and (max-width:1024px) {
+    .member-grid {
+        gap: 40px 40px;
+    }
+
+    .domain-modal-card {
+        width: 88vw;
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .domain-modal-card {
+        width: 100vw;
+        height: 100vh;
+        padding: 30px;
+        border-radius: 0;
+    }
+
+    .member-grid {
+        gap: 40px 40px;
+    }
+
+    .member-card {
+        margin-bottom: 40px;
+    }
+}
