@@ -48,17 +48,16 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
         if (req.cookies.token == 'loggedout')
             res.status(200).json({ success: true, message: 'User was already logged out !' });
         else try {
-                jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-                // verified successfully
-                res.setHeader('set-cookie', ['token=loggedout; path=/; samesite=lax; httponly;'/*Secure;'*/, 'user={}; path=/; samesite=lax;'/*Secure;'*/]);
-                res.status(200).json({ success: true, message: "User logged out !!" });
-                // or redirect
-            } catch (e) {
-                if (e.name == 'TokenExpiredError')
-                    return next(new ErrorHandler('Token expired !!', 400));
-                else
-                    return next(new ErrorHandler('Some error occured !!', 500));
-            }
+            jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+            // verified successfully
+            res.setHeader('set-cookie', ['token=loggedout; path=/; samesite=lax; httponly;'/*Secure;'*/, 'user={}; path=/; samesite=lax;'/*Secure;'*/]);
+            res.status(200).json({ success: true, message: "User logged out !!" });
+        } catch (e) {
+            if (e.name == 'TokenExpiredError')
+                return next(new ErrorHandler('Token expired !!', 400));
+            else
+                return next(new ErrorHandler('Some error occured !!', 500));
+        }
     } else {
         return next(new ErrorHandler('Token is missing !!', 400));
     }
@@ -78,21 +77,28 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
             else if (!doc.verified)
                 return next(new ErrorHandler('Email not verified !!', 400));
             else if (bcrypt.compareSync(user.password, doc.password)) {
-                const payload = { id: doc._id, username: user.username, password: user.password, isAdmin: doc.isAdmin, isCoAdmin: doc.isCoAdmin }
+                const payload = {
+                    id: doc._id, username: user.username, password: user.password,
+                    isAdmin: doc.isAdmin, isCoAdmin: doc.isCoAdmin
+                }
                 const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '28d' })
 
                 let expiry_date = new Date()
                 expiry_date.setDate(expiry_date.getDate() + 28)
 
+                // for user cookie
                 delete payload.password;
                 payload.email = doc.email;
                 payload.name = doc.name;
+                payload.department = doc.department;
+
                 res.setHeader('set-cookie', [`token=${token}; path=/; expires=${expiry_date}; samesite=lax; httponly;`/*Secure;`*/, `user=${JSON.stringify(payload)}; path=/; expires=${expiry_date}; samesite=lax;`/*Secure;`*/]);
+
                 res.status(200).json({ success: true, message: 'User logged in !!' });
-                // or redirect
             }
             else {
                 res.setHeader('set-cookie', ['token=loggedout; path=/; samesite=lax; httponly;'/*Secure;'*/, 'user={}; path=/; samesite=lax;'/*Secure;'*/]);
+
                 return next(new ErrorHandler('Invalid credentials !!', 400));
             }
         } catch (e) {
@@ -113,7 +119,11 @@ exports.signup = catchAsyncErrors(async (req, res, next) => {
         usr.name = req.body.name;
         usr.email = req.body.email;
         usr.password = bcrypt.hashSync(req.body.password, 10);
+
+        if (req.body.hasOwnProperty('department') && req.body.department.trim() != '')
+            usr.department = req.body.department.trim();
     }
+    
     const user = new User(usr);
     try {
         user.save(async (err, doc) => {
@@ -326,7 +336,6 @@ exports.verify = catchAsyncErrors(async (req, res, next) => {
             return next(new ErrorHandler('User not found !!', 404));
         else
             res.status(200).json({ success: true, message: 'User verified !' });
-        // or redirect
     } catch (e) {
         console.error(e);
         return next(new ErrorHandler('Some error occured !!', 500));

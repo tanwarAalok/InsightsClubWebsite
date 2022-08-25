@@ -34,6 +34,11 @@ const userSchema = new mongoose.Schema({
         default: false,
         required: true
     },
+    department: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Departments',
+        require: true,
+    },
     isAdmin: {
         type: Boolean,
         default: false,

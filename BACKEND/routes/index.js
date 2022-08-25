@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { login, logout, signup, resetPassword, reset, verify } = require("../controllers/authController");
 const { homePage, getAllEvents, getEventDetails } = require("../controllers/eventsController");
-const { createNewEvent, updateEvent, deleteEvent } = require("../controllers/managementController");
+const { createNewEvent, updateEvent, deleteEvent, getAllDept, getUsersByDept, createNewDepartment,
+        deleteDepartment, updateDepartment } = require("../controllers/managementController");
 const { createBlog, getAllBlogs, getBlog, deleteBlog, updateBlog, likeBlog } = require("../controllers/blogController");
 const { getAllVideos, createVideo, deleteVideo } = require("../controllers/videoController");
 const verifyUser = require("../middlewares/verifyUser");
@@ -27,4 +28,9 @@ router.route("/blog/:id/like").post(verifyUser, likeBlog)
 router.route("/video/all").get(getAllVideos)
 router.route("/video/new").post(verifyUser, createVideo);
 router.route("/video/:id").delete(verifyUser, deleteVideo);
+
+router.route("/dept/all").get(getAllDept);
+router.route("/dept/:id").get(getUsersByDept);
+router.route("/dept/new").post(verifyUser, createNewDepartment);
+router.route("/dept/:id").delete(verifyUser, deleteDepartment).put(verifyUser, updateDepartment);
 module.exports = router;
