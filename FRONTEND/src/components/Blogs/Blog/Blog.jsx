@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Blog.css";
 import LIKE from "../../../media/likeVector.svg";
+import ACTIVELIKE from "../../../media/activeLikeVector.svg";
 
 function Blog({ blog }) {
+	const [liked, setLiked] = useState(false);
+
 	return (
 		<>
 			<div className='blog-container'>
@@ -15,7 +18,11 @@ function Blog({ blog }) {
 				</div>
 				<div className='blog-footer'>
 					<div className='blog-footer-like'>
-						<img src={LIKE} alt='like' />
+						<img
+							src={liked ? ACTIVELIKE : LIKE}
+							alt='like'
+							onClick={() => setLiked((prev) => !prev)}
+						/>
 					</div>
 					<p className='blog-likesCounter'>{blog.likes}</p>
 				</div>

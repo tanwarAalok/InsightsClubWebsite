@@ -1,0 +1,23 @@
+.blogs-sidebar-container {
+	font-family: "Mulish";
+	margin-top: -9%;
+}
+.blogs-sidebar-list {
+	list-style: none;
+}
+.blogs-sidebar-list-element {
+	font-size: 1.2rem;
+	margin-bottom: 0.5em;
+	padding: 10px 15px;
+	border-radius: 10px;
+	transition: 0.2s ease;
+	cursor: pointer;
+}
+a {
+	text-decoration: none;
+	color: black;
+	font-weight: 600;
+}
+.blogs-sidebar-list-element:hover {
+	background-color: #f79711;
+}

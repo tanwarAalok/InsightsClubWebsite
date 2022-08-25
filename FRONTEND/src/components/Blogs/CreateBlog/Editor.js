@@ -64,7 +64,7 @@ export default class RichEditorExample extends React.Component {
 				className += " RichEditor-hidePlaceholder";
 			}
 		}
-
+		console.log();
 		return (
 			<div className='RichEditor-root'>
 				<BlockStyleControls
