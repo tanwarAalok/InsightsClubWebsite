@@ -6,7 +6,7 @@ import { EventDataContext } from '../../contexts/eventDataContext';
 
 const EventsContainer = ({ event }) => {
   const { popupTrigger, setPopupTrigger } = useContext(PopupContext);
-  const {checkVenue, setCheckVenue } = useContext(EventDataContext);
+  const { checkVenue, setCheckVenue } = useContext(EventDataContext);
 
   useEffect(() => {
     const checkConditions = () => {
@@ -18,37 +18,46 @@ const EventsContainer = ({ event }) => {
   });
 
   return (
-    <div onClick={() => setPopupTrigger(!popupTrigger)} className="container">
-      <div className="left">
-        <img src={event.image.url} alt="eventImage" />
-      </div>
-
-      <div className="right">
-        <div className="firstdetails">
-          <h2>{event.title}</h2>
-          <div className="time">13:00</div>
+    <>
+      <div
+        onClick={() => setPopupTrigger(true)}
+        className="event-container"
+      >
+        <div className="left">
+          <img src={event.image.url} alt="eventImage" />
         </div>
-        <p>{event.description}</p>
-        <div className="lastdetails">
-          <div className="modeVenue">
-            <div className="mode">Mode: {event.mode}</div>
-            {checkVenue ? (
-              <div className="venue">Venue: {event.venue}</div>
-            ) : ""}
+
+        <div className="right">
+          <div className="firstdetails">
+            <h2>{event.title}</h2>
+            <div className="time">13:00</div>
           </div>
-          <div className="date">13 Feb</div>
+          <p>{event.description}</p>
+          <div className="lastdetails">
+            <div className="modeVenue">
+              <div className="mode">Mode: {event.mode}</div>
+              {checkVenue ? (
+                <div className="venue">Venue: {event.venue}</div>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="date">13 Feb</div>
+          </div>
         </div>
       </div>
-
-      {popupTrigger ? (
-        <div className="popup">
-          <EventDetails event={event} />
-        </div>
-      ) : (
-        ""
-      )}
-    </div>
+      {
+        popupTrigger ? (
+          <div className="popup">
+            <EventDetails event={event} />
+          </div>
+        ) : (
+          ""
+        )
+      }
+    </>
   );
 }
 
 export default EventsContainer;
+
