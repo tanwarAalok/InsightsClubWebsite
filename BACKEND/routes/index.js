@@ -7,6 +7,7 @@ const { createBlog, getAllBlogs, getBlog, deleteBlog, updateBlog, likeBlog } = r
 const { getAllVideos, createVideo, deleteVideo } = require("../controllers/videoController");
 const verifyUser = require("../middlewares/verifyUser");
 
+router.route("/home").get(homePage);
 
 router.route("/event/all").get(getAllEvents);
 router.route("/event/new").post(verifyUser, createNewEvent);
