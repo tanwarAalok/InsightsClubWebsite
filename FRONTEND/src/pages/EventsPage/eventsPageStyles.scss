@@ -24,23 +24,24 @@
 
         .pageContainer{
 
-            background: #FFFFFF;
             border: 1px solid #B9B9B9;
             display: flex;
             flex-direction: column;
 
             .divButtons{
                 width: 100%;
+                display: flex;
+                flex-wrap: wrap;
 
                 button{
+                    text-align: center;
                     width: 33.33%;
                     cursor: pointer;
                     font-family: 'Mulish';
                     font-style: normal;
                     font-weight: 700;
-                    font-size: 2rem;
-                    line-height: 3rem;
-                    padding: 0.8rem;
+                    font-size: 2.5vw;
+                    padding: 0.8vw;
                     color: #000000;
                     background-color: #FFFFFF;
                 }
@@ -52,11 +53,26 @@
 
             .bottomEventContainer{
                 width: 100%;
-                padding: 4rem;
+                padding: 4vw;
             }
         }
     }
 
     
+}
+
+@media screen and (max-width: 992px) {
+    .events{
+        .content{
+            .pageContainer{
+                .divButtons {
+                    button{
+                        font-size: 3vw;
+                        padding: 1vw;
+                    }
+                }
+            }
+        }
+    }
 }
 
