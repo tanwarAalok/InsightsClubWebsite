@@ -3,76 +3,71 @@ import "@fontsource/mulish";
 import DomainModal from "./DomainModal/DomainModal";
 import './domains.css';
 import { Outlet } from "react-router-dom";
+import axios from "axios";
 
-function TileRow({ row, displayModal, setPage }) {
+const domainUrl = 'http://localhost:8080/dept'
+
+function TileRow({ rows, displayModal, setdomainDescr,setPage }) {
     return (
-        <div className="tile-row">{
-            row.map((tile, index) => (
-                <button className="tile-border-wrapper" /* href={tile.link} */
-                    key={index}
-                    onClick={() => {
-                        setPage(tile.id)
-                        displayModal(true);
-                    }}
-                >
-                    <span className="tile-description">
-                        <span className="tile-description-text">{tile.descr}</span>
-                    </span>
-                    <span className="tile-text-wrapper">
-                        <span className="tile-text">{tile.title}</span>
-                    </span>
-                </button>
+            rows.map((row, index) => (
+                <div key={index} className="tile-row">{
+                    row.map((tile) => (
+                        <button className="tile-border-wrapper" /* href={tile.link} */
+                            key={tile._id}
+                            onClick={() => {
+                                setPage(tile._id)
+                                setdomainDescr(tile.description)
+                                displayModal(true);
+                            }}
+                        >
+                            <span className="tile-description">
+                                <span className="tile-description-text">{tile.shortDescription}</span>
+                            </span>
+                            <span className="tile-text-wrapper">
+                                <span className="tile-text">{tile.name}</span>
+                            </span>
+                        </button>
+                    ))
+                }</div>
             ))
-        }</div>
     );
 }
 
 function Domains() {
     const [showDomainModal, displayDomainModal] = useState(false);
-    const [domainPage, setDomainPage] = useState('technical');
+    const [domainPage, setDomainPage] = useState('');
+    const [domainDescr, setdomainDescr] = useState('');
+    const [tilesRows, setTilesRows] = useState([]);
 
     useEffect(() => {
-        if(showDomainModal === true)
+        axios.get(`${domainUrl}/all`)
+            .then((res) => {
+                const len = res.data.departments.length;
+                setTilesRows([
+                    res.data.departments.slice(0, Math.ceil(len / 2)),
+                    res.data.departments.slice(Math.ceil(len / 2), len)
+                ]);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+    }, []);
+
+    useEffect(() => {
+        if (showDomainModal === true)
             document.getElementsByTagName('body')[0].style.overflowY = 'hidden';
         else
             document.getElementsByTagName('body')[0].style.overflowY = 'scroll';
-    });
+    }, [showDomainModal]);
 
-    const tilesRow1 = [
-        {
-            title: 'Technical', id: 'technical',
-            descr: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat. lla pariatur. Lorem ipsum dolor sit amet.'
-        },
-        {
-            title: 'Design', id: 'design',
-            descr: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat. lla pariatur. Lorem ipsum dolor sit amet.'
-        },
-        {
-            title: 'Editing', id: 'editing',
-            descr: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat. lla pariatur. Lorem ipsum dolor sit amet.'
-        }
-    ];
-    const tilesRow2 = [
-        {
-            title: 'Content', id: 'content',
-            descr: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat. lla pariatur. Lorem ipsum dolor sit amet.'
-        },
-        {
-            title: 'PR and Outreach', id: 'proutreach',
-            descr: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat. lla pariatur. Lorem ipsum dolor sit amet.'
-        },
-        {
-            title: 'Event and Resource', id: 'event',
-            descr: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat. lla pariatur. Lorem ipsum dolor sit amet.'
-        }
-    ];
     return (
         <Fragment>
-            {showDomainModal && < DomainModal domain={domainPage} displayModal={displayDomainModal} />}
+            {showDomainModal && < DomainModal domainID={domainPage} domainDescr={domainDescr}
+            displayModal={displayDomainModal} />}
             <div className="grid6">
                 <h2 className="grid-heading">Domains</h2>
-                <TileRow row={tilesRow1} displayModal={displayDomainModal} setPage={setDomainPage} />
-                <TileRow row={tilesRow2} displayModal={displayDomainModal} setPage={setDomainPage} />
+                <TileRow rows={tilesRows} displayModal={displayDomainModal}
+                setdomainDescr={setdomainDescr} setPage={setDomainPage} />
             </div>
             <Outlet />
         </Fragment>

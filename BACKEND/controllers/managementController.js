@@ -27,7 +27,8 @@ exports.getAllDept = catchAsyncErrors(async (req, res, next) => {
 // get Insights core team members by department
 exports.getUsersByDept = catchAsyncErrors(async (req, res, next) => {
     const depID = req.params.id;
-    const users = await User.find({ department: depID }, {_id: 1, name: 1, email: 1, description: 1});
+    const users = await User.find({ department: depID },
+        {_id: 1, name: 1, username: 1, email: 1, description: 1});
     res.status(200).json({
         success: true,
         users
