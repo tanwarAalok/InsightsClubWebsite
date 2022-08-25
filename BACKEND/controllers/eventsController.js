@@ -3,12 +3,6 @@ const Events = require("../models/eventsModel");
 const ErrorHandler = require("../utils/errorHandler");
 const ApiFeatures = require("../utils/apiFeatures");
 
-
-exports.homePage = catchAsyncErrors(async (req, res, next) => {
-    res.send("Let's go");
-});
-
-
 //* GET ALL EVENTS
 exports.getAllEvents = catchAsyncErrors(async (req, res, next) => {
 
