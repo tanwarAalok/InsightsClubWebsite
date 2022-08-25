@@ -84,6 +84,7 @@ function SignInCard({ changeCard, handleClick, closeModal }) {
 
 function SignUpCard({ changeCard, handleClick }) {
     const [name, setName] = useState('')
+    const [deptID, setDeptID] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
@@ -125,6 +126,13 @@ function SignUpCard({ changeCard, handleClick }) {
                         (errPassword ? 'invalid-input' : '')}
                         value={confpassword} onChange={(e) => { setConfPassword(e.target.value) }} />
 
+                    <label htmlFor="deptID" className="auth-field-heading">
+                        Dept. for core members
+                    </label>
+                    <input id="deptID" type="text" className="auth-input-field"
+                        placeholder="optional" autoComplete="false"
+                        value={deptID} onChange={(e) => { setDeptID(e.target.value) }} />
+
                     <div className="auth-card-button-group">
                         <button className="auth-card-primary-button"
                             onClick={() => {
@@ -142,7 +150,8 @@ function SignUpCard({ changeCard, handleClick }) {
                                     setErrPsswd(true)
                                 }
                                 if (pass) {
-                                    axios.post(`${authUrl}/signup`, { name, username, email, password },
+                                    axios.post(`${authUrl}/signup`,
+                                        { name, username, email, password, department: deptID },
                                         { withCredentials: true })
                                         .then((data) => {
                                             console.log(data.data)
