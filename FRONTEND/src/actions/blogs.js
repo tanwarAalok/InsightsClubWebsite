@@ -26,6 +26,15 @@ export const createBlogs = (blog) => async (dispatch) => {
 		console.log(error.message);
 	}
 };
+export const viewBlogs = (id) => async (dispatch) => {
+	try {
+		const { data } = await Fetch(`${blogsUrl}/all/:${id}`);
+
+		dispatch({ type: FETCH_ALL, payload: data });
+	} catch (error) {
+		console.log(error.message);
+	}
+};
 
 export const updateBlogs = (id, blog) => async (dispatch) => {
 	try {
