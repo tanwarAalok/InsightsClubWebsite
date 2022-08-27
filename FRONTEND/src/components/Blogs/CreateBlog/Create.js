@@ -3,15 +3,6 @@ import { useDispatch } from "react-redux";
 import "./Create.css";
 import { createBlogs } from "../../../actions/blogs";
 import Navbar from "../../Navbar/Navbar.jsx";
-// let data = {
-// 	title,
-// 	picture,
-//  description,
-// 	content,
-// 	author,
-//  tags,
-//  likes
-// };
 import { EditorState, ContentState, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
@@ -27,30 +18,26 @@ const Create = () => {
 	const [tags, setTags] = useState("");
 	const [editorState, setEditorState] = useState(EditorState.createEmpty());
 	const [saving, setSaving] = useState(false);
-	const [success, setSuccess] = useState("");
 	const [error, setError] = useState("");
 
 	const postBlog = async (e) => {
 		e.preventDefault();
 		if (title === "" || content === "" || author === "") {
 			setError("Please fill out all fields.");
-			setSuccess("");
 			return null;
 		}
-
 		setError("");
-		setSuccess("");
 		setSaving(true);
 		const data = {
 			title,
 			description,
-			tags: [tags],
+			tags: tags.split(" "),
 			content,
 			author,
 		};
 		console.log(data);
 		try {
-			dispatch(createBlogs());
+			dispatch(createBlogs(data));
 		} catch (error) {
 			setError(error.message);
 		} finally {
@@ -61,12 +48,11 @@ const Create = () => {
 	return (
 		<div className='create-blog-main-container'>
 			<Navbar />
-			<h1 className='create-blog-heading'>Create Your Blog</h1>
-
-			<p> error={error} </p>
+			<p className='create-blog-heading'>Create Your Blog</p>
 			<div className='create-blog-form-group'>
 				<form>
 					<label className='create-blog-title'>Title:</label>
+					<br />
 					<input
 						type='text'
 						name='title'
@@ -146,7 +132,7 @@ const Create = () => {
 						name='tags'
 						value={tags}
 						id='tags'
-						placeholder='Enter a short description'
+						placeholder='Enter a tags with spaces'
 						disabled={saving}
 						onChange={(event) => {
 							setTags(event.target.value);
@@ -161,9 +147,9 @@ const Create = () => {
 					</button>
 				</form>
 			</div>
-			<form>
+			<form className='create-blog-preview'>
 				<label>Preview</label>
-				<div className='create-blog-preview'>
+				<div className='create-blog-preview-body'>
 					<div
 						dangerouslySetInnerHTML={{
 							__html: content,
