@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import Logo from "../../media/logo.png";
 import DiscordLogo from "../../media/social-vectors/social-discord.svg";
-import GithubLogo from "../../media/social-vectors/social-github.svg";
+import FacebookLogo from "../../media/social-vectors/social-facebook.svg";
 import InstaLogo from "../../media/social-vectors/social-insta.svg";
 import LinkedinLogo from "../../media/social-vectors/social-linkedin.svg";
-// import TwitterLogo from "../../media/social-vectors/social-twitter.svg";
+import TwitterLogo from "../../media/social-vectors/social-twitter.svg";
 import YtLogo from "../../media/social-vectors/social-yt.svg";
 import MailLogo from "../../media/social-vectors/email.svg";
 import "./footer.css";
@@ -41,22 +41,28 @@ function Footer() {
                     <div className="socials">
                         <h4 className="footer-heading">Follow us on</h4>
                         <span className="social-links">
-                            <a href="https://discord.gg/2GTKpvKBu7" className="social-link">
+                            <a href="https://discord.gg/2GTKpvKBu7"
+                            target="_blank" rel="noreferrer" className="social-link">
                                 <img src={DiscordLogo} alt="discord" className="social-logo" />
                             </a>
-                            <a href="https://www.linkedin.com/company/insights-clubvitb/" className="social-link">
+                            <a href="https://www.linkedin.com/company/insights-clubvitb/"
+                            target="_blank" rel="noreferrer" className="social-link">
                                 <img src={LinkedinLogo} alt="linkedin" className="social-logo" />
                             </a>
-                            <a href="https://github.com/InsightsClub" className="social-link">
-                                <img src={GithubLogo} alt="github" className="social-logo" />
-                            </a>
-                            {/* <a href="/" className="social-link">
+                            <a href="https://twitter.com/Insight_VIT"
+                            target="_blank" rel="noreferrer" className="social-link">
                                 <img src={TwitterLogo} alt="twitter" className="social-logo" />
-                            </a> */}
-                            <a href="https://www.youtube.com/channel/UC9JuWZdup3Lkh05KObjtptw" className="social-link">
+                            </a>
+                            <a href="https://www.facebook.com/insightsclubvitb/"
+                            target="_blank" rel="noreferrer" className="social-link">
+                                <img src={FacebookLogo} alt="facebook" className="social-logo" />
+                            </a>
+                            <a href="https://www.youtube.com/channel/UC9JuWZdup3Lkh05KObjtptw" 
+                            target="_blank" rel="noreferrer" className="social-link">
                                 <img src={YtLogo} alt="youtube" className="social-logo" />
                             </a>
-                            <a href="https://www.instagram.com/insights_club/" className="social-link">
+                            <a href="https://www.instagram.com/insights_club/"
+                            target="_blank" rel="noreferrer" className="social-link">
                                 <img src={InstaLogo} alt="instagram" className="social-logo" />
                             </a>
                         </span>
