@@ -6,6 +6,7 @@ const fileUpload = require("express-fileupload");
 const cors = require("cors");
 
 app.use(express.json());
+<<<<<<< HEAD
 const allowedOrigins = ["http://localhost:3000"];
 app.use(
 	cors({
@@ -27,6 +28,29 @@ app.use(
 		},
 		credentials: true,
 	})
+=======
+const allowedOrigins = ['http://localhost:3000'];
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+
+      // allow whitelisted origins
+      if (allowedOrigins.indexOf(origin) === -1)
+        return callback(
+          new Error(
+            "The CORS policy for this site does not allow access from the specified Origin."
+          ),
+          false
+        );
+
+      // else
+      return callback(null, true);
+    },
+    credentials: true,
+  })
+>>>>>>> 3bfcf45a58737ae411ab5a96b084e5d932203b9a
 );
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
