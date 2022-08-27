@@ -7,25 +7,27 @@ const cors = require("cors");
 
 app.use(express.json());
 const allowedOrigins = ['http://localhost:3000'];
-app.use(cors({
-    origin:
-        function (origin, callback) {
-            // allow requests with no origin (like mobile apps or curl requests)
-            if (!origin)
-                return callback(null, true);
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // allow requests with no origin (like mobile apps or curl requests)
+      if (!origin) return callback(null, true);
 
-            // allow whitelisted origins
-            if (allowedOrigins.indexOf(origin) === -1)
-                return callback(
-                    new Error('The CORS policy for this site does not allow access from the specified Origin.'),
-                    false
-                );
+      // allow whitelisted origins
+      if (allowedOrigins.indexOf(origin) === -1)
+        return callback(
+          new Error(
+            "The CORS policy for this site does not allow access from the specified Origin."
+          ),
+          false
+        );
 
-            // else
-            return callback(null, true);
-        },
-    credentials: true
-}));
+      // else
+      return callback(null, true);
+    },
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload({ useTempFiles: true }));
