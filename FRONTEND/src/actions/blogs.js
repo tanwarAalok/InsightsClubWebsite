@@ -6,11 +6,11 @@ import {
 } from "../constants/blogsActionTypes";
 import { Fetch, Create, Update, Delete } from "../api/index.js";
 
-const blogsUrl = "http://localhost:8080/blog/all";
+const blogsUrl = "http://localhost:8080/blog";
 
 export const getBlogs = () => async (dispatch) => {
 	try {
-		const { data } = await Fetch(blogsUrl);
+		const { data } = await Fetch(`${blogsUrl}/all`);
 		dispatch({ type: FETCH_ALL, payload: data });
 	} catch (error) {
 		console.log(error.message);
@@ -19,7 +19,7 @@ export const getBlogs = () => async (dispatch) => {
 
 export const createBlogs = (blog) => async (dispatch) => {
 	try {
-		const { data } = await Create(blog, blogsUrl);
+		const { data } = await Create(blog, `${blogsUrl}/new`);
 
 		dispatch({ type: CREATE, payload: data });
 	} catch (error) {

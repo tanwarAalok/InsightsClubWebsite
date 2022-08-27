@@ -2,52 +2,52 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const contentSchema = new Schema({
+const contentSchema = new Schema(
+	{
+		title: {
+			type: String,
+			require: true,
+		},
 
-    title: {
-        type: String,
-        require: true,
+		description: {
+			type: String,
+			require: true,
+		},
 
-    },
+		tags: {
+			type: [String],
+			require: true,
+		},
 
-    description: {
-        type: String,
-        require: true,
-    },
+		content: {
+			type: Object,
+			require: true,
+		},
 
-    tags: {
-        type: [String],
-        require: true,
-    },
+		author: {
+			type: Schema.Types.ObjectId,
+			ref: "Users",
+			require: true,
+		},
 
-    content: {
-        type: Object,
-        require: true,
-    },
+		likes: {
+			type: [Schema.Types.ObjectId],
+			ref: "Users",
+			// require: true,
+		},
+		isReviewed: {
+			type: Boolean,
+			require: true,
+			default: false,
+		},
 
-    author: {
-        type: Schema.Types.ObjectId,
-        ref: 'Users',
-        require: true,
-    },
+		ReviewedBy: {
+			type: Schema.Types.ObjectId,
+			ref: "Users",
+		},
+	},
+	{ timestamps: true }
+);
 
-    likes: {
-        type: [Schema.Types.ObjectId],
-        ref: 'Users',
-        require: true,
-    },
-    isReviewed: {
-        type: Boolean,
-        require: true,
-        default: false
-    },
-
-    ReviewedBy: {
-        type: Schema.Types.ObjectId,
-        ref: 'Users'
-    }
-
-}, { timestamps: true })
-
-const Content = mongoose.model("content", contentSchema)
-module.exports = Content
+const Content = mongoose.model("content", contentSchema);
+module.exports = Content;

@@ -1,0 +1,39 @@
+.card-body {
+	padding: 0.5rem;
+	border: 2px red solid;
+}
+.card {
+	margin-bottom: 1rem;
+	margin-top: 0.3rem;
+	padding: 1rem;
+	border: 2px blue solid;
+}
+p {
+	font-family: "Mulish";
+}
+label {
+	font-size: 1.2rem;
+	font-family: "Mulish";
+	font-weight: 600;
+	margin-right: 1rem;
+	margin-bottom: 1rem;
+}
+input {
+	padding: 0.4rem;
+	border: none;
+	margin-bottom: 1rem;
+	outline: none;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+.create-blog-form-group {
+	margin: 1rem;
+}
+.create-blog-post-button {
+	margin-top: 1em;
+	padding: 0.5em 2em;
+	font-size: 1rem;
+	background: #ffc776;
+	border: none;
+	border-radius: 6px;
+}
