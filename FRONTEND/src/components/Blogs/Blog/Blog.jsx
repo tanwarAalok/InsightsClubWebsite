@@ -10,7 +10,7 @@ function Blog({ blog }) {
 		<>
 			<div className='blog-container'>
 				<div className='blog-header'>
-					<p className='blog-header-name'>{blog.author.username}</p>
+					<p className='blog-header-name'>{blog.author.name}</p>
 					<p className='blog-header-time'>{blog.author.createdAt}</p>
 				</div>
 				<div className='blog-main'>
