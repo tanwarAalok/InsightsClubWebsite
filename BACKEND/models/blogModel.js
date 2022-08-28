@@ -42,7 +42,7 @@ const contentSchema = new Schema(
 			default: false,
 		},
 
-		ReviewedBy: {
+		reviewedBy: {
 			type: Schema.Types.ObjectId,
 			ref: "Users",
 		},

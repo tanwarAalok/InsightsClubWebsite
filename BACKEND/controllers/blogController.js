@@ -29,11 +29,11 @@ exports.getAllBlogs = catchAsyncErrors(async (req, res, next) => {
 		{},
 		{
 			_id: 1, title: 1, description: 1, content: 1, tags: 1,
-			author: 1, isReviewed: 1, ReviewedBy: 1, createdAt: 1, updatedAt: 1
+			author: 1, isReviewed: 1, reviewedBy: 1, createdAt: 1, updatedAt: 1
 		}
 	)
 		.populate("author", "-email -password -verified")
-		.populate("ReviewedBy", "-email -password -verified")
+		.populate("reviewedBy", "-email -password -verified")
 		// .populate("likes", "-email -password -verified")
 		.lean();
 	res.status(200).json(blogs);

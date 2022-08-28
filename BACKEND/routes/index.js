@@ -62,7 +62,7 @@ router
 	.delete(verifyUser, deleteBlog)
 	.put(verifyUser, updateBlog);
 router.route("/blog/:id/like").post(verifyUser, likeBlog);
-router.route("/blog/:id/verify").get(verifyBlog);
+router.route("/blog/:id/verify").get(verifyUser, verifyBlog);
 
 router.route("/video/all").get(getAllVideos);
 router.route("/video/new").post(verifyUser, createVideo);
