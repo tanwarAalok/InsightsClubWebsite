@@ -3,6 +3,7 @@ const ErrorHandler = require('../utils/errorHandler');
 const User = require("../models/userModel");
 const Department = require("../models/departmentsModel");
 const Events = require("../models/eventsModel");
+const Blogs = require("../models/blogModel");
 const cloudinary = require("cloudinary").v2;
 const dotenv = require("dotenv");
 dotenv.config({ path: "config/config.env" });
@@ -193,7 +194,7 @@ exports.deleteDepartment = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler(`You are not authorized to perform this action`, 401));
     }
 });
-
+ 
 
 
 //EVENT MANAGEMENT - done by ADMIN & CO-ADMIN
@@ -283,3 +284,26 @@ exports.updateEvent = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler(`You are not authorized to perform this action`, 401));
     }
 });
+
+
+//BLOG REVIEW - done by ADMIN & CO-ADMIN
+exports.verifyBlog = catchAsyncErrors(async (req, res, next) => {
+    if(req.user.isAdmin || req.user.isCoAdmin) {
+        const blog = await Blog.findById(req.params.id);
+        if (!blog) {
+            return next(new ErrorHandler(`Blog details with blog id: ${req.params.id} not found !!`, 404));
+        }
+        blog.isReviewed = true;
+        blog.reviewedBy = req.user.id;
+        await blog.save();
+        res.status(200).json({
+            success: true,
+            message: "Blog verified successfully"
+        });
+    }
+    else {
+        return next(new ErrorHandler(`You are not authorized to perform this action`, 401));
+    }
+});
+
+

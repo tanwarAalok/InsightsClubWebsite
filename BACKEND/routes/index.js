@@ -22,6 +22,7 @@ const {
 	createNewDepartment,
 	deleteDepartment,
 	updateDepartment,
+	verifyBlog,
 } = require("../controllers/managementController");
 const {
 	createBlog,
@@ -61,6 +62,7 @@ router
 	.delete(verifyUser, deleteBlog)
 	.put(verifyUser, updateBlog);
 router.route("/blog/:id/like").post(verifyUser, likeBlog);
+router.route("/blog/:id/verify").get(verifyBlog);
 
 router.route("/video/all").get(getAllVideos);
 router.route("/video/new").post(verifyUser, createVideo);
