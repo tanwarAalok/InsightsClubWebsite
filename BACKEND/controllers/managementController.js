@@ -289,7 +289,7 @@ exports.updateEvent = catchAsyncErrors(async (req, res, next) => {
 //BLOG REVIEW - done by ADMIN & CO-ADMIN
 exports.verifyBlog = catchAsyncErrors(async (req, res, next) => {
     if(req.user.isAdmin || req.user.isCoAdmin) {
-        const blog = await Blog.findById(req.params.id);
+        const blog = await Blogs.findById(req.params.id);
         if (!blog) {
             return next(new ErrorHandler(`Blog details with blog id: ${req.params.id} not found !!`, 404));
         }
