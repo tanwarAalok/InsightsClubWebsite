@@ -50,8 +50,8 @@ exports.getBlog = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.createBlog = catchAsyncErrors(async (req, res, next) => {
-	// const author = mongoose.Types.ObjectId(req.user.id);
-	const { title, description, tags, content, author } = req.body;
+	const author = mongoose.Types.ObjectId(req.user.id);
+	const { title, description, tags, content } = req.body;
 	const blog = await Blogs.create({
 		title,
 		description,

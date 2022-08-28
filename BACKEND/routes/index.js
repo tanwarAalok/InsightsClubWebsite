@@ -54,7 +54,7 @@ router.route("/auth/resetPassword").post(resetPassword);
 router.route("/auth/verify/:id").get(verify);
 
 router.route("/blog/all").get(getAllBlogs);
-router.route("/blog/new").post(createBlog); //verifyUser,
+router.route("/blog/new").post(verifyUser, createBlog); //verifyUser,
 router
 	.route("/blog/:id")
 	.get(getBlog)
