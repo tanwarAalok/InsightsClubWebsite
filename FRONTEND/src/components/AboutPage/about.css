@@ -1,0 +1,172 @@
+.about-content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5vw;
+    margin-bottom: 150px;
+}
+.about-heading {
+    text-align: center;
+    box-sizing: border-box;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 200;
+    font-size: 60px;
+    line-height: 78px;
+    color: #000000;
+    margin-top: 20px;
+    margin-bottom: 36px;
+}
+.about-text {
+    box-sizing: border-box;
+    font-family: 'Martel';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 31px;
+    text-align: justify;
+    letter-spacing: 0.015em;
+    color: #000000;
+    margin-bottom: 50px;
+}
+
+.about-text > q {
+    font-size: 20px;
+    font-style: italic;
+}
+
+.faculty-card-group {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.faculty-card-heading {
+    text-align: center;
+    box-sizing: border-box;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 77px;
+    color: #000000;
+    margin-bottom: 50px;
+}
+
+.faculty-cards {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 150px;
+}
+
+.faculty-card {
+    width: 350px;
+    margin-bottom: 100px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.insights-leads-pfp {
+    box-sizing: border-box;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.insights-leads-name {
+    box-sizing: border-box;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    color: #666666;
+}
+
+.insights-leads-card-group {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.insights-leads-card {
+    width: 350px;
+    margin-bottom: 100px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.insights-leads-card-heading {
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 45px;
+    line-height: 60px;
+    color: #000000;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.insights-leads-pfp {
+    width: 100%;
+    aspect-ratio: 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.about-social-links {
+    box-sizing: border-box;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+    margin-top: 40px;
+}
+
+.insights-leads-social-link:hover,
+.insights-leads-social-link {
+    text-decoration: none;
+}
+
+.insights-leads-social-logo {
+    width: 30px;
+    height: 30px;
+    transition: all 0.2s ease-out;
+}
+.insights-leads-social-logo:hover {
+    transform: scale(1.2);
+}
+
+@media screen and (max-width: 768px) {
+    .about-heading, .faculty-card-heading {
+        font-size: 50px;
+    }
+    .insights-leads-card-heading {
+        font-size: 40px;
+    }
+    .about-text, .insights-leads-name {
+        font-size: 20px;
+    }
+    .about-text > q {
+        font-size: 18px;
+    }
+}
