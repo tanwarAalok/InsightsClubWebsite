@@ -32,6 +32,13 @@ const {
 	updateBlog,
 	likeBlog,
 } = require("../controllers/blogController");
+const { 
+	getAllArticles,
+	getArticle,
+	createArticle,
+	updateArticle,
+	deleteArticle,
+} = require("../controllers/articleController");
 const {
 	getAllVideos,
 	createVideo,
@@ -76,3 +83,11 @@ router
 	.delete(verifyUser, deleteDepartment)
 	.put(verifyUser, updateDepartment);
 module.exports = router;
+
+router.route("/article/all").get(getAllArticles);
+router.route("/article/new").post(verifyUser, createArticle);
+router
+	.route("/article/:id")
+	.get(getArticle)
+	.delete(verifyUser, deleteArticle)
+	.put(verifyUser, updateArticle);
