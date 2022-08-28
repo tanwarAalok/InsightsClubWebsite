@@ -1,8 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Logo from "../../media/logo.png";
 import User_Image from "../../media/user_profile.jpeg";
-// import { useDispatch, useSelector } from "react-redux";
-// import { getEvents } from "../../actions/events";
 import "./Navbar.css";
 import "@fontsource/mulish";
 import { useCookies } from "react-cookie";
@@ -13,11 +11,6 @@ function Navbar() {
 	const [menu, setMenu] = useState(false);
 	const [showAuthModal, displayAuthModal] = useState(false);
 	const [cookies] = useCookies(["user"]);
-	// const dispatch = useDispatch();
-	// useEffect(() => {
-	// 	dispatch(getEvents());
-	// }, [dispatch]);
-	// const events = useSelector((state) => state.events);
 
 	useEffect(() => {
         if(showAuthModal === true)
@@ -59,11 +52,6 @@ function Navbar() {
 							<li className='menu-item menu-about'>
 								<a className='nav__link' href='/about'>
 									About
-								</a>
-							</li>
-							<li className='menu-item menu-domains'>
-								<a className='nav__link' href='/domains'>
-									Domains
 								</a>
 							</li>
 							<li className='menu-item menu-news'>
