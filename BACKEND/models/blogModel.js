@@ -20,7 +20,7 @@ const contentSchema = new Schema(
 		},
 
 		content: {
-			type: Object,
+			type: String,
 			require: true,
 		},
 
