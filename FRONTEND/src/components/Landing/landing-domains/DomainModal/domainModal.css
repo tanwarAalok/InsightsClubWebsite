@@ -126,6 +126,11 @@
         gap: 40px 40px;
     }
 
+    .domain-modal-cross-button {
+        left: 95%;
+        top: -20px;
+    }
+
     .domain-modal-card {
         width: 88vw;
         padding: 15px;
@@ -138,6 +143,11 @@
         height: 100vh;
         padding: 30px;
         border-radius: 0;
+    }
+
+    .domain-modal-cross-button {
+        left: 90%;
+        top: -20px;
     }
 
     .member-grid {
