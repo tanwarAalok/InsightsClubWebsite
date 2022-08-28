@@ -26,8 +26,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     description: {
-        type: String,
-        required: [true, "User description is required"],   
+        type: String, 
     },
     verified: {
         type: Boolean,
@@ -37,7 +36,6 @@ const userSchema = new mongoose.Schema({
     department: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Departments',
-        require: true,
     },
     isAdmin: {
         type: Boolean,
