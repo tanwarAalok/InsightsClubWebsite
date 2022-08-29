@@ -79,10 +79,22 @@ function About() {
                     <div className="faculty-card">
                         <img src={AtulAman_pfp} alt="faculty coordinator" className="insights-leads-pfp" />
                         <span className="insights-leads-name">Dr. Atul Aman</span>
+                        <div className="about-social-links">
+                            <a href="https://www.linkedin.com/in/atul-aman-53bb0328/"
+                                target="_blank" rel="noreferrer" className="insights-leads-social-link">
+                                <img src={LinkedInLogo} alt="Instagram" className="insights-leads-social-logo" />
+                            </a>
+                        </div>
                     </div>
                     <div className="faculty-card">
                         <img src={SandeepSahu_pfp} alt="faculty coordinator" className="insights-leads-pfp" />
                         <span className="insights-leads-name">Mr. Sandeep Sahu</span>
+                        <div className="about-social-links">
+                            <a href="https://www.linkedin.com/in/sandeep-sahu-8b392519/"
+                                target="_blank" rel="noreferrer" className="insights-leads-social-link">
+                                <img src={LinkedInLogo} alt="Instagram" className="insights-leads-social-logo" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
