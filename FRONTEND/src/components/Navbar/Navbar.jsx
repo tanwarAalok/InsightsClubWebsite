@@ -55,7 +55,7 @@ function Navbar() {
 								</a>
 							</li>
 							<li className='menu-item menu-news'>
-								<a className='nav__link' href='/news'>
+								<a className='nav__link' href='/articles'>
 									News
 								</a>
 							</li>

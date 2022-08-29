@@ -1,0 +1,26 @@
+.container1{
+    height:20vh;
+    width:10vw;
+    border:0.2px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-size:cover;
+    background-position: center;
+}
+.container1:hover{
+    box-shadow: 2px 2px 0.5px 0.5px gray;
+    cursor: pointer;
+    width:10.5vw;
+    height:20.5vh;
+}
+.txt{
+    text-align: center;
+    justify-items: center;
+}
+.lnk{
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+}

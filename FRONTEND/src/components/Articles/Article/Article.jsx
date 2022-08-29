@@ -11,6 +11,7 @@ function Article({ article }) {
 			<div className='article-image'>
 				<img src={test} alt='articleImage' />
 			</div>
+			
 			<div className='article-content'>
 				<div className='article-header'>
 					<p className='article-header-title'>

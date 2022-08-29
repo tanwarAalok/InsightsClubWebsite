@@ -12,12 +12,15 @@ import thunk from "redux-thunk";
 import { reducers } from "./reducers/index";
 import { PopupProvider } from "./contexts/popupContext";
 import { EventDataProvider } from "./contexts/eventDataContext";
+import Article from "./components/Articles/Article/Article";
+import Articles from "./components/Articles/Articles";
+import DetailedArticle from "./components/Articles/DetailedArticles/DetailedArticle";
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  // <React.StrictMode>
+   <React.StrictMode>
   <BrowserRouter>
     <Provider store={store}>
       <CookiesProvider>
@@ -25,11 +28,11 @@ root.render(
           <PopupProvider>
             <App />
           </PopupProvider>
-        </EventDataProvider>
+       </EventDataProvider>
       </CookiesProvider>
     </Provider>
   </BrowserRouter>
-  // </React.StrictMode>
+   </React.StrictMode>
 );
 
 reportWebVitals();

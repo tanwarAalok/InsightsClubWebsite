@@ -6,7 +6,7 @@ const article = {
 	id: "1",
 	title: "Test Article",
 	content:
-		"asdkj asdklasjd askldsjdd askldalksjd asskljdlkasjdd asdkj asdklasjd askldsjdd askldalksjd asskljdlkasjdd asdkj asdklasjd askldsjdd askldalksjd asskljdlkasjdd asdkj asdklasjd askldsjdd askldalksjd asskljdlkasjdd asdkj asdklasjd askldsjdd askldalksjd asskljdlkasjdd",
+		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in ",
 	author: "jon wic",
 	createdAt: "1/1/1",
 };

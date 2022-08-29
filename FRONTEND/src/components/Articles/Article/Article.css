@@ -6,6 +6,7 @@
 	flex-direction: row;
 	align-items: center;
 	border: 1px solid black;
+	width:50vw;
 	border-radius: 15px;
 	outline: none;
 	transition: 0.2s ease;
@@ -18,11 +19,12 @@
 }
 .article-image {
 	flex: 1;
-	max-width: 26%;
+	max-width: 27%;
 }
 .article-content {
 	flex: 3;
 	padding: 0.5rem 0;
+	margin-left: 15px;
 }
 .article-header {
 	margin-bottom: 0.7rem;
