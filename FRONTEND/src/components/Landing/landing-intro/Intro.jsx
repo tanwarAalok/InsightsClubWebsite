@@ -71,25 +71,13 @@ function Intro() {
             <div className="objective">
                 <h2 className="objective-heading">What&nbsp;is Insights&nbsp;Club?</h2>
                 <p className="objective-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat.
-                    <br />
-                    Duis aute irure dolor in reprehenderit
-                    <br />
-                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                    <br />
-                    ui officia deserunt mollit anim id est laborum.
+                &ldquo;INSIGHTS&rdquo; is a journalistic community club. Our goal is to create and distribute reports about the interactions of events, facts, and ideas that are &ldquo;the news of the day&rdquo;. The speciality of the Insights club will be to provide a bi&#45;weekly&nbsp;newsletter that sums up all the ongoing, upcoming, and completed events, seminars, fests, etc.
                 </p>
             </div>
             <div className="objective-2">
                 <h2 className="objective-2-heading">Our&nbsp;objective</h2>
                 <p className="objective-2-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed Ut enim ad minim veniam, quis modo consequat.
-                    <br />
-                    Duis aute irure dolor in reprehenderit
-                    <br />
-                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                    <br />
-                    ui officia deserunt mollit anim id est laborum.
+                Insights Club&apos;s objective is to provide a uniform flow of information directly and through the students of our university regarding all the events and current affairs of the university through online mode (web/socials) and on&#45;field journalism. We intend to hold certain intra&#45;campus events where students from any branch and campus are welcome to participate. The club will also focus on improving abilities that will stimulate the creation of innovative media messages.
                 </p>
             </div>
             <Outlet />
