@@ -1,0 +1,19 @@
+.view-blog-container {
+	font-size: 1.2rem;
+	margin: 2rem;
+}
+.view-blog-header {
+}
+.view-blog-title {
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+.view-blog-authorName {
+	text-align: center;
+	font-style: italic;
+	margin-bottom: 2rem;
+}
+.view-blog-content {
+	padding: 1rem;
+}
