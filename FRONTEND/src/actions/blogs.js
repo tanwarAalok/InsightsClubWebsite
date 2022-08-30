@@ -3,6 +3,7 @@ import {
 	CREATE,
 	UPDATE,
 	DELETE,
+	FETCH_ONE,
 } from "../constants/blogsActionTypes";
 import { Fetch, Create, Update, Delete } from "../api/index.js";
 
@@ -28,9 +29,9 @@ export const createBlogs = (blog) => async (dispatch) => {
 };
 export const viewBlogs = (id) => async (dispatch) => {
 	try {
-		const { data } = await Fetch(`${blogsUrl}/all/:${id}`);
+		const { data } = await Fetch(`${blogsUrl}/${id}`);
 
-		dispatch({ type: FETCH_ALL, payload: data });
+		dispatch({ type: FETCH_ONE, payload: data });
 	} catch (error) {
 		console.log(error.message);
 	}

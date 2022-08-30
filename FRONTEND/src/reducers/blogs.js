@@ -3,11 +3,14 @@ import {
 	CREATE,
 	UPDATE,
 	DELETE,
+	FETCH_ONE,
 } from "../constants/blogsActionTypes";
 
 const blogsReducer = (blogs = [], action) => {
 	switch (action.type) {
 		case FETCH_ALL:
+			return action.payload;
+		case FETCH_ONE:
 			return action.payload;
 		case CREATE:
 			return [...blogs, action.payload];

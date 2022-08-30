@@ -1,20 +1,21 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import "./Blog.css";
-import { UserContext } from "../../../App";
+import { useNavigate } from "react-router-dom";
 import LIKE from "../../../media/likeVector.svg";
 import ACTIVELIKE from "../../../media/activeLikeVector.svg";
 
 function Blog({ blog }) {
 	const [liked, setLiked] = useState(false);
-	const { setUserId, userId } = useContext(UserContext);
-	setUserId(blog._id);
-	console.log(userId);
+	const blogsUrl = "http://localhost:8080/blog";
+	const navigate = useNavigate();
 
 	return (
 		<>
-			<div className='blog-container'>
+			<div
+				className='blog-container'
+				onClick={() => navigate(`/blog/${blog._id}`)}>
 				<div className='blog-header'>
-					<p className='blog-header-name'>{blog.author}</p>
+					<p className='blog-header-name'>{blog.author.name}</p>
 					<p className='blog-header-time'>{blog.createdAt}</p>
 				</div>
 				<div className='blog-main'>
@@ -28,7 +29,7 @@ function Blog({ blog }) {
 							onClick={() => setLiked((prev) => !prev)}
 						/>
 					</div>
-					<p className='blog-likesCounter'>{blog.likes}</p>
+					<p className='blog-likesCounter'>0</p>
 				</div>
 			</div>
 		</>
