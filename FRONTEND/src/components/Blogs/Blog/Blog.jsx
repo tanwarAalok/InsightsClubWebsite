@@ -6,7 +6,6 @@ import ACTIVELIKE from "../../../media/activeLikeVector.svg";
 
 function Blog({ blog }) {
 	const [liked, setLiked] = useState(false);
-	const blogsUrl = "http://localhost:8080/blog";
 	const navigate = useNavigate();
 
 	return (

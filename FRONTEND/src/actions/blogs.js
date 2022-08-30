@@ -36,7 +36,6 @@ export const viewBlogs = (id) => async (dispatch) => {
 		console.log(error.message);
 	}
 };
-
 export const updateBlogs = (id, blog) => async (dispatch) => {
 	try {
 		const { data } = await Update(id, blog, blogsUrl);
@@ -46,7 +45,6 @@ export const updateBlogs = (id, blog) => async (dispatch) => {
 		console.log(error.message);
 	}
 };
-
 export const deleteBlogs = (id) => async (dispatch) => {
 	try {
 		await Delete(id, blogsUrl);

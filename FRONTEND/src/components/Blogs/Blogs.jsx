@@ -11,9 +11,9 @@ function Blogs() {
 
 	useEffect(() => {
 		dispatch(getBlogs());
-	}, [dispatch]);
-
+	}, []);
 	const Blogs = useSelector((state) => state.blogs);
+
 	console.log(Blogs);
 	const sideBarElement = [
 		{ Element: { name: "Home", address: "/" } },
