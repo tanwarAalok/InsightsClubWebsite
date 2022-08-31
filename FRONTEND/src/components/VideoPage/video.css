@@ -109,10 +109,14 @@
     .video-player {
         height: 40vh;
     }
+    .video-text {
+        padding: 5vw;
+    }
     .video-info {
         min-height: none;
         width: 100vw;
         border-radius: 0;
+        padding: 0;
     }
     .video-title {
         text-align: center;

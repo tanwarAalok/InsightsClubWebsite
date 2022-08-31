@@ -13,7 +13,7 @@ function Navbar() {
 	const [cookies] = useCookies(["user"]);
 
 	useEffect(() => {
-        if(showAuthModal === true)
+        if(showAuthModal === true || menu === true)
             document.getElementsByTagName('body')[0].style.overflowY = 'hidden';
         else
             document.getElementsByTagName('body')[0].style.overflowY = 'scroll';
@@ -41,7 +41,7 @@ function Navbar() {
 										// redirect to profile
 									}}>
 									<img src={User_Image} className='profilepic' alt='Profile' />
-									<span className='nav__link'>
+									<span className='nav-link'>
 										{(cookies.hasOwnProperty('user') && Object.keys(cookies.user).length !== 0)
 											? cookies.user.name
 											: "Sign In"
@@ -50,27 +50,27 @@ function Navbar() {
 								</button>
 							</li>
 							<li className='menu-item menu-about'>
-								<a className='nav__link' href='/about'>
+								<a className='nav-link' href='/about'>
 									About
 								</a>
 							</li>
 							<li className='menu-item menu-news'>
-								<a className='nav__link' href='/articles'>
+								<a className='nav-link' href='/articles'>
 									News
 								</a>
 							</li>
 							<li className='menu-item menu-events'>
-								<a className='nav__link' href='/events'>
+								<a className='nav-link' href='/events'>
 									Events
 								</a>
 							</li>
 							<li className='menu-item menu-blogs'>
-								<a className='nav__link' href='/blogs'>
+								<a className='nav-link' href='/blogs'>
 									Blogs
 								</a>
 							</li>
 							<li className='menu-item menu-videos'>
-								<a className='nav__link' href='/videos'>
+								<a className='nav-link' href='/videos'>
 									Videos
 								</a>
 							</li>

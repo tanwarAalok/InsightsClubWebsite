@@ -1,4 +1,3 @@
-/* Extra */
 body {
 	background: white;
 	color: #272727;
@@ -177,7 +176,7 @@ body {
 	}
 }
 
-.nav-menu .menu-item a {
+.nav-link {
 	font-family: "Mulish";
 	font-weight: 600;
 	font-size: 24px;
@@ -193,8 +192,8 @@ body {
 }
 
 @media screen and (max-width: 1024px) {
-	.nav-menu .menu-item a {
-		font-size: 20px;
+	.nav-link {
+		font-size: 22px;
 		font-weight: normal;
 	}
 	.nav-menu .menu-item {
@@ -213,6 +212,10 @@ body {
 .profile-picture-mobile {
 	background: none;
 	border: none;
+}
+.profile-picture-mobile .nav-link {
+	font-size: 20px;
+	font-weight: bold;
 }
 .pp-mobile {
 	display: none;
