@@ -1,6 +1,24 @@
 .container2{
-    margin-left: 150px;
+    margin-top:3px;
+    margin-left: 50px;
 }
 .a{
-    font-size: 35px;
+    font-family: "Martel";
+	font-size: 2rem;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+    margin-left: 5px;
+}
+@media (max-width:600px) {
+    .a{
+        font-family: "Martel";
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        margin-left: -25px;
+    }
+    .container2{
+        margin-top:3px;
+        margin-left: 50px;
+    }
 }

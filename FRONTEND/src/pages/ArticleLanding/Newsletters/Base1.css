@@ -1,19 +1,22 @@
 .container1{
-    height:20vh;
-    width:10vw;
+    height:25vh;
+    width:15vw;
     border:0.2px solid black;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-content: center;
-    background-size:cover;
+    background-size: cover;
+    backface-visibility: visible;
     background-position: center;
+    margin-bottom: 1.9rem;
 }
 .container1:hover{
     box-shadow: 2px 2px 0.5px 0.5px gray;
     cursor: pointer;
-    width:10.5vw;
-    height:20.5vh;
+    width:17.9vw;
+    height:27.9vh;
+    margin-left: -15px;
 }
 .txt{
     text-align: center;

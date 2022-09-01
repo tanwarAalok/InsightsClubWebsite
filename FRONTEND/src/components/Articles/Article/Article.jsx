@@ -9,7 +9,7 @@ function Article({ article }) {
 	return (
 		<div className='article-container' onClick={() => navigator(`/article/id`)}>
 			<div className='article-image'>
-				<img src={test} alt='articleImage' />
+				<img src={test} alt='articleImage' className="ig" />
 			</div>
 			
 			<div className='article-content'>

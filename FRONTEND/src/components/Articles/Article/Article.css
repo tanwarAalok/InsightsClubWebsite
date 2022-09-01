@@ -6,7 +6,8 @@
 	flex-direction: row;
 	align-items: center;
 	border: 1px solid black;
-	width:50vw;
+	width:57vw;
+	
 	border-radius: 15px;
 	outline: none;
 	transition: 0.2s ease;
@@ -42,4 +43,22 @@
 .article-footer-createdAt {
 	padding-right: 1rem;
 	margin-left: 0.7rem;
+}
+@media (max-width:600px) {
+	.article-main{
+		font-size: 0.5rem;
+	}
+	.ig{
+		width: 60px;
+		height: 80px;
+	}
+	.article-header-title{
+		font-size: 0.7rem;
+	}
+	.article-footer {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		font-size: 0.5rem;
+	}
 }

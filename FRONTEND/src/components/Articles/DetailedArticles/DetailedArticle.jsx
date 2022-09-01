@@ -23,11 +23,13 @@ function DetailedArticle() {
 						<p className='detailedArticle-header-author'>jon wic</p>
 					</div>
 					<div className='detailedArticle-main-upper'>
+					
 						<div className='detailedArticle-upper-images'>
-							<img src={test} alt='dummy' />
-							<img src={test} alt='dummy' />
+							<img src={test} alt='dummy' className="imgg" />
+							<img src={test} alt='dummy' className="imgg" />
 						</div>
 						<div className='detailedArticle-upper-content'>
+						
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
 							laboriosam iste fugiat possimus consequatur praesentium, iusto
 							unde? Labore tempora officia saepe minus facere numquam in,

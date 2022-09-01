@@ -1,31 +1,33 @@
 import React from 'react';
 import Base1 from './Base1';
-import pdf from './my.pdf'
+import pdf from './Insights Club Newsletter.pdf'
 import me from './me.jpg';
 import i from './i.jpg';
 import e from './e.jpg';
+import ins from './a.jpg';
 import './Newsarticle.css'
 const Newsarticle=()=>{
     return(
         <div className='container2'>
-            <h3 className='a'>Newsletters</h3>
-            <Base1 img={e} link={pdf}/>           
+            <div className='a'>Newsletter</div>
+            <br/>
+            <Base1 img={ins} link={pdf}/>           
              <br/>
-            <Base1 img={i} link={pdf}/>
+            <Base1 img={ins} link={pdf}/>
             <br/>
-            <Base1 img={i} link={pdf}/>
+            <Base1 img={ins} link={pdf}/>
             <br/>
-            <Base1 img={i} link={pdf}/>
+            <Base1 img={ins} link={pdf}/>
             <br/>
-            <Base1 timg={i} link={pdf}/>
+            <Base1 timg={ins} link={pdf}/>
             <br/>
-            <Base1 img={i} link={pdf}/>
+            <Base1 img={ins} link={pdf}/>
             <br/>
-            <Base1 img={i} link={pdf}/>
+            <Base1 img={ins} link={pdf}/>
             <br/>
-            <Base1 img={i} link={pdf}/>
+            <Base1 img={ins} link={pdf}/>
             <br/>
-            <Base1 img={i} link={pdf}/>
+            <Base1 img={ins} link={pdf}/>
         </div>
     )
 }
