@@ -13,7 +13,6 @@ const Create = () => {
 	const dispatch = useDispatch();
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
-	const [author, setAuthor] = useState("");
 	const [description, setDescription] = useState("");
 	const [tags, setTags] = useState("");
 	const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -22,7 +21,7 @@ const Create = () => {
 
 	const postBlog = async (e) => {
 		e.preventDefault();
-		if (title === "" || content === "" || author === "") {
+		if (title === "" || content === "") {
 			setError("Please fill out all fields.");
 			return null;
 		}
@@ -33,9 +32,7 @@ const Create = () => {
 			description,
 			tags: tags.split(" "),
 			content,
-			author,
 		};
-		console.log(data);
 		try {
 			dispatch(createBlogs(data));
 		} catch (error) {
@@ -43,6 +40,7 @@ const Create = () => {
 		} finally {
 			setSaving(false);
 		}
+		console.log();
 	};
 
 	return (
@@ -62,20 +60,6 @@ const Create = () => {
 						disabled={saving}
 						onChange={(event) => {
 							setTitle(event.target.value);
-						}}
-					/>
-				</form>
-				<form>
-					<label className='create-blog-author'>Author:</label>
-					<input
-						type='text'
-						name='author'
-						value={author}
-						id='author'
-						placeholder='Enter Your Name'
-						disabled={saving}
-						onChange={(event) => {
-							setAuthor(event.target.value);
 						}}
 					/>
 				</form>

@@ -7,7 +7,8 @@
 	outline: none;
 	padding: 1rem;
 	margin-top: 1.2em;
-	max-width: 500px;
+	/* max-width: 500px; */
+	width: 100%;
 	font-family: "Mulish";
 }
 .blog-header-name {
