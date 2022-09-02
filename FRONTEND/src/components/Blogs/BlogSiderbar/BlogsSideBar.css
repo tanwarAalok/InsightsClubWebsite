@@ -1,6 +1,7 @@
 .blogs-sidebar-container {
 	font-family: "Mulish";
-	margin-top: -9%;
+	position: absolute;
+	top: 80px;
 }
 .blogs-sidebar-list {
 	list-style: none;

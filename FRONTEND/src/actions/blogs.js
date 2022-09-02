@@ -21,7 +21,6 @@ export const getBlogs = () => async (dispatch) => {
 export const createBlogs = (blog) => async (dispatch) => {
 	try {
 		const { data } = await Create(blog, `${blogsUrl}/new`);
-
 		dispatch({ type: CREATE, payload: data });
 	} catch (error) {
 		console.log(error.message);

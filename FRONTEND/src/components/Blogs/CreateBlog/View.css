@@ -2,8 +2,6 @@
 	font-size: 1.2rem;
 	margin: 2rem;
 }
-.view-blog-header {
-}
 .view-blog-title {
 	text-align: center;
 	font-size: 1.5rem;
@@ -16,4 +14,6 @@
 }
 .view-blog-content {
 	padding: 1rem;
+	border: 3px solid rgb(204, 204, 204);
+	border-radius: 5px;
 }

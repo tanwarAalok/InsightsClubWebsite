@@ -11,7 +11,7 @@ function Blogs() {
 
 	useEffect(() => {
 		dispatch(getBlogs());
-	}, []);
+	}, [dispatch]);
 	const Blogs = useSelector((state) => state.blogs);
 
 	console.log(Blogs);
@@ -19,11 +19,15 @@ function Blogs() {
 		{ Element: { name: "Home", address: "/" } },
 		{ Element: { name: "Event", address: "/" } },
 		{ Element: { name: "Domains", address: "/" } },
-		{ Element: { name: "Blog", address: "/" } },
-		{ Element: { name: "Bookedmarked", address: "/" } },
+		{ Element: { name: "Blog", address: "/blogs" } },
+		{ Element: { name: "Bookmarked", address: "/" } },
 	];
 	const RecentlySeen = [
 		{ Element: { name: "coding techBlog 1", address: "/" } },
+		{ Element: { name: "photgraphy nature Blog 2", address: "/" } },
+		{ Element: { name: "photgraphy nature Blog 2", address: "/" } },
+		{ Element: { name: "photgraphy nature Blog 2", address: "/" } },
+		{ Element: { name: "photgraphy nature Blog 2", address: "/" } },
 		{ Element: { name: "photgraphy nature Blog 2", address: "/" } },
 	];
 
@@ -55,17 +59,19 @@ function Blogs() {
 							<img src={WRITE} alt='write' />
 						</div>
 					</div>
-					{Blogs.map((blog, key) => (
-						<>
-							<Blog blog={blog} key={key} />
-						</>
-					))}
+					<div className='blogs-container-bloglist'>
+						{Blogs.map((blog, key) => (
+							<>
+								<Blog blog={blog} key={key} />
+							</>
+						))}
+					</div>
 				</div>
 				<div className='blogs-recently-queried'>
 					<p className='blogs-recently-queried-heading'>Recently queried</p>
 					<ul className='blogs-recently-queried-list'>
 						{RecentlySeen.map((item, index) => (
-							<a href={item.Element.address}>
+							<a href={item.Element.address} kye={index}>
 								<li className='blogs-recently-queried-list-element'>
 									{item.Element.name}
 								</li>

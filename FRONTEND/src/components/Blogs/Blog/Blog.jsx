@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Blog.css";
+import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import LIKE from "../../../media/likeVector.svg";
 import ACTIVELIKE from "../../../media/activeLikeVector.svg";
@@ -7,7 +8,6 @@ import ACTIVELIKE from "../../../media/activeLikeVector.svg";
 function Blog({ blog }) {
 	const [liked, setLiked] = useState(false);
 	const navigate = useNavigate();
-
 	return (
 		<>
 			<div
@@ -15,7 +15,9 @@ function Blog({ blog }) {
 				onClick={() => navigate(`/blog/${blog._id}`)}>
 				<div className='blog-header'>
 					<p className='blog-header-name'>{blog.author.name}</p>
-					<p className='blog-header-time'>{blog.createdAt}</p>
+					<p className='blog-header-time'>
+						{moment(blog.createdAt).format("MMM Do YY")}
+					</p>
 				</div>
 				<div className='blog-main'>
 					<p className='blog-main-content'>{blog.description}</p>
