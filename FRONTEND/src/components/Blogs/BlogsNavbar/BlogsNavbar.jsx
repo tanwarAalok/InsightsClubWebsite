@@ -1,5 +1,6 @@
 import React from "react";
 import LOGO from "../../../media/InsightsLogo.svg";
+import MENU from "../../../media/hamburger-menu.svg";
 import "./BlogsNavbar.css";
 
 function BlogsNavbar() {
@@ -13,9 +14,7 @@ function BlogsNavbar() {
 					<input type='search' placeholder='Search by title or name...' />
 				</div>
 				<div className='blogsnavbar-hambugermenu'>
-					<span></span>
-					<span></span>
-					<span></span>
+					<img src={MENU} alt='menu' />
 				</div>
 			</div>
 		</>

@@ -10,6 +10,7 @@ import DetailedArticle from "./components/Articles/DetailedArticles/DetailedArti
 import EventDetails from "./components/DetailEvent/eventDetails";
 import Create from "./components/Blogs/CreateBlog/Create";
 import View from "./components/Blogs/CreateBlog/View";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
 	return (
@@ -26,6 +27,7 @@ function App() {
 			<Route path='blogs' element={<BlogsLanding />} />
 			<Route path='write' element={<Create />} />
 			<Route path='blog/:id' element={<View />} />
+			<Route path='profile' element={<Profile />} />
 		</Routes>
 	);
 }

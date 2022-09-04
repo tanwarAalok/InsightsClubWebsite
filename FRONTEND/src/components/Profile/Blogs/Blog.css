@@ -1,0 +1,87 @@
+.profile-blog-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	border: 2px solid #b9b9b9;
+	border-radius: 10px;
+	outline: none;
+	padding: 1rem;
+	margin-top: 1.2em;
+	/* max-width: 500px; */
+	font-family: "Mulish";
+	margin: 1rem 1rem 1rem 1rem;
+}
+.profile-profile-blog-comment {
+	scale: 0.6;
+}
+.profile-blog-header-name {
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+.profile-blog-main {
+	margin: 1rem 0;
+}
+.profile-blog-footer {
+	display: flex;
+	justify-content: space-between;
+}
+.profile-blog-footer-like img {
+	width: 1.5rem;
+	height: 1.5rem;
+	cursor: pointer;
+	margin-bottom: 15px;
+}
+.profile-blog-footer-like {
+	display: flex;
+}
+.profile-blog-footer p {
+	margin-left: 0.3rem;
+	font-size: 1rem;
+}
+.profile-chat {
+	height: 25px;
+	width: 50px;
+	cursor: pointer;
+}
+.profile-comments {
+	display: flex;
+}
+.profile-we {
+	display: flex;
+	justify-content: space-between;
+	width: 25%;
+}
+.profile-book {
+	height: 25px;
+	width: 50px;
+	cursor: pointer;
+}
+@media (max-width: 600px) {
+	.profile-blog-main-content {
+		font-size: 0.5rem;
+	}
+
+	.profile-blog-comment {
+		font-size: 20px;
+	}
+	.profile-chat {
+		height: 25px;
+		width: 25px;
+		cursor: pointer;
+	}
+	.profile-book {
+		height: 15px;
+		width: 25px;
+		cursor: pointer;
+		overflow: hidden;
+	}
+	.profile-blog-header-name {
+		font-size: 0.7rem;
+		font-weight: 600;
+		margin-bottom: 10px;
+	}
+	.profile-blog-header-time {
+		font-size: 0.6rem;
+	}
+}
