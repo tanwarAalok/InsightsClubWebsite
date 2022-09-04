@@ -7,12 +7,13 @@ import "@fontsource/palanquin-dark";
 import "@fontsource/inter";
 import "@fontsource/martel";
 import './intro.css'
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 function Intro() {
     const [showAuthModal, displayAuthModal] = useState(false)
     const [AuthModalPage, setPage] = useState('SignIn')
     const [cookies] = useCookies(["user"]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if(showAuthModal === true)
@@ -42,8 +43,7 @@ function Intro() {
                                     setPage('SignIn')
                                     displayAuthModal(true)
                                 } else {
-                                    //@TODO: HANDLE BUTTON CLICK WHEN USER HAS LOGGED IN
-                                    // REDIRECT TO PROFILE
+                                    navigate('/profile');
                                 }
                             }}>
                             {

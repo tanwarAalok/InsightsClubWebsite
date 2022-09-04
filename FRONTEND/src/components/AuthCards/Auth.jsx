@@ -211,7 +211,6 @@ function ForgotPasswordCard({ changeCard, handleClick, closeModal }) {
                     <div className="auth-card-button-group">
                         <button className="auth-card-primary-button"
                             onClick={() => {
-                                // TODO: HANDLE FORM SUBMIT
                                 if (!(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email))) {
                                     console.error('Invalid email address')
                                     setErrMail(true)
