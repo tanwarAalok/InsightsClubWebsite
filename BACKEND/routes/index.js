@@ -23,6 +23,11 @@ const {
 	deleteDepartment,
 	updateDepartment,
 	verifyBlog,
+	getAllUsers,
+	getUserById,
+	deleteUser,
+	makeCoAdmin,
+	removeCoAdmin
 } = require("../controllers/managementController");
 const {
 	createBlog,
@@ -91,3 +96,15 @@ router
 	.get(getArticle)
 	.delete(verifyUser, deleteArticle)
 	.put(verifyUser, updateArticle);
+
+router.route("/user/all").get(verifyUser, getAllUsers);
+router
+	.route("/user/:id")
+	.get(getUserById)
+	.delete(verifyUser, deleteUser);
+router
+	.route("/user/promote/:id")
+	.put(verifyUser, makeCoAdmin);
+router
+	.route("/user/demote/:id")
+	.put(verifyUser, removeCoAdmin);
