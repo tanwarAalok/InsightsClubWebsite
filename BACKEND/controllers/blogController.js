@@ -39,6 +39,22 @@ exports.getAllBlogs = catchAsyncErrors(async (req, res, next) => {
 	res.status(200).json(blogs);
 });
 
+exports.getBlogByUser = catchAsyncErrors(async (req, res, next) => {
+	const id = req.params.id;
+	const blogs = await Blogs.find(
+		{author: id},
+		{
+			_id: 1, title: 1, description: 1, content: 1, tags: 1,
+			author: 1, isReviewed: 1, reviewedBy: 1, createdAt: 1, updatedAt: 1
+		}
+	)
+		.populate("author", "-email -password -verified")
+		.populate("reviewedBy", "-email -password -verified")
+		// .populate("likes", "-email -password -verified")
+		.lean();
+	res.status(200).json(blogs);
+})
+
 exports.getBlog = catchAsyncErrors(async (req, res, next) => {
 	const isValid = mongoose.Types.ObjectId.isValid(req.params.id);
 	if (!isValid)

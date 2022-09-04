@@ -36,6 +36,7 @@ const {
 	deleteBlog,
 	updateBlog,
 	likeBlog,
+	getBlogByUser,
 } = require("../controllers/blogController");
 const { 
 	getAllArticles,
@@ -75,6 +76,7 @@ router
 	.put(verifyUser, updateBlog);
 router.route("/blog/:id/like").post(verifyUser, likeBlog);
 router.route("/blog/:id/verify").get(verifyUser, verifyBlog);
+router.route("/blog/user/:id").get(getBlogByUser);
 
 router.route("/video/all").get(getAllVideos);
 router.route("/video/new").post(verifyUser, createVideo);
