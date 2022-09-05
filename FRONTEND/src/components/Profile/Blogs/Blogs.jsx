@@ -1,45 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Blog from "./Blog";
+import axios from "axios";
+import { useCookies } from "react-cookie";
 
-let blog = [
-	{
-		author: { name: "Dummy Name" },
-		createdAt: "3d ago",
-		comments:300,
-		description:
-			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam est, praesentium porro, officiis numquam, cumque voluptatum reiciendis aliquid nemo eos deserunt esse iste fuga magnam facilis ex totam eum ad?",
-		likes: 1,
-	},
-	{
-		author: { name: "Dummy Name" },
-		createdAt: "3d ago",
-		comments:300,
-		description:
-			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam est, praesentium porro, officiis numquam, cumque voluptatum reiciendis aliquid nemo eos deserunt esse iste fuga magnam facilis ex totam eum ad?",
-		likes: 1,
-	},
-	{
-		author: { name: "Dummy Name" },
-		createdAt: "3d ago",
-		comments:300,
-		description:
-			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam est, praesentium porro, officiis numquam, cumque voluptatum reiciendis aliquid nemo eos deserunt esse iste fuga magnam facilis ex totam eum ad?",
-		likes: 1,
-	},
-	{
-		author: { name: "Dummy Name" },
-		createdAt: "3d ago",
-		comments:300,
-		description:
-			"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam est, praesentium porro, officiis numquam, cumque voluptatum reiciendis aliquid nemo eos deserunt esse iste fuga magnam facilis ex totam eum ad?",
-		likes: 1,
-	},
-];
+const url = "http://localhost:8080/blog/user";
 
 function Blogs() {
+	const [blogs, setBlogs] = useState([]);
+	const [cookies, setCookies] = useCookies();
+	const c = cookies.user.id;
+	useEffect(() => {
+		axios.get(`${url}/${c}`).then((res) => setBlogs(res.data));
+	}, []);
 	return (
 		<>
-			{blog.map((b, i) => (
+			{blogs.map((b, i) => (
 				<Blog blog={b} key={i} />
 			))}
 		</>

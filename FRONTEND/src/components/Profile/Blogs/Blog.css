@@ -85,3 +85,22 @@
 		font-size: 0.6rem;
 	}
 }
+.profile-blog-delete {
+	font-size: 1.2rem;
+	background-color: rgb(251, 32, 32);
+	padding: 0.5rem 0.7rem;
+	color: white;
+	outline: none;
+	border: none;
+	border-radius: 10px;
+	margin-right: 20px;
+}
+.profile-blog-edit {
+	font-size: 1.2rem;
+	background-color: rgb(32, 54, 251);
+	padding: 0.5rem 0.7rem;
+	color: white;
+	outline: none;
+	border: none;
+	border-radius: 10px;
+}

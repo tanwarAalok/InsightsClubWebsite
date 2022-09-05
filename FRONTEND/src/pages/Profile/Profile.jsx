@@ -4,14 +4,16 @@ import Header from "../../components/Profile/Header/Header";
 import EditProfile from "../../components/Profile/EditProfile/EditProfile";
 import Blogs from "../../components/Profile/Blogs/Blogs";
 import Events from "../../components/Profile/Events/Events";
+import { useCookies } from "react-cookie";
 
 function Profile() {
 	const [state, setState] = useState("BLOGS");
-
+	const [cookies, setCookies] = useCookies();
+	console.log(cookies);
 	return (
 		<div className='profile-main-container'>
 			<div className='profile-main-header'>
-				<Header />
+				<Header user={cookies.user} />
 				<div className='profile-main-navbar'>
 					<div
 						className='profile-main-navbar-blog'

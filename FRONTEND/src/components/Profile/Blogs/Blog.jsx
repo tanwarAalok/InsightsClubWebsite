@@ -55,6 +55,10 @@ function Blog({ blog }) {
 						{/* <HiOutlineBookmark className='book' color='black' /> */}
 					</div>
 				</div>
+				<div className='profile-blog-delete-edit'>
+					<button className='profile-blog-delete'>Delete</button>
+					<button className='profile-blog-edit'>Edit</button>
+				</div>
 			</div>
 		</>
 	);
