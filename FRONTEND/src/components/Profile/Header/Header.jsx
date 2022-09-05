@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 import { BsPencilFill } from "react-icons/bs";
 
-function Header() {
+function Header({ user }) {
 	const uploadedImage = React.useRef(null);
 	const imageUploader = React.useRef(null);
 
@@ -35,7 +35,7 @@ function Header() {
 				<BsPencilFill />
 			</div>
 			<div className='header-profile-name'>
-				<p>Dummy Name</p>
+				<p>{user.name}</p>
 			</div>
 			<div className='Header-profile-line'></div>
 		</>

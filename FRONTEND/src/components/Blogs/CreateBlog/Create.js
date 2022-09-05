@@ -25,7 +25,6 @@ const Create = () => {
 			setError("Please fill out all fields.");
 			return null;
 		}
-		setError("");
 		setSaving(true);
 		const data = {
 			title,
@@ -141,7 +140,11 @@ const Create = () => {
 					/>
 				</div>
 			</form>
-			<p> error: {error}</p>
+			{error === "" ? (
+				<p className='createBlog-error'></p>
+			) : (
+				<p className='createBlog-error'>{alert("Error : " + error)}</p>
+			)}
 		</div>
 	);
 };

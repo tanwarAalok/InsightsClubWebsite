@@ -17,3 +17,8 @@
 	border: 3px solid rgb(204, 204, 204);
 	border-radius: 5px;
 }
+.view-blog-delete-edit {
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 1rem;
+}

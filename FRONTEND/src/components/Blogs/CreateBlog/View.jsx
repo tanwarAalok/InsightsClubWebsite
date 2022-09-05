@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./View.css";
-
 import Navbar from "../../Navbar/Navbar";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -11,12 +10,6 @@ const View = () => {
 	const params = useParams();
 	const [b, setBlog] = useState({});
 
-	const getBlog = async () => {
-		await axios.get(`${blogsUrl}/${params.id}`).then((res) => {
-			let data = res.data;
-			setBlog(data);
-		});
-	};
 	useEffect(() => {
 		axios.get(`${blogsUrl}/${params.id}`).then((res) => {
 			let data = res.data;

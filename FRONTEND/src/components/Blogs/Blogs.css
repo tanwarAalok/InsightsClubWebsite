@@ -6,7 +6,7 @@
 .blogs-container {
 	padding: 0 9rem;
 	flex: 2;
-	/* margin-left: 150px; */
+	margin-left: 150px;
 	/* margin-right: 170px; */
 	margin-top: 1.5rem;
 }
