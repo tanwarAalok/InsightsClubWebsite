@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 
 export const EventDataContext = createContext({
-    checkVenue: false,
+    isPastEvent: false,
     buttonText: "Register",
     checkButton: false
 });
