@@ -51,6 +51,7 @@ function EventSlides() {
                 }
         }
     }
+    if (Object.keys(pastEvent).length > 0 || Object.keys(currentEvent) > 0 || Object.keys(upcomingEvent) > 0)
     return (
         <Fragment>
             <div className="slider">
@@ -64,60 +65,66 @@ function EventSlides() {
                         onClick={() => slideClickHandler('left')}>
                     </button>
                     <div className="slides">
-                        <div className="slide">
-                            <div className="slide-info">
-                                <h3 className="slide-heading">Past Event</h3>
-                                <p className="slide-text">
-                                    {pastEvent.shortDescription}
-                                </p>
-                                <button className="slide-info-button"
-                                    onClick={() => {
-                                        setEventPage(pastEvent)
-                                        setPopupTrigger(true)
-                                    }}>
-                                    More info&hellip;
-                                </button>
+                        {Object.keys(pastEvent).length > 0 &&
+                            <div className="slide">
+                                <div className="slide-info">
+                                    <h3 className="slide-heading">Past Event</h3>
+                                    <p className="slide-text">
+                                        {pastEvent.shortDescription}
+                                    </p>
+                                    <button className="slide-info-button"
+                                        onClick={() => {
+                                            setEventPage(pastEvent)
+                                            setPopupTrigger(true)
+                                        }}>
+                                        More info&hellip;
+                                    </button>
+                                </div>
+                                {pastEvent && pastEvent.image &&
+                                    <img className="slide-cover" src={pastEvent.image.url} alt="" />
+                                }
                             </div>
-                            {pastEvent && pastEvent.image &&
-                                <img className="slide-cover" src={pastEvent.image.url} alt="" />
-                            }
-                        </div>
-                        <div className="slide slide-active">
-                            <div className="slide-info">
-                                <h3 className="slide-heading">Ongoing Event</h3>
-                                <p className="slide-text">
-                                    {currentEvent.shortDescription}
-                                </p>
-                                <button className="slide-info-button"
-                                    onClick={() => {
-                                        setEventPage(currentEvent)
-                                        setPopupTrigger(true)
-                                    }}>
-                                    Register
-                                </button>
+                        }
+                        {Object.keys(currentEvent).length > 0 &&
+                            <div className="slide slide-active">
+                                <div className="slide-info">
+                                    <h3 className="slide-heading">Ongoing Event</h3>
+                                    <p className="slide-text">
+                                        {currentEvent.shortDescription}
+                                    </p>
+                                    <button className="slide-info-button"
+                                        onClick={() => {
+                                            setEventPage(currentEvent)
+                                            setPopupTrigger(true)
+                                        }}>
+                                        Register
+                                    </button>
+                                </div>
+                                {currentEvent && currentEvent.image &&
+                                    <img className="slide-cover" src={currentEvent.image.url} alt="" />
+                                }
                             </div>
-                            {currentEvent && currentEvent.image &&
-                                <img className="slide-cover" src={currentEvent.image.url} alt="" />
-                            }
-                        </div>
-                        <div className="slide">
-                            <div className="slide-info">
-                                <h3 className="slide-heading">Upcoming Event</h3>
-                                <p className="slide-text">
-                                    {upcomingEvent.shortDescription}
-                                </p>
-                                <button className="slide-info-button"
-                                    onClick={() => {
-                                        setEventPage(upcomingEvent)
-                                        setPopupTrigger(true)
-                                    }}
-                                >Get updates
-                                </button>
+                        }
+                        {Object.keys(upcomingEvent).length > 0 &&
+                            <div className="slide">
+                                <div className="slide-info">
+                                    <h3 className="slide-heading">Upcoming Event</h3>
+                                    <p className="slide-text">
+                                        {upcomingEvent.shortDescription}
+                                    </p>
+                                    <button className="slide-info-button"
+                                        onClick={() => {
+                                            setEventPage(upcomingEvent)
+                                            setPopupTrigger(true)
+                                        }}
+                                    >Get updates
+                                    </button>
+                                </div>
+                                {upcomingEvent && upcomingEvent.image &&
+                                    <img className="slide-cover" src={upcomingEvent.image.url} alt="" />
+                                }
                             </div>
-                            {upcomingEvent && upcomingEvent.image &&
-                                <img className="slide-cover" src={upcomingEvent.image.url} alt="" />
-                            }
-                        </div>
+                        }
                     </div>
                     <button className="slide-button slide-right"
                         onClick={() => slideClickHandler('right')}>
@@ -136,6 +143,8 @@ function EventSlides() {
             <Outlet />
         </Fragment>
     );
+    else
+        return null;
 }
 
 export default EventSlides;
