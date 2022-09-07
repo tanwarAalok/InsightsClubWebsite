@@ -15,7 +15,9 @@ function BlogsNavbar() {
 				<div className='blogsnavbar-search_box'>
 					<input type='search' placeholder='Search by title or name...' />
 				</div>
-				<div className='blogsnavbar-hambugermenu'>
+				<div
+					className='blogsnavbar-hambugermenu'
+					onClick={() => navigate("/profile")}>
 					<img src={MENU} alt='menu' />
 				</div>
 			</div>

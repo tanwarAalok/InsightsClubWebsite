@@ -28,12 +28,10 @@ function Blogs() {
 		{ Element: { name: "photgraphy nature Blog 2", address: "/" } },
 		{ Element: { name: "photgraphy nature Blog 2", address: "/" } },
 		{ Element: { name: "photgraphy nature Blog 2", address: "/" } },
-		{ Element: { name: "photgraphy nature Blog 2", address: "/" } },
 	];
 
 	return (
 		<>
-			<div className='blogs-header'></div>
 			<div className='blogs-main-container'>
 				<div className='blogs-sidebar-container'>
 					<BlogsSideBar array={sideBarElement} />
@@ -71,7 +69,7 @@ function Blogs() {
 					<p className='blogs-recently-queried-heading'>Recently queried</p>
 					<ul className='blogs-recently-queried-list'>
 						{RecentlySeen.map((item, index) => (
-							<a href={item.Element.address} kye={index}>
+							<a href={item.Element.address} key={index}>
 								<li className='blogs-recently-queried-list-element'>
 									{item.Element.name}
 								</li>

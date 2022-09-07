@@ -33,4 +33,8 @@
 }
 .blogsnavbar-hambugermenu {
 	margin-right: 1rem;
+	transition: ease 0.3s;
+}
+.blogsnavbar-hambugermenu img:hover {
+	transform: scale(1.1);
 }

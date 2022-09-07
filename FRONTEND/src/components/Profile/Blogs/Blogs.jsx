@@ -8,10 +8,10 @@ const url = "http://localhost:8080/blog/user";
 function Blogs() {
 	const [blogs, setBlogs] = useState([]);
 	const [cookies, setCookies] = useCookies();
-	const c = cookies.user.id;
+
 	useEffect(() => {
-		axios.get(`${url}/${c}`).then((res) => setBlogs(res.data));
-	}, []);
+		axios.get(`${url}/${cookies.user.id}`).then((res) => setBlogs(res.data));
+	}, [cookies]);
 	return (
 		<>
 			{blogs.map((b, i) => (
