@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import "./Blog.css";
+import { useDispatch } from "react-redux";
+import { deleteBlogs } from "../../../actions/blogs";
 import LIKE from "../../../media/likeVector.svg";
 import ACTIVELIKE from "../../../media/activeLikeVector.svg";
-// import { HiOutlineChat, HiOutlineBookmark } from "react-icons/hi";
 import SAVED from "../../../media/SavedVector.svg";
 import COMMNENT from "../../../media/commentVector.svg";
 
 function Blog({ blog }) {
 	const [liked, setLiked] = useState(false);
 	const [count, setCount] = useState(blog.likes);
-
+	const dispatch = useDispatch();
 	const onChange = () => {
 		setLiked((prev) => !prev);
 		if (liked) {
@@ -18,7 +19,9 @@ function Blog({ blog }) {
 			setCount(count + 1);
 		}
 	};
-
+	const handleDelete = () => {
+		dispatch(deleteBlogs(blog._id));
+	};
 	return (
 		<>
 			<div className='profile-blog-container'>
@@ -41,7 +44,6 @@ function Blog({ blog }) {
 							<p className='profile-blog-likesCounter'>{count}</p>
 						</div>
 						<div className='profile-comments'>
-							{/* <HiOutlineChat className='chat' /> */}
 							<img
 								src={COMMNENT}
 								alt='saved'
@@ -52,11 +54,14 @@ function Blog({ blog }) {
 					</div>
 					<div>
 						<img src={SAVED} alt='profile-saved' />
-						{/* <HiOutlineBookmark className='book' color='black' /> */}
 					</div>
 				</div>
 				<div className='profile-blog-delete-edit'>
-					<button className='profile-blog-delete'>Delete</button>
+					<button
+						className='profile-blog-delete'
+						onClick={() => handleDelete()}>
+						Delete
+					</button>
 					<button className='profile-blog-edit'>Edit</button>
 				</div>
 			</div>
