@@ -21,6 +21,7 @@ function Blog({ blog }) {
 	};
 	const handleDelete = () => {
 		dispatch(deleteBlogs(blog._id));
+		window.location.reload(false);
 	};
 	return (
 		<>
