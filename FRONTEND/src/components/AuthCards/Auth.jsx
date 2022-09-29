@@ -6,7 +6,7 @@ import "./auth.css";
 import "@fontsource/mulish";
 import "@fontsource/inter";
 
-const authUrl = 'http://localhost:8080/auth'
+const authUrl = "https://insights-api.onrender.com/auth";
 
 function SignInCard({ changeCard, handleClick, closeModal }) {
     const [username, setUsername] = useState('')

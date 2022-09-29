@@ -5,7 +5,7 @@ import './domains.css';
 import { Outlet } from "react-router-dom";
 import axios from "axios";
 
-const domainUrl = 'http://localhost:8080/dept'
+const domainUrl = "https://insights-api.onrender.com/dept";
 
 function TileRow({ rows, displayModal, setdomainDescr,setPage }) {
     return (
