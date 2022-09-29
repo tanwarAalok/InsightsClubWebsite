@@ -1,5 +1,5 @@
 .container1{
-    height:25vh;
+    height:30vh;
     width:15vw;
     border:0.2px solid black;
     border-radius: 10px;
@@ -8,14 +8,13 @@
     align-content: center;
     background-size: cover;
     backface-visibility: visible;
-    background-position: center;
-    margin-bottom: 1.9rem;
+    margin-bottom: 2.1rem;
 }
 .container1:hover{
     box-shadow: 2px 2px 0.5px 0.5px gray;
     cursor: pointer;
     width:17.9vw;
-    height:27.9vh;
+    height:35.9vh;
     margin-left: -15px;
 }
 .txt{
@@ -26,4 +25,26 @@
     align-items: center;
     align-content: center;
     justify-items: center;
+}
+@media (max-width:600px) {
+    .container1{
+        height:25vh;
+        width:25vw;
+        border:0.2px solid black;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        background-size: cover;
+        backface-visibility: visible;
+        margin-bottom: 3.9rem;
+    }
+    .container1:hover{
+        box-shadow: 2px 2px 0.5px 0.5px gray;
+        cursor: pointer;
+        width:27.9vw;
+        height:27.9vh;
+        margin-left: -10px;
+    }
+    
 }
