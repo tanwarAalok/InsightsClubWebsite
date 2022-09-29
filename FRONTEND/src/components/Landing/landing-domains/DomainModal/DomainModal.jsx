@@ -22,7 +22,6 @@ function MemberCard({ details }) {
     );
 }
 
-//@TODO: fetch all the Insights core members from the server and use them instead of dummy data
 function DomainModal({ domainID, domainDescr,displayModal }) {
     
     const [memberList, setMemberList] = useState([]);

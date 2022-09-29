@@ -55,19 +55,14 @@ exports.getAllUsers = catchAsyncErrors(async (req, res, next) => {
 
 //Get user by id
 exports.getUserById = catchAsyncErrors(async (req, res, next) => {
-    if(req.user.isAdmin) {
-        const user = await User.findById(req.params.id);
-        if(!user) {
-            return next(new ErrorHandler(`User not found`, 404));
-        }
-        res.status(200).json({
-            success: true,
-            user
-        });
+    const user = await User.findById(req.params.id, {_id: 1, name: 1, username: 1, email: 1, description: 1, isAdmin: 1, isCoAdmin: 1, department: 1});
+    if(!user) {
+        return next(new ErrorHandler(`User not found`, 404));
     }
-    else {
-        return next(new ErrorHandler(`You are not authorized to perform this action`, 401));
-    }
+    res.status(200).json({
+        success: true,
+        user
+    });
 });
 
 //Delete user

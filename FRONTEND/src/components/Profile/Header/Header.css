@@ -1,0 +1,110 @@
+.Header-upper-container {
+	/* width: 936px; */
+	/* padding: 114px 468px; */
+	position: relative;
+	width: 100%;
+	height: 229px;
+	display: flex;
+	background: #ffccdb;
+	border-radius: 8px 8px 0px 0px;
+}
+.Header-profile-photo {
+	position: absolute;
+	width: 176px;
+	height: 176px;
+	top: 150px;
+	/* left: 378px; */
+	left: 458px;
+	border-radius: 50%;
+	background: #7d3131;
+	margin-left: -110px;
+}
+.Header-profile-line {
+	/* width: 938.01px; */
+	/* position: absolute; */
+	width: 100%;
+	height: 0px;
+	left: 0px;
+	top: 451px;
+	background-color: #b9b9b9;
+	border: 1px solid #b9b9b9;
+}
+.header-profile-name {
+	margin-top: 100px;
+	text-align: center;
+}
+.header-profile-name p {
+	text-align: center;
+	font-family: "Mulish";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 36px;
+	line-height: 45px;
+	margin-bottom: 60px;
+}
+.a {
+	visibility: hidden;
+	cursor: pointer;
+}
+.pen {
+	background-color: white;
+	width: 50px;
+	height: 50px;
+	margin-left: 530px;
+}
+.pen input[type="file"] {
+	position: absolute;
+	transform: scale(2);
+	opacity: 0;
+}
+input[type="file"]::-webkit-file-upload-button {
+	cursor: pointer;
+}
+@media (max-width: 600px) {
+	.Header-profile-photo {
+		position: absolute;
+		width: 76px;
+		height: 76px;
+		top: 60px;
+		left: 178px;
+		border-radius: 50%;
+		background: #7d3131;
+	}
+	.pen {
+		margin-left: 150px;
+	}
+	.header-profile-name {
+		margin-top: 10px;
+		text-align: center;
+	}
+	.header-profile-name p {
+		text-align: center;
+		font-family: "Mulish";
+		font-style: normal;
+		font-weight: 600;
+		font-size: 18px;
+		line-height: 5px;
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+	.Header-profile-line {
+		/* width: 938.01px; */
+		/* position: absolute; */
+		width: 100%;
+		height: 0px;
+		left: 0px;
+		top: 40px;
+		background-color: #b9b9b9;
+		border: 1px solid #b9b9b9;
+	}
+	.Header-upper-container {
+		/* width: 936px; */
+		/* padding: 114px 468px; */
+		position: relative;
+		width: 100%;
+		height: 100px;
+		display: flex;
+		background: #ffccdb;
+		border-radius: 8px 8px 0px 0px;
+	}
+}

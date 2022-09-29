@@ -60,6 +60,7 @@ function Domains() {
             document.getElementsByTagName('body')[0].style.overflowY = 'scroll';
     }, [showDomainModal]);
 
+    if (tilesRows.length > 0)
     return (
         <Fragment>
             {showDomainModal && < DomainModal domainID={domainPage} domainDescr={domainDescr}
@@ -72,6 +73,8 @@ function Domains() {
             <Outlet />
         </Fragment>
     );
+    else
+        return null;
 }
 
 export default Domains;

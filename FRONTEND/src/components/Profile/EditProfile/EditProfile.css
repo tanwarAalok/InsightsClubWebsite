@@ -1,0 +1,71 @@
+.EditProfile-container {
+	margin-left: 2rem;
+	width: 30vw;
+	height: 20vh;
+	background: #ffffff;
+	border: 1px solid #b9b9b9;
+	border-radius: 5px;
+	margin-left: 50px;
+}
+
+
+.EditProfile-blogEdit {
+	text-align: center;
+}
+.EditProfile-profileEdit {
+	text-align: center;
+}
+@media (max-width:600px) {
+	.EditProfile-blogEdit button {
+		font-family: "Mulish";
+		font-style: normal;
+		font-weight: 400;
+		font-size: 10px;
+		line-height: 31px;
+		color: #666666;
+		background-color: #ffffff;
+		
+		border: none;
+		outline: none;
+	}
+	.EditProfile-profileEdit button {
+		font-family: "Mulish";
+		font-style: normal;
+		font-weight: 400;
+		font-size: 10px;
+		line-height: 31px;
+		color: #666666;
+		background-color: #ffffff;
+		border: none;
+		outline: none;
+		margin: 1rem;
+		margin-bottom: 1.4rem;
+	}
+}
+@media (min-width:700px) {
+	.EditProfile-blogEdit button {
+		font-family: "Mulish";
+		font-style: normal;
+		font-weight: 400;
+		font-size: 25px;
+		line-height: 31px;
+		color: #666666;
+		background-color: #ffffff;
+		border: none;
+		outline: none;
+	}
+	.EditProfile-profileEdit button {
+		font-family: "Mulish";
+		font-style: normal;
+		font-weight: 400;
+		font-size: 25px;
+		line-height: 31px;
+		color: #666666;
+		background-color: #ffffff;
+		border: none;
+		outline: none;
+		margin: 1rem;
+		margin-bottom: 1.4rem;
+	}
+	
+}

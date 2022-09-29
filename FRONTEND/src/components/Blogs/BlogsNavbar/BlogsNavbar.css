@@ -1,4 +1,5 @@
 .blogsnavbar-nav {
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -10,8 +11,14 @@
 	);
 }
 .blogsnavbar-logo img {
-	width: 15%;
-	height: 15%;
+	/* width: 15%;
+	height: 15%; */
+	width: 67px;
+	height: 67px;
+	transition: ease 0.2s;
+}
+.blogsnavbar-logo img:hover {
+	transform: scale(1.1);
 }
 .blogsnavbar-search_box {
 	width: 700px;
@@ -22,6 +29,12 @@
 	border: none;
 	outline: none;
 	border-radius: 5px;
+	margin-right: 5rem;
 }
 .blogsnavbar-hambugermenu {
+	margin-right: 1rem;
+	transition: ease 0.3s;
+}
+.blogsnavbar-hambugermenu img:hover {
+	transform: scale(1.1);
 }

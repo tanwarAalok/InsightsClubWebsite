@@ -8,8 +8,10 @@ import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
+	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
@@ -25,7 +27,6 @@ const Create = () => {
 			setError("Please fill out all fields.");
 			return null;
 		}
-		setError("");
 		setSaving(true);
 		const data = {
 			title,
@@ -40,7 +41,8 @@ const Create = () => {
 		} finally {
 			setSaving(false);
 		}
-		console.log();
+		navigate("/blogs");
+		console.log("error: " + error);
 	};
 
 	return (
@@ -131,6 +133,7 @@ const Create = () => {
 					</button>
 				</form>
 			</div>
+
 			<form className='create-blog-preview'>
 				<label>Preview</label>
 				<div className='create-blog-preview-body'>
@@ -141,7 +144,9 @@ const Create = () => {
 					/>
 				</div>
 			</form>
-			<p> error: {error}</p>
+			{error !== "" && (
+				<p className='createBlog-error'>{alert("Error : " + error)}</p>
+			)}
 		</div>
 	);
 };

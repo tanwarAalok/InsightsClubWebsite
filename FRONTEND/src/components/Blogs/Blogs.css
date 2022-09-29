@@ -5,9 +5,9 @@
 }
 .blogs-container {
 	padding: 0 9rem;
-	flex: 1.2;
+	flex: 2;
 	margin-left: 150px;
-	/* margin-right: 170px; */
+	margin-right: 170px;
 	margin-top: 1.5rem;
 }
 .blogs-container-header {
@@ -46,10 +46,10 @@
 }
 .blogs-recently-queried {
 	font-family: "Mulish";
-	/* position: absolute;
+	position: absolute;
 	right: 0;
-	top: 170px; */
-	margin-top: -180%;
+	top: 180px;
+	/* margin-top: -180%; */
 	margin-right: 5em;
 }
 .blogs-recently-queried-heading {

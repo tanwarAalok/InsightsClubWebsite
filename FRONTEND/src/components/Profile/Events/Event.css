@@ -1,0 +1,91 @@
+.profile-event-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	border: 2px solid #b9b9b9;
+	border-radius: 10px;
+	outline: none;
+	padding: 1rem;
+	margin-top: 1.2em;
+	font-family: "Mulish";
+	margin: 1rem 1rem 1rem 1rem;
+}
+.profile-event-header {
+	display: flex;
+	justify-content: space-between;
+}
+.profile-date {
+	display: flex;
+	justify-content: space-between;
+	width: 30%;
+}
+.profile-event-header-name {
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+.profile-event-main {
+	margin: 1rem 0;
+}
+.profile-event-footer {
+	display: flex;
+	justify-content: space-between;
+}
+.profile-event-register-button {
+	font-size: 1rem;
+	font-family: "Mulish";
+	background-color: #ffffff;
+	border: 3px solid #5fca64;
+	color: #5fca64;
+	border-radius: 10px;
+	padding: 0.5rem 2rem;
+}
+.profile-event-footer p {
+	margin-left: 0.3rem;
+	font-size: 1.2rem;
+}
+.profile-footer {
+	display: flex;
+	justify-content: space-between;
+	width: 30%;
+	margin-top: 12px;
+}
+.profile-mode {
+	opacity: 0.7;
+	font-weight: 500;
+}
+.profile-b {
+	font-weight: 600;
+}
+@media (max-width: 600px) {
+	.profile-event-header-name {
+		font-size: 0.7rem;
+		font-weight: 600;
+		margin-bottom: 10px;
+	}
+	.profile-b {
+		font-size: 0.5rem;
+	}
+	.profile-date {
+		justify-content: space-between;
+		width: 60%;
+	}
+	.profile-event-main-content {
+		font-size: 0.5rem;
+	}
+
+	.profile-event-register-button {
+		width: 15px;
+		height: 5vh;
+		justify-content: center;
+		align-content: center;
+		margin-left: -50px;
+	}
+	.profile-mode {
+		font-size: 0.5rem;
+	}
+	.profile-r {
+		font-size: 0.5rem;
+		text-align: center;
+	}
+}

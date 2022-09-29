@@ -4,13 +4,14 @@ import User_Image from "../../media/user_profile.jpeg";
 import "./Navbar.css";
 import "@fontsource/mulish";
 import { useCookies } from "react-cookie";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import AuthModal from "../AuthCards/Auth";
 
 function Navbar() {
 	const [menu, setMenu] = useState(false);
 	const [showAuthModal, displayAuthModal] = useState(false);
 	const [cookies] = useCookies(["user"]);
+	const navigate = useNavigate();
 
 	useEffect(() => {
         if(showAuthModal === true || menu === true)
@@ -33,12 +34,11 @@ function Navbar() {
 									id='profile-picture'
 									className='profile-picture-mobile'
 									onClick={() => {
-										// display login panel only when not logged in
-										!(cookies.hasOwnProperty('user')
-											&& Object.keys(cookies.user).length !== 0)
-											&& displayAuthModal(true)
-										//@TODO: HANDLE CLICK WHEN LOGGED IN
-										// redirect to profile
+										if (!(cookies.hasOwnProperty('user') && Object.keys(cookies.user).length !== 0)) {
+											displayAuthModal(true)
+										} else {
+											navigate('/profile');
+										}
 									}}>
 									<img src={User_Image} className='profilepic' alt='Profile' />
 									<span className='nav-link'>
@@ -80,12 +80,11 @@ function Navbar() {
 						id='profile-picture'
 						className='profile-picture pp-desktop'
 						onClick={() => {
-							// display login panel only when not logged in
-							!(cookies.hasOwnProperty('user')
-								&& Object.keys(cookies.user).length !== 0)
-								&& displayAuthModal(true)
-							//@TODO: HANDLE CLICK WHEN LOGGED IN
-							// redirect to profile
+							if (!(cookies.hasOwnProperty('user') && Object.keys(cookies.user).length !== 0)) {
+								displayAuthModal(true)
+							} else {
+								navigate('/profile');
+							}
 						}}>
 						<img src={User_Image} className='profilepic' alt='Profile' />
 					</button>

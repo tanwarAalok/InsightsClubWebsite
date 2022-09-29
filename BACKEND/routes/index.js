@@ -23,6 +23,11 @@ const {
 	deleteDepartment,
 	updateDepartment,
 	verifyBlog,
+	getAllUsers,
+	getUserById,
+	deleteUser,
+	makeCoAdmin,
+	removeCoAdmin
 } = require("../controllers/managementController");
 const {
 	createBlog,
@@ -31,6 +36,7 @@ const {
 	deleteBlog,
 	updateBlog,
 	likeBlog,
+	getBlogByUser,
 } = require("../controllers/blogController");
 const { 
 	getAllArticles,
@@ -70,6 +76,7 @@ router
 	.put(verifyUser, updateBlog);
 router.route("/blog/:id/like").post(verifyUser, likeBlog);
 router.route("/blog/:id/verify").get(verifyUser, verifyBlog);
+router.route("/blog/user/:id").get(getBlogByUser);
 
 router.route("/video/all").get(getAllVideos);
 router.route("/video/new").post(verifyUser, createVideo);
@@ -91,3 +98,15 @@ router
 	.get(getArticle)
 	.delete(verifyUser, deleteArticle)
 	.put(verifyUser, updateArticle);
+
+router.route("/user/all").get(verifyUser, getAllUsers);
+router
+	.route("/user/:id")
+	.get(getUserById)
+	.delete(verifyUser, deleteUser);
+router
+	.route("/user/promote/:id")
+	.put(verifyUser, makeCoAdmin);
+router
+	.route("/user/demote/:id")
+	.put(verifyUser, removeCoAdmin);

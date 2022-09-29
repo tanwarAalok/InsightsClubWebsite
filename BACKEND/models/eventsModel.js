@@ -47,6 +47,11 @@ const eventsSchema = new mongoose.Schema({
   venue: {
     type: String,
   },
+  winners: [
+    {
+      type: String
+    }
+  ]
 });
 
 module.exports = mongoose.model("Events", eventsSchema);
