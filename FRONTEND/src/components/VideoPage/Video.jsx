@@ -33,13 +33,17 @@ function Video() {
 
     useEffect(() => {
         // fetch all video from database
-        axios.get('http://localhost:8080/video/all').then((data) => {
-            setVideos(data.data)
-        }).catch((err) => {
+        axios
+          .get("https://insights-api.onrender.com/video/all")
+          .then((data) => {
+            setVideos(data.data);
+          })
+          .catch((err) => {
             console.error(err);
-        }).then(() => {
-            console.log('Videos fetched successfully !!')
-        })
+          })
+          .then(() => {
+            console.log("Videos fetched successfully !!");
+          });
     }, [])
 
     return (

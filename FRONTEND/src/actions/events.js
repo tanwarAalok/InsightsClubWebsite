@@ -6,7 +6,7 @@ import {
 } from "../constants/eventsActionTypes";
 import { Fetch, Create, Update, Delete } from "../api/index.js";
 
-let eventsUrl = "http://localhost:8080/event";
+let eventsUrl = "https://insights-api.onrender.com/event";
 
 export const getEvents = () => async (dispatch) => {
 	try {
