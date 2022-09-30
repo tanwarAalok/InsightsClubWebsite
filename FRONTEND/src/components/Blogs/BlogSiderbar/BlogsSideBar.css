@@ -23,3 +23,19 @@ a {
 .blogs-sidebar-list-element:hover {
 	background-color: #f79711;
 }
+@media only screen and (max-width: 700px) {
+	.blogs-sidebar-container {
+		/* margin-top: -172%; */
+		/* top: 180px; */
+		font-family: "Mulish";
+		/* position: fixed; */
+		width: 150px;
+	}
+	.blogs-sidebar-list-element {
+		font-size: 1rem;
+		margin-bottom: 0.5em;
+		border-radius: 10px;
+		transition: 0.2s ease;
+		cursor: pointer;
+	}
+}
