@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "./Blog.css";
-<<<<<<< HEAD
+
 import moment from "react-moment";
-=======
 import axios from "axios";
-import moment from "moment";
->>>>>>> 65c180c338a1466f21c25b505e7e176becbd4104
+
+
 import { useNavigate } from "react-router-dom";
 import LIKE from "../../../media/likeVector.svg";
 import ACTIVELIKE from "../../../media/activeLikeVector.svg";
