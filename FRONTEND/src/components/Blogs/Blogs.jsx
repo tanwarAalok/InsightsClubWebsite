@@ -17,8 +17,8 @@ function Blogs() {
 	console.log(Blogs);
 	const sideBarElement = [
 		{ Element: { name: "Home", address: "/" } },
-		{ Element: { name: "Event", address: "/" } },
-		{ Element: { name: "Domains", address: "/" } },
+		{ Element: { name: "Event", address: "/events" } },
+		{ Element: { name: "Domains", address: "/domains" } },
 		{ Element: { name: "Blog", address: "/blogs" } },
 		{ Element: { name: "Bookmarked", address: "/" } },
 	];
@@ -68,13 +68,13 @@ function Blogs() {
 				<div className='blogs-recently-queried'>
 					<p className='blogs-recently-queried-heading'>Recently queried</p>
 					<ul className='blogs-recently-queried-list'>
-						{RecentlySeen.map((item, index) => (
+						{/* {RecentlySeen.map((item, index) => (
 							<a href={item.Element.address} key={index}>
 								<li className='blogs-recently-queried-list-element'>
 									{item.Element.name}
 								</li>
 							</a>
-						))}
+						))} */}
 					</ul>
 				</div>
 			</div>

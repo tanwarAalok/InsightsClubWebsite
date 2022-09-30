@@ -70,3 +70,22 @@
 	margin-bottom: 2rem;
 	font-weight: 200;
 }
+
+@media only screen and (max-width: 600px) {
+	.blogs-recently-queried {
+		font-family: "Mulish";
+		position: relative;
+		margin-right: 100px;
+		display: none;
+	}
+	.blogs-container {
+		padding: 0 9rem;
+		flex: 1;
+		margin-left: 20px;
+		margin-right: 20px;
+		margin-top: 1rem;
+	}
+	.blogs-container-sort {
+		font-size: 0.7rem;
+	}
+}
