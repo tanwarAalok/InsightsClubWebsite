@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../components/Footer/Footer";
 
 const EventsPage = () => {
-	const [eventType, setEventType] = useState("Ongoing");
+	const [eventType, setEventType] = useState("Past");
 
 	const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ const EventsPage = () => {
 		}
 	}, [dispatch, eventType]);
 
-	const events = useSelector((state) => state.events);
+  const events = useSelector((state) => state.events);
 
 	return (
     <>
@@ -66,9 +66,9 @@ const EventsPage = () => {
             </div>
 
             <div className="bottomEventContainer">
-              {events.map((event, key) => (
-                <EventsContainer key={key} event={event} />
-              ))}
+              {events.length > 0 ? events.map((event) => (
+                <EventsContainer key={event._id} event={event} />
+              )) : (<h2 style={{textAlign: "center"}}>No {eventType} Events</h2>)}
             </div>
           </div>
         </div>

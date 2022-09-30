@@ -5,6 +5,9 @@ import moment from "react-moment";
 import axios from "axios";
 
 
+
+import axios from "axios";
+import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import LIKE from "../../../media/likeVector.svg";
 import ACTIVELIKE from "../../../media/activeLikeVector.svg";

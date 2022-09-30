@@ -6,7 +6,7 @@ import {
 } from "../constants/articleActionTypes";
 import { Fetch, Create, Update, Delete } from "../api/index.js";
 
-const articleUrl = "http://localhost:8080";
+const articleUrl = "https://insights-api.onrender.com/";
 
 export const getArticle = () => async (dispatch) => {
 	try {
