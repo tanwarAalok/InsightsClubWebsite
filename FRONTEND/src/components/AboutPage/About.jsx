@@ -14,15 +14,15 @@ import { Outlet } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
 function About() {
+    const president = {
+        name: 'Anubhav Raj',
+        post: 'President',
+        pfp: Anubhav_pfp,
+        github: 'https://github.com/Anubhav980',
+        linkedin: 'https://www.linkedin.com/in/anubhav-raj-5175851b4/',
+        insta: 'https://instagram.com/anubhav_322?igshid=YmMyMTA2M2Y='
+    }
     const insightsHeads = [
-        {
-            name: 'Anubhav Raj',
-            post: 'President',
-            pfp: Anubhav_pfp,
-            github: 'https://github.com/Anubhav980',
-            linkedin: 'https://www.linkedin.com/in/anubhav-raj-5175851b4/',
-            insta: 'https://instagram.com/anubhav_322?igshid=YmMyMTA2M2Y='
-        },
         {
             name: 'Amar Kumar',
             post: 'Vice-President',
@@ -98,6 +98,38 @@ function About() {
                     </div>
                 </div>
             </div>
+
+            <div className="insights-leads-card-group">
+                <div className="insights-leads-card">
+                    <h3 className="insights-leads-card-heading">{president.post}</h3>
+                    <div
+                        style={{ backgroundImage: `url(${president.pfp})` }}
+                        className="insights-leads-pfp" />
+                    <span className="insights-leads-name">{president.name}</span>
+                    <div className="about-social-links">
+                        {president.linkedin &&
+                            <a href={president.linkedin}
+                                target="_blank" rel="noreferrer" className="insights-leads-social-link">
+                                <img src={LinkedInLogo} alt="LinkedIn" className="insights-leads-social-logo" />
+                            </a>
+                        }
+                        {president.github &&
+                            <a href={president.github}
+                                target="_blank" rel="noreferrer" className="insights-leads-social-link">
+                                <img src={GithubLogo} alt="GitHub" className="insights-leads-social-logo" />
+                            </a>
+                        }
+                        {president.insta &&
+                            <a href={president.insta}
+                                target="_blank" rel="noreferrer" className="insights-leads-social-link">
+                                <img src={InstagramLogo} alt="Instagram" className="insights-leads-social-logo" />
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+
+
             <div className="insights-leads-card-group">
                 {
                     insightsHeads.map((head, index) => {
