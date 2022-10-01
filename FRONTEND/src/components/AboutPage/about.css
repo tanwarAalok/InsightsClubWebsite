@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     padding: 5vw;
-    margin-bottom: 150px;
+    margin-bottom: 100px;
 }
 .about-heading {
     text-align: center;
@@ -29,7 +29,6 @@
     text-align: justify;
     letter-spacing: 0.015em;
     color: #000000;
-    margin-bottom: 50px;
 }
 
 .about-text > q {
@@ -65,17 +64,16 @@
     justify-content: space-around;
     flex-wrap: wrap;
     width: 100%;
-    margin-bottom: 150px;
 }
 
 .faculty-card {
-    width: 350px;
-    margin-bottom: 100px;
+    width: 300px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 .insights-leads-pfp {
@@ -105,13 +103,13 @@
 }
 
 .insights-leads-card {
-    width: 350px;
-    margin-bottom: 100px;
+    width: 300px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 .insights-leads-card-heading {

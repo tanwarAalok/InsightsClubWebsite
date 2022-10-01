@@ -22,9 +22,17 @@ function EventSlides() {
         axios.get(`${eventUrl}/all`)
             .then((res) => {
                 const events = res.data.events;
-                setUpcomingEvent(events.find(event => event.status === 'upcoming'))
-                setCurrentEvent(events.find(event => event.status === 'ongoing'))
-                setPastEvent(events.find(event => event.status === 'past'))
+                const _upcoming = events.find(event => event.status === 'upcoming')
+                const _ongoing = events.find(event => event.status === 'ongoing')
+                const _past = events.find(event => event.status === 'past')
+                console.log(_upcoming, _ongoing, _past)
+
+                if (_upcoming != undefined && _upcoming != null)
+                    setUpcomingEvent(_upcoming)
+                if (_ongoing != undefined && _ongoing != null)
+                    setCurrentEvent(_upcoming)
+                if (_past != undefined && _past != null)
+                    setPastEvent(_past)
             }).catch((err) => {
                 console.error(err);
             })

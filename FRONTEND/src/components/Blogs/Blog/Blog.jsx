@@ -13,7 +13,7 @@ import LIKE from "../../../media/likeVector.svg";
 import ACTIVELIKE from "../../../media/activeLikeVector.svg";
 
 function Blog({ blog }) {
-	const url = `http://localhost:8080/blog/${blog._id}/like`;
+	const url = `https://insights-api.onrender.com/blog/${blog._id}/like`;
 	console.log(url);
 	const [liked, setLiked] = useState(false);
 	const navigate = useNavigate();
