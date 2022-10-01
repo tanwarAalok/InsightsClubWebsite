@@ -30,7 +30,7 @@ function EventSlides() {
                 if (_upcoming != undefined && _upcoming != null)
                     setUpcomingEvent(_upcoming)
                 if (_ongoing != undefined && _ongoing != null)
-                    setCurrentEvent(_upcoming)
+                    setCurrentEvent(_ongoing)
                 if (_past != undefined && _past != null)
                     setPastEvent(_past)
             }).catch((err) => {
@@ -74,7 +74,7 @@ function EventSlides() {
                     </button>
                     <div className="slides">
                         {Object.keys(pastEvent).length > 0 &&
-                            <div className="slide">
+                            <div className={`slide ${Object.keys(upcomingEvent).length + Object.keys(currentEvent).length === 0 ? "slide-active":""}`}>
                                 <div className="slide-info">
                                     <h3 className="slide-heading">Past Event</h3>
                                     <p className="slide-text">
@@ -114,7 +114,7 @@ function EventSlides() {
                             </div>
                         }
                         {Object.keys(upcomingEvent).length > 0 &&
-                            <div className="slide">
+                            <div className={`slide ${Object.keys(currentEvent).length === 0 ? "slide-active":""}`}>
                                 <div className="slide-info">
                                     <h3 className="slide-heading">Upcoming Event</h3>
                                     <p className="slide-text">
