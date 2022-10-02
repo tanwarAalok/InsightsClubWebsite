@@ -19,15 +19,7 @@ function Blogs() {
 		{ Element: { name: "Home", address: "/" } },
 		{ Element: { name: "Event", address: "/events" } },
 		{ Element: { name: "Domains", address: "/domains" } },
-		{ Element: { name: "Blog", address: "/blogs" } },
 		{ Element: { name: "Bookmarked", address: "/" } },
-	];
-	const RecentlySeen = [
-		{ Element: { name: "coding techBlog 1", address: "/" } },
-		{ Element: { name: "photgraphy nature Blog 2", address: "/" } },
-		{ Element: { name: "photgraphy nature Blog 2", address: "/" } },
-		{ Element: { name: "photgraphy nature Blog 2", address: "/" } },
-		{ Element: { name: "photgraphy nature Blog 2", address: "/" } },
 	];
 
 	return (
@@ -52,7 +44,7 @@ function Blogs() {
 						</div>
 						<div className='blogs-container-header-createBlog'>
 							<p>
-								<a href='/write'>Wirte a Blog</a>
+								<a href='/write'>Write a Blog</a>
 							</p>
 							<img src={WRITE} alt='write' />
 						</div>
@@ -64,18 +56,6 @@ function Blogs() {
 							</>
 						))}
 					</div>
-				</div>
-				<div className='blogs-recently-queried'>
-					<p className='blogs-recently-queried-heading'>Recently queried</p>
-					<ul className='blogs-recently-queried-list'>
-						{/* {RecentlySeen.map((item, index) => (
-							<a href={item.Element.address} key={index}>
-								<li className='blogs-recently-queried-list-element'>
-									{item.Element.name}
-								</li>
-							</a>
-						))} */}
-					</ul>
 				</div>
 			</div>
 		</>

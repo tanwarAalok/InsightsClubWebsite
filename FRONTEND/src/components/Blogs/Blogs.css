@@ -72,20 +72,17 @@
 }
 
 @media only screen and (max-width: 600px) {
-	.blogs-recently-queried {
-		font-family: "Mulish";
-		position: relative;
-		margin-right: 100px;
-		display: none;
-	}
 	.blogs-container {
-		padding: 0 9rem;
+		padding: 0 1rem;
 		flex: 1;
-		margin-left: 20px;
-		margin-right: 20px;
+		margin-left: 0px;
+		margin-right: 0px;
 		margin-top: 1rem;
 	}
 	.blogs-container-sort {
-		font-size: 0.7rem;
+		font-size: 1.2rem;
+	}
+	.blogs-sidebar-container {
+		display: none;
 	}
 }
