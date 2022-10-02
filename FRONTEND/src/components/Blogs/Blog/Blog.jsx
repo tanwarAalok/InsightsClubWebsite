@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import "./Blog.css";
+
+import moment from "react-moment";
 import axios from "axios";
-import moment from "moment";
+// import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import LIKE from "../../../media/likeVector.svg";
 
 function Blog({ blog }) {
+	const url = `https://insights-api.onrender.com/blog/${blog._id}/like`;
+	console.log(url);
+	const [liked, setLiked] = useState(false);
 	const navigate = useNavigate();
 
 	return (

@@ -5,7 +5,7 @@ import "@fontsource/mulish";
 import "@fontsource/inter";
 import "@fontsource/martel";
 
-const domainUrl = 'http://localhost:8080/dept'
+const domainUrl = 'https://insights-api.onrender.com/dept'
 
 function MemberCard({ details }) {
     return (

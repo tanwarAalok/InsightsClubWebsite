@@ -13,12 +13,21 @@ import s from './s.png';
 const Newsarticle=()=>{
     return(
         <div className='container2'>
-            <div className='a'>Newsletter</div>
+            <div className='txtt'>Newsletter
+            
+            </div>
             <br/>
-            <Base1 img={ins} link={a}/>           
-             <br/>
-            <Base1 img={s} link={b}/>
-            <br/>
+            <div className='divv'>
+                <Base1 className='az' img={ins} link={a}/>           
+                <br/>
+                <br/>
+                <Base1 className='az' img={s} link={b}/>
+                        
+                
+                
+                         
+                
+            </div>
             
         </div>
     )
