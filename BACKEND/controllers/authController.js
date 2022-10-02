@@ -50,7 +50,7 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
         else try {
             jwt.verify(req.cookies.token, process.env.JWT_SECRET);
             // verified successfully
-            res.setHeader('set-cookie', ['token=loggedout; path=/; samesite=lax; httponly;'/*Secure;'*/, 'user={}; path=/; samesite=lax;'/*Secure;'*/]);
+            res.setHeader('set-cookie', ['token=loggedout; path=/; samesite=lax; httponly; Secure;', 'user={}; path=/; samesite=lax; Secure;']); // added secure for production
             res.status(200).json({ success: true, message: "User logged out !!" });
         } catch (e) {
             if (e.name == 'TokenExpiredError')
@@ -97,7 +97,7 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
                 res.status(200).json({ success: true, message: 'User logged in !!' });
             }
             else {
-                res.setHeader('set-cookie', ['token=loggedout; path=/; samesite=lax; httponly;'/*Secure;'*/, 'user={}; path=/; samesite=lax;'/*Secure;'*/]);
+                res.setHeader('set-cookie', ['token=loggedout; path=/; samesite=lax; httponly; Secure;', 'user={}; path=/; samesite=lax; Secure;']); // added secure for production
 
                 return next(new ErrorHandler('Invalid credentials !!', 400));
             }
