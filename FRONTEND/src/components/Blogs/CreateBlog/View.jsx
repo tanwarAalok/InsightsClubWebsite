@@ -7,10 +7,8 @@ import LIKE from "../../../media/likeVector.svg";
 
 const View = () => {
 	const blogsUrl = "https://insights-api.onrender.com/blog";
-
 	const params = useParams();
 	const [b, setBlog] = useState({});
-
 	useEffect(() => {
 		axios.get(`${blogsUrl}/${params.id}`).then((res) => {
 			let data = res.data;
@@ -18,11 +16,11 @@ const View = () => {
 		});
 	}, [params.id]);
 
-	const url = `http://localhost:8080/blog/${b.blog._id}/like`;
-	console.log(b.blog._id);
 	const handleLikes = () => {
-		axios.post(1, url);
+		//post user id
+		// axios.post(1, `${blogsUrl}/${params.id}/like`);
 	};
+
 	if (b) {
 		return (
 			<>
@@ -39,10 +37,10 @@ const View = () => {
 						className='view-blog-content'
 						dangerouslySetInnerHTML={{ __html: b.blog?.content }}></div>
 					<div className='view-blog-footer'>
-						<div className='blog-footer-like'>
+						<div className='view-blog-footer-like'>
 							<img src={LIKE} alt='like' onClick={() => handleLikes()} />
 						</div>
-						<p className='blog-likesCounter'>{b.blog.likes}</p>
+						<p className='view-blog-likesCounter'>{b.blog?.likes.length}</p>
 					</div>
 				</div>
 			</>

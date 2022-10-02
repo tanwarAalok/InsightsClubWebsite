@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./Blog.css";
-
-import moment from "react-moment";
+import moment from "moment";
 import axios from "axios";
-// import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import LIKE from "../../../media/likeVector.svg";
 
