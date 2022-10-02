@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import "./Blog.css";
-import { useDispatch } from "react-redux";
-import { deleteBlogs } from "../../../actions/blogs";
+// import { useDispatch } from "react-redux";
+// import { deleteBlogs } from "../../../actions/blogs";
 import LIKE from "../../../media/likeVector.svg";
 import ACTIVELIKE from "../../../media/activeLikeVector.svg";
 import SAVED from "../../../media/SavedVector.svg";
 import COMMNENT from "../../../media/commentVector.svg";
 
-function Blog({ blog }) {
+function Blog({ blog, handleDelete }) {
 	const [liked, setLiked] = useState(false);
 	const [count, setCount] = useState(blog.likes);
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 	const onChange = () => {
 		setLiked((prev) => !prev);
 		if (liked) {
@@ -19,10 +19,10 @@ function Blog({ blog }) {
 			setCount(count + 1);
 		}
 	};
-	const handleDelete = () => {
-		dispatch(deleteBlogs(blog._id));
-		window.location.reload(false);
-	};
+	// const handleDelete = () => {
+	// 	dispatch(deleteBlogs(blog._id));
+	// 	window.location.reload(false);
+	// };
 	return (
 		<>
 			<div className='profile-blog-container'>
@@ -60,7 +60,7 @@ function Blog({ blog }) {
 				<div className='profile-blog-delete-edit'>
 					<button
 						className='profile-blog-delete'
-						onClick={() => handleDelete()}>
+						onClick={() => handleDelete(blog._id)}>
 						Delete
 					</button>
 					<button className='profile-blog-edit'>Edit</button>

@@ -41,8 +41,8 @@ const Create = () => {
 		} finally {
 			setSaving(false);
 		}
-		navigate("/blogs");
 		console.log("error: " + error);
+		navigate("/profile");
 	};
 
 	return (
