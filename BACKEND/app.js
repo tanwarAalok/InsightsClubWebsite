@@ -6,7 +6,7 @@ const fileUpload = require("express-fileupload");
 const cors = require("cors");
 
 app.use(express.json());
-const allowedOrigins = ["https://insights-club-vitb.vercel.app/", "http://localhost:3000/"];
+const allowedOrigins = ["https://insights-club-vitb.vercel.app/", "http://localhost:3000/", "https://insights-club-vitb.onrender.com/"];
 app.use(
 	cors({
 		origin: function (origin, callback) {
@@ -27,6 +27,7 @@ app.use(
 		},
 		credentials: true,
 	}));
+app.set("trust proxy", 1);
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload({ useTempFiles: true }));
