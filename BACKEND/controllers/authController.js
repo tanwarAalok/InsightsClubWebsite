@@ -6,8 +6,8 @@ const bcrypt = require("bcrypt");
 const nodemailer = require("nodemailer");
 const google = require("googleapis");
 const cloudinary = require("cloudinary").v2;
-const dotenv = require("dotenv");
-dotenv.config({ path: "config/config.env" });
+// const dotenv = require("dotenv");
+// dotenv.config({ path: "config/config.env" });
 cloudinary.config({
 	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
 	api_key: process.env.CLOUDINARY_KEY,
@@ -47,31 +47,23 @@ const getRandomText = () => {
 };
 
 exports.logout = catchAsyncErrors(async (req, res, next) => {
-	if (
-		Object.keys(req.cookies).length !== 0 &&
-		req.cookies.hasOwnProperty("token")
-	) {
-		if (req.cookies.token == "loggedout")
-			res
-				.status(200)
-				.json({ success: true, message: "User was already logged out !" });
-		else
-			try {
-				jwt.verify(req.cookies.token, process.env.JWT_SECRET);
-				// verified successfully
-				res.setHeader("set-cookie", [
-					"token=loggedout; path=/; samesite=lax; httponly;" /*Secure;'*/,
-					"user={}; path=/; samesite=lax;" /*Secure;'*/,
-				]);
-				res.status(200).json({ success: true, message: "User logged out !!" });
-			} catch (e) {
-				if (e.name == "TokenExpiredError")
-					return next(new ErrorHandler("Token expired !!", 400));
-				else return next(new ErrorHandler("Some error occured !!", 500));
-			}
-	} else {
-		return next(new ErrorHandler("Token is missing !!", 400));
-	}
+    if (Object.keys(req.cookies).length !== 0 && req.cookies.hasOwnProperty('token')) {
+        if (req.cookies.token == 'loggedout')
+            res.status(200).json({ success: true, message: 'User was already logged out !' });
+        else try {
+            jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+            // verified successfully
+            res.setHeader('set-cookie', ['token=loggedout; path=/; samesite=lax; httponly; Secure;', 'user={}; path=/; samesite=lax; Secure;']); // added secure for production
+            res.status(200).json({ success: true, message: "User logged out !!" });
+        } catch (e) {
+            if (e.name == 'TokenExpiredError')
+                return next(new ErrorHandler('Token expired !!', 400));
+            else
+                return next(new ErrorHandler('Some error occured !!', 500));
+        }
+    } else {
+        return next(new ErrorHandler('Token is missing !!', 400));
+    }
 });
 
 exports.login = catchAsyncErrors(async (req, res, next) => {
@@ -116,12 +108,10 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
 					)}; path=/; expires=${expiry_date}; samesite=lax;` /*Secure;`*/,
 				]);
 
-				res.status(200).json({ success: true, message: "User logged in !!" });
-			} else {
-				res.setHeader("set-cookie", [
-					"token=loggedout; path=/; samesite=lax; httponly;" /*Secure;'*/,
-					"user={}; path=/; samesite=lax;" /*Secure;'*/,
-				]);
+                res.status(200).json({ success: true, message: 'User logged in !!' });
+            }
+            else {
+                res.setHeader('set-cookie', ['token=loggedout; path=/; samesite=lax; httponly; Secure;', 'user={}; path=/; samesite=lax; Secure;']); // added secure for production
 
 				return next(new ErrorHandler("Invalid credentials !!", 400));
 			}
