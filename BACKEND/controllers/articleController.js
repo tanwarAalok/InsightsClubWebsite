@@ -2,8 +2,8 @@ const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
 const mongoose = require('mongoose');
 const ErrorHandler = require('../utils/errorHandler');
 const Articles = require("../models/articleModel");
-// const dotenv = require("dotenv");
-// dotenv.config({ path: "config/config.env" });
+const dotenv = require("dotenv");
+dotenv.config({ path: "config/config.env" });
 
 //Function to check if user is the author of the article
 const isAuthor = async (articleID, userID) => {

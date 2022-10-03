@@ -6,7 +6,7 @@ const fileUpload = require("express-fileupload");
 const cors = require("cors");
 
 app.use(express.json());
-const allowedOrigins = ["https://insights-club-vitb.vercel.app/", "http://localhost:3000/", "https://insights-club-vitb.onrender.com"];
+const allowedOrigins = ["https://insights-club-vitb.vercel.app/", "http://localhost:3000", "https://insights-club-vitb.onrender.com"];
 app.use(
 	cors({
 		origin: function (origin, callback) {
