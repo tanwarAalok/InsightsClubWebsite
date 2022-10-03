@@ -6,7 +6,7 @@ import axios from "axios";
 import LIKE from "../../../media/likeVector.svg";
 
 const View = () => {
-	const blogsUrl = "https://insights-api.onrender.com/blog";
+	const blogsUrl = "https://insights-club-api.onrender.com/blog";
 	const params = useParams();
 	const [b, setBlog] = useState({});
 	useEffect(() => {
