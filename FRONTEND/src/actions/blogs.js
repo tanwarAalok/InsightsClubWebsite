@@ -7,7 +7,7 @@ import {
 } from "../constants/blogsActionTypes";
 import { Fetch, Create, Update, Delete } from "../api/index.js";
 
-const blogsUrl = "https://insights-club-api.onrender.com/blog";
+const blogsUrl = "http://localhost:8080/blog";
 
 export const getBlogs = () => async (dispatch) => {
 	try {
