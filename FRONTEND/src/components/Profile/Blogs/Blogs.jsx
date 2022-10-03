@@ -5,7 +5,7 @@ import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { deleteBlogs } from "../../../actions/blogs";
 
-const url = "https://insights-club-api.onrender.com/blog/user";
+const url = "http://localhost:8080/blog/user";
 
 function Blogs() {
 	const [blogs, setBlogs] = useState([]);

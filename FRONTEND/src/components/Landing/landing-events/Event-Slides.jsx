@@ -8,7 +8,7 @@ import { PopupContext } from "../../../contexts/popupContext";
 import EventDetails from "../../DetailEvent/eventDetails";
 import axios from "axios";
 
-const eventUrl = "https://insights-club-api.onrender.com/event";
+const eventUrl = "http://localhost:8080/event";
 
 function EventSlides() {
     const [currentEvent, setCurrentEvent] = useState({});

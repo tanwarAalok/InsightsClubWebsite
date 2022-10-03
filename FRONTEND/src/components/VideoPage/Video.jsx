@@ -34,7 +34,7 @@ function Video() {
     useEffect(() => {
         // fetch all video from database
         axios
-          .get("https://insights-club-api.onrender.com/video/all")
+          .get("http://localhost:8080/video/all")
           .then((data) => {
             setVideos(data.data);
           })
