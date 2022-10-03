@@ -101,12 +101,7 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
 				payload.name = doc.name;
 				payload.department = doc.department;
 
-				res.setHeader("set-cookie", [
-					`token=${token}; path=/; expires=${expiry_date}; samesite=lax; httponly;` /*Secure;`*/,
-					`user=${JSON.stringify(
-						payload
-					)}; path=/; expires=${expiry_date}; samesite=lax;` /*Secure;`*/,
-				]);
+                res.setHeader('set-cookie', [`token=${token}; path=/; expires=${expiry_date}; samesite=lax; httponly; Secure;`, `user=${JSON.stringify(payload)}; path=/; expires=${expiry_date}; samesite=lax; Secure;`]);
 
                 res.status(200).json({ success: true, message: 'User logged in !!' });
             }
