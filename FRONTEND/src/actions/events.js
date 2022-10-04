@@ -4,12 +4,15 @@ import {
 	UPDATE,
 	DELETE,
 	FAIL,
+	NEW_EVENT_REQUEST,
+	NEW_EVENT_SUCCESS,
+	NEW_EVENT_FAIL,
+	CLEAR_ERRORS,
 } from "../constants/eventsActionTypes";
 import { Fetch, Create, Update, Delete } from "../api/index.js";
 import axios from "axios";
 
-// let eventsUrl = "https://insights-api.onrender.com/event";  
-let eventsUrl = "http://localhost:8080/event";  
+let eventsUrl = `${process.env.REACT_APP_BACKEND_URL}/event`;  
 
 export const getEvents = () => async (dispatch) => {
 	try {
@@ -76,16 +79,19 @@ export const getPastEvents = () => async (dispatch) => {
 };
 
 export const createEvents = (event) => async (dispatch) => {
-	const config = {
-		headers: { "Content-Type": "application/json" },
-	};
 	try {
+		dispatch({ type: NEW_EVENT_REQUEST });
+
+		const config = {
+			headers: { "Content-Type": "application/json" },
+		};
+
 		const { data } = await axios.post(`${eventsUrl}/new`, event, config);
 
-		dispatch({ type: CREATE, payload: data });
+		dispatch({ type: NEW_EVENT_SUCCESS, payload: data });
 	} catch (error) {
 		dispatch({
-		type: FAIL,
+		type: NEW_EVENT_FAIL,
 		payload: error.response.data.message,
 		});
 	}
@@ -109,4 +115,9 @@ export const deleteEvents = (id) => async (dispatch) => {
 	} catch (error) {
 		console.log(error.message);
 	}
+};
+
+// Clearing Errors
+export const clearErrors = () => async (dispatch) => {
+  dispatch({ type: CLEAR_ERRORS });
 };

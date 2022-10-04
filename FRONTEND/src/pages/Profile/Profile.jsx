@@ -9,7 +9,7 @@ import { useCookies } from "react-cookie";
 function Profile() {
 	const [state, setState] = useState("BLOGS");
 	const [cookies, setCookies] = useCookies();
-	console.log(cookies);
+	console.log("COOKIES", cookies);
 	return (
 		<div className='profile-main-container'>
 			<div className='profile-main-header'>

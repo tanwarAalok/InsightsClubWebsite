@@ -1,43 +1,58 @@
 import React, {useState} from 'react';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './newEvent.styles.scss'
-import { createEvents } from '../../actions/events';
+import { clearErrors, createEvents } from '../../actions/events';
+import { NEW_EVENT_RESET } from '../../constants/eventsActionTypes';
 
 const NewEvent = () => {
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  
+  const { error, success } = useSelector((state) => state.newEvent);
 
-    const [name, setName] = useState("");
-    const [shortDescription, setshortDescription] = useState("");
-    const [date, setDate] = useState(null);
-    const [description, setDescription] = useState("");
-    const [domain, setdomain] = useState("");
-    const [department, setdepartment] = useState("");
-    // const [status, setstatus] = useState("");
-    const [mode, setmode] = useState("");
-    const [venue, setvenue] = useState("");
+  const [name, setName] = useState("");
+  const [shortDescription, setshortDescription] = useState("");
+  const [date, setDate] = useState(null);
+  const [description, setDescription] = useState("");
+  const [domain, setdomain] = useState("");
+  const [department, setdepartment] = useState("");
+  // const [status, setstatus] = useState("");
+  const [mode, setmode] = useState("");
+  const [venue, setvenue] = useState("");
   const [image, setImage] = useState([]);
-  const [selectedFile, setSelectedFile] = useState();
-  const [fileInputState, setFileInputState] = useState('');
 
+  useEffect(() => {
+    if (error) {
+      alert("Something went wrong");
+      dispatch(clearErrors());
+    }
+
+    if (success) {
+      alert("Event created successfully");
+      dispatch({ type: NEW_EVENT_RESET });
+    }
+  }, [dispatch, error, success]);
+
+
+  // Convert image to base 64
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
-    setSelectedFile(file);
-    setFileInputState(e.target.value);
+    setFileToBase(file);
+  }
+
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImage(reader.result);
+    }
   }
 
     const handleSubmit = (e) => {
       e.preventDefault();
 
       const myForm = new FormData();
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (reader.readyState === 2) setImage(reader.result);
-      }
-      reader.readAsDataURL(selectedFile);
-
 
       myForm.set("title", name);
       myForm.set("shortDescription", shortDescription);
@@ -48,6 +63,7 @@ const NewEvent = () => {
       myForm.set("status", "upcoming");
       myForm.set("mode", "Online");
       myForm.set("venue", venue);
+      myForm.set("image", image);
 
         
       dispatch(createEvents(myForm));
@@ -99,7 +115,6 @@ const NewEvent = () => {
         />
         <input
           onChange={handleFileInputChange}
-          value={fileInputState}
           type="file"
           placeholder="image"
         />

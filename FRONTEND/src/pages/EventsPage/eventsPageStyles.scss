@@ -26,6 +26,30 @@
                 margin-bottom: 1.8rem;
             }
 
+            a{
+                display: flex;
+                align-items: center;
+
+                h4{
+                    font-family: 'Mulish';
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 1.3rem;
+                    line-height: 1.5rem;
+                }
+
+
+                div{
+                    margin-left: 1rem;
+                    background-color: #FFC776;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0.5rem 0.7rem;
+                    border-radius: 6px;
+                }
+            }
+
         }
 
 

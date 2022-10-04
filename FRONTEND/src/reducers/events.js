@@ -4,8 +4,9 @@ import {
 	UPDATE,
 	DELETE,
 } from "../constants/blogsActionTypes";
+import { CLEAR_ERRORS, NEW_EVENT_FAIL, NEW_EVENT_REQUEST, NEW_EVENT_RESET, NEW_EVENT_SUCCESS } from "../constants/eventsActionTypes";
 
-const eventsReducer = (events = [], action) => {
+export const eventsReducer = (events = [], action) => {
 	switch (action.type) {
 		case FETCH_ALL:
 			return action.payload;
@@ -22,4 +23,36 @@ const eventsReducer = (events = [], action) => {
 	}
 };
 
-export default eventsReducer;
+export const newEventReducer = (state = { event: {} }, action) => {
+  switch (action.type) {
+    case NEW_EVENT_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case NEW_EVENT_SUCCESS:
+      return {
+        loading: false,
+        success: action.payload.success,
+        event: action.payload.event,
+      };
+    case NEW_EVENT_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    case NEW_EVENT_RESET:
+      return {
+        ...state,
+        success: false,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};

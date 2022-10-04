@@ -9,6 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
+import newEventLogo from "../../assets/newEvent.svg";
 
 const EventsPage = () => {
 	const [eventType, setEventType] = useState("Past");
@@ -34,7 +35,10 @@ const EventsPage = () => {
           <div className="topDiv">
             <h1>Our Events</h1>
             <Link to={"/newEvent"}>
-              <button>New Event</button>
+              <h4>Add Event</h4>
+              <div>
+                <img src={newEventLogo} alt="svgLogo" />
+              </div>
             </Link>
           </div>
           <div className="pageContainer">

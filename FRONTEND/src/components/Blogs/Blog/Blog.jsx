@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import LIKE from "../../../media/likeVector.svg";
 
 function Blog({ blog }) {
-	const url = `https://insights-api.onrender.com/blog/${blog._id}/like`;
+	// const url = `${process.env.REACT_APP_BACKEND_URL}/blog/${blog._id}/like`;
 	const [liked, setLiked] = useState(false);
 	const navigate = useNavigate();
 
