@@ -6,8 +6,12 @@ import { useNavigate } from "react-router-dom";
 import LIKE from "../../../media/likeVector.svg";
 
 function Blog({ blog }) {
+<<<<<<< Updated upstream
 	const url = `https://insights-club-api.onrender.com/blog/${blog._id}/like`;
 	console.log(url);
+=======
+	const url = `https://insights-api.onrender.com/blog/${blog._id}/like`;
+>>>>>>> Stashed changes
 	const [liked, setLiked] = useState(false);
 	const navigate = useNavigate();
 

@@ -7,7 +7,7 @@ function BlogsSideBar({ array }) {
 			<div className='blogs-sidebar-container'>
 				<ul className='blogs-sidebar-list'>
 					{array.map((item, index) => (
-						<a href={item.Element.address}>
+						<a key={index} href={item.Element.address}>
 							<li className='blogs-sidebar-list-element' key={index}>
 								{item.Element.name}
 							</li>

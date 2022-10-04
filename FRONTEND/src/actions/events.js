@@ -3,10 +3,17 @@ import {
 	CREATE,
 	UPDATE,
 	DELETE,
+	FAIL,
 } from "../constants/eventsActionTypes";
 import { Fetch, Create, Update, Delete } from "../api/index.js";
+import axios from "axios";
 
+<<<<<<< Updated upstream
 let eventsUrl = "https://insights-club-api.onrender.com/event";
+=======
+// let eventsUrl = "https://insights-api.onrender.com/event";  
+let eventsUrl = "http://localhost:8080/event";  
+>>>>>>> Stashed changes
 
 export const getEvents = () => async (dispatch) => {
 	try {
@@ -73,12 +80,18 @@ export const getPastEvents = () => async (dispatch) => {
 };
 
 export const createEvents = (event) => async (dispatch) => {
+	const config = {
+		headers: { "Content-Type": "application/json" },
+	};
 	try {
-		const { data } = await Create(event, eventsUrl);
+		const { data } = await axios.post(`${eventsUrl}/new`, event, config);
 
 		dispatch({ type: CREATE, payload: data });
 	} catch (error) {
-		console.log(error.message);
+		dispatch({
+		type: FAIL,
+		payload: error.response.data.message,
+		});
 	}
 };
 

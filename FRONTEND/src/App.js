@@ -11,6 +11,7 @@ import EventDetails from "./components/DetailEvent/eventDetails";
 import Create from "./components/Blogs/CreateBlog/Create";
 import View from "./components/Blogs/CreateBlog/View";
 import Profile from "./pages/Profile/Profile";
+import NewEvent from "./components/NewEvent/newEvent";
 
 function App() {
 	return (
@@ -23,6 +24,7 @@ function App() {
 				<Route path='videos' element={<VideoPage />} />
 				<Route path='articles' element={<ArticleLanding />} />
 				<Route path='article/:id' element={<DetailedArticle />} />
+				<Route path="newEvent" element={<NewEvent/>}/>
 			</Route>
 			<Route path='blogs' element={<BlogsLanding />} />
 			<Route path='write' element={<Create />} />
