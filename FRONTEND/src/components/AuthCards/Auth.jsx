@@ -50,7 +50,7 @@ function SignInCard({ changeCard, handleClick, closeModal }) {
                                             // logged in close the modal
                                             console.log(data.data)
                                             // THIS SIMPLY UPDATES COOKIES VARIBALE FOR THE OTHER COMPONENTS
-                                            setCookies('TO_REFRESH_COOKIES', `This simply update the cookies variable !! ${Math.random()}`)
+                                            setCookies('TO_REFRESH_COOKIES', `This simply updates the cookies variable !! ${Math.random()}`, {sameSite: 'none', secure: 'true'})
                                             closeModal()
                                         })
                                         .catch((err) => {
