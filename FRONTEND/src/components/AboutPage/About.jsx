@@ -33,7 +33,7 @@ function About() {
         },
         {
             name: 'Sanjeev Kumar',
-            post: 'Administrative advisor',
+            post: 'Treasurer',
             pfp: SanjeevKumar_pfp,
             github: 'https://github.com/San123123123',
             linkedin: 'https://www.linkedin.com/in/sanjeev-kumar-ba7404227',
@@ -99,7 +99,7 @@ function About() {
                 </div>
             </div>
 
-            <div className="insights-leads-card-group">
+            <div className="insights-leads-card-group insights-president">
                 <div className="insights-leads-card">
                     <h3 className="insights-leads-card-heading">{president.post}</h3>
                     <div
