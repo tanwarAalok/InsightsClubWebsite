@@ -28,39 +28,6 @@ function Blogs() {
           <BlogsSideBar array={sideBarElement} />
         </div>
 
-<<<<<<< Updated upstream
-				<div className='blogs-container'>
-					<div className='blogs-container-header'>
-						<div className='blogs-container-sort'>
-							<p>
-								<a href='#'>Latest</a>
-							</p>
-							<p>
-								<a href='#'>Top</a>
-							</p>
-							<p>
-								<a href='#'>Saved</a>
-							</p>
-						</div>
-						<div className='blogs-container-header-createBlog'>
-							<p>
-								<a href='/write'>Write a Blog</a>
-							</p>
-							<img src={WRITE} alt='write' />
-						</div>
-					</div>
-					<div className='blogs-container-bloglist'>
-						{Blogs.map((blog, key) => (
-							<>
-								<Blog blog={blog} key={key} />
-							</>
-						))}
-					</div>
-				</div>
-			</div>
-		</>
-	);
-=======
         <div className="blogs-container">
           <div className="blogs-container-header">
             <div className="blogs-container-sort">
@@ -104,7 +71,6 @@ function Blogs() {
       </div>
     </>
   );
->>>>>>> Stashed changes
 }
 
 export default Blogs;

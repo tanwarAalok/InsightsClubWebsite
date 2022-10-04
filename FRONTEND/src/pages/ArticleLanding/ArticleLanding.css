@@ -1,20 +1,25 @@
 
-@media (min-width:600px) {
-    .my{
-        display: flex;
-        margin-top: 50px;
-    }
-    .we{
-        display:flex;
-    }
-    
+
+.my{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    padding: 5vh 5vw;
+    justify-content: space-between;
 }
+.child1{
+    width: 60vw;
+}
+.child2 {
+    width: 25vw;
+}
+
 @media (max-width:600px) {
     .my{
-        margin-top:20px;
+        flex-direction: column;
     }
-    .we{
-        display:flex;
+    .child1 .child2 {
+        width: 90vw;
     }
-    
 }
+

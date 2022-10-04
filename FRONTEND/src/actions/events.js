@@ -8,12 +8,8 @@ import {
 import { Fetch, Create, Update, Delete } from "../api/index.js";
 import axios from "axios";
 
-<<<<<<< Updated upstream
-let eventsUrl = "https://insights-club-api.onrender.com/event";
-=======
 // let eventsUrl = "https://insights-api.onrender.com/event";  
 let eventsUrl = "http://localhost:8080/event";  
->>>>>>> Stashed changes
 
 export const getEvents = () => async (dispatch) => {
 	try {
