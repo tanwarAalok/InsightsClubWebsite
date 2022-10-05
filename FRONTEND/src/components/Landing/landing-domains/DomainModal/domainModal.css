@@ -79,7 +79,7 @@
     box-sizing: border-box;
     display: grid;
     gap: 40px 75px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
     /* auto-fill allows grid to fit as many columns as possible, thereby wrapping up 
     columns when screen width is less */
 }
@@ -88,6 +88,7 @@
     box-sizing: border-box;
     background-color: white;
     border: 1px solid #B9B9B9;
+    height: 375px;
 }
 
 .member-pfp {
@@ -138,6 +139,18 @@
 }
 
 @media screen and (max-width:768px) {
+    .domain-details {
+        font-size: 18px;
+    }
+
+    .member-name {
+        font-size: 20px;
+    }
+
+    .member-description {
+        font-size: 18px;
+    }
+
     .domain-modal-card {
         width: 100vw;
         height: 100vh;
@@ -156,5 +169,6 @@
 
     .member-card {
         margin-bottom: 40px;
+        height: unset;
     }
 }

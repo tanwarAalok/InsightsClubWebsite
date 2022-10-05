@@ -109,11 +109,26 @@
     .video-player {
         height: 40vh;
     }
+
+    .video-title {
+        font-size: 32px;
+        margin-top: 0;
+    }
+
+    .video-description {
+        font-size: 20px;
+    }
+
+    .prev-button:hover, .next-button:hover {
+        transform: none;
+        cursor: pointer;
+    }
+
     .video-text {
-        padding: 5vw;
+        padding: 7vw 5vw;
     }
     .video-info {
-        min-height: none;
+        min-height: unset;
         width: 100vw;
         border-radius: 0;
         padding: 0;
