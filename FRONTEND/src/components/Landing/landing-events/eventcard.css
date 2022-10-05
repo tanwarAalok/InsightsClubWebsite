@@ -22,8 +22,8 @@
     align-items: center;
     justify-content: center;
     width: 100vw;
-    padding: 0 20px;
-    margin: 114px 0 40px 0;
+    padding: 0 40px;
+    margin: 114px 0 35px 0;
 }
 .slider-heading {
     flex: 0 0 60%;
@@ -95,7 +95,7 @@
     position: relative;
     display: none;
     width: 100vw;
-    min-height: 600px;
+    min-height: 450px;
     background-color: #FFF7ED;
 }
 .slide-active {
@@ -174,14 +174,16 @@
     }
     .slider-header {
         flex-direction: column;
+        margin-bottom: 0px;
     }
     .slider-heading {
         flex: 0 0 100%;
-        font-size: 50px;
+        font-size: 32px;
         text-align: center;
     }
     .slider-subheading {
         flex: 0 0 100%;
+        font-size: 18px;
         align-items: center;
         justify-content: center;
     }
@@ -189,10 +191,10 @@
         font-size: 20px;
     }
     .slide-heading {
-        font-size: 40px;
+        font-size: 32px;
     }
     .slide-text {
-        font-size: 20px;
+        font-size: 18px;
     }
     .slide-cover {
         display: none;

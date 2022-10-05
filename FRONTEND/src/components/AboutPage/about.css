@@ -111,6 +111,7 @@
 .insights-president {
     position: relative;
     top: -100px;
+    z-index: 3;
 }
 
 .insights-leads-card {
