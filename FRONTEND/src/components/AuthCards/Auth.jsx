@@ -50,7 +50,7 @@ function SignInCard({ changeCard, handleClick, closeModal }) {
                                             // logged in close the modal
                                             console.log(data.data)
                                             // THIS SIMPLY UPDATES COOKIES VARIBALE FOR THE OTHER COMPONENTS
-                                            setCookies('TO_REFRESH_COOKIES', `This simply updates the cookies variable !! ${Math.random()}`, {sameSite: 'none', secure: 'true'})
+                                            setCookies('TO_REFRESH_COOKIES', `This simply updates the cookies variable !! ${Math.random()}`, { sameSite: 'none', secure: 'true' })
                                             closeModal()
                                         })
                                         .catch((err) => {
@@ -260,23 +260,29 @@ function AuthModal({ displayModal, authPage }) {
     if (authCard === 'SignUp')
         return (
             <div className="modal-root" onClick={() => { displayModal(false) }}>
-                <SignUpCard changeCard={setAuthCard}
-                    handleClick={insideClick} closeModal={() => { displayModal(false) }} />
+                <div className="scrollable-child">
+                    <SignUpCard changeCard={setAuthCard}
+                        handleClick={insideClick} closeModal={() => { displayModal(false) }} />
+                </div>
             </div>
         )
     else if (authCard === 'ForgotPassword')
         return (
             <div className="modal-root" onClick={() => { displayModal(false) }}>
-                <ForgotPasswordCard changeCard={setAuthCard}
-                    handleClick={insideClick} closeModal={() => { displayModal(false) }} />
+                <div className="scrollable-child">
+                    <ForgotPasswordCard changeCard={setAuthCard}
+                        handleClick={insideClick} closeModal={() => { displayModal(false) }} />
+                </div>
             </div>
         )
     else
         // if (authCard === 'SignIn')
         return (
             <div className="modal-root" onClick={() => { displayModal(false) }}>
-                <SignInCard changeCard={setAuthCard}
-                    handleClick={insideClick} closeModal={() => { displayModal(false) }} />
+                <div className="scrollable-child">
+                    <SignInCard changeCard={setAuthCard}
+                        handleClick={insideClick} closeModal={() => { displayModal(false) }} />
+                </div>
             </div>
         )
 }
