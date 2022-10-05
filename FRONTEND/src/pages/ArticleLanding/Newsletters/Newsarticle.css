@@ -1,40 +1,48 @@
 .container2{
-    margin-top:3px;
-    margin-left: 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 .txtt{
+    width: fit-content;
     font-family: Martel;
-    font-size: 45px;
+    font-size: 3rem;
+    letter-spacing: 3px;
     color:black;
     font-weight: 600;
-    
-}
-.az{
-    margin-left: 150px;
+    height: 65px;
+	margin-bottom: 1.2rem;
 }
 
+.divv{
+    margin-top: 1rem;
+    width: max-content;
+}
+
+
 @media (max-width:600px) {
-    .ab{
+    .container2{
+        width: 90vw;
+    }
+    .txtt{
         font-family: "Martel";
         font-size: 55px;
         font-weight: 600;
-        margin-bottom: 0.5rem;
         margin-left: 10px;
+        margin-bottom: 0;
+        height: fit-content;
+
     }
     .divv{
+        margin-top: 0.6rem;
         display: flex;
-        
-        overflow-x: auto;
-        
-    }
-    .container2{
-        margin-top:3px;
-        margin-left: 20px;
-        
-    }
-    .az{
-        margin-left: 150px;
-        padding:10px;
+        justify-content: space-evenly;
+        width: 90vw;
+        padding-top: 1rem;
+        padding-right: 5vw;
+        flex-wrap: wrap;
+        overflow-x: scroll;
     }
     .txtt{
         font-family: Martel;

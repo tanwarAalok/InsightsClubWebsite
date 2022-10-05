@@ -3,6 +3,7 @@ import "./Header.css";
 import { BsPencilFill } from "react-icons/bs";
 
 function Header({ user }) {
+	
 	const uploadedImage = React.useRef(null);
 	const imageUploader = React.useRef(null);
 

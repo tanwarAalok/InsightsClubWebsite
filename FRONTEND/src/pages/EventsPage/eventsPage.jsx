@@ -4,15 +4,19 @@ import EventsContainer from "../../components/events/eventsContainer";
 import {
 	getOngoingEvents,
 	getPastEvents,
-	getUpcomingEvents,
+  getUpcomingEvents,
 } from "../../actions/events";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../components/Footer/Footer";
+import { Link } from "react-router-dom";
+import newEventLogo from "../../assets/newEvent.svg";
+import { useCookies } from "react-cookie";
 
 const EventsPage = () => {
 	const [eventType, setEventType] = useState("Past");
-
-	const dispatch = useDispatch();
+  const [cookies] = useCookies(["user"]);
+  console.log("cookies: ", cookies);
+  const dispatch = useDispatch();
 
 	useEffect(() => {
 		if (eventType === "Ongoing") {
@@ -30,7 +34,22 @@ const EventsPage = () => {
     <>
       <div className="events">
         <div className="content">
-          <h1>Our Events</h1>
+          <div className="topDiv">
+            <h1>Our Events</h1>
+            {(
+              cookies.hasOwnProperty("user") &&
+              Object.keys(cookies.user).length !== 0 && cookies.user.isAdmin
+            ) ? (
+              <Link to={"events/newEvent"}>
+                <h4>Add Event</h4>
+                <div>
+                  <img src={newEventLogo} alt="svgLogo" />
+                </div>
+              </Link>
+            ) : (
+              ""
+            )}
+          </div>
           <div className="pageContainer">
             <div className="divButtons">
               <button
@@ -66,14 +85,18 @@ const EventsPage = () => {
             </div>
 
             <div className="bottomEventContainer">
-              {events.length > 0 ? events.map((event) => (
-                <EventsContainer key={event._id} event={event} />
-              )) : (<h2 style={{textAlign: "center"}}>No {eventType} Events</h2>)}
+              {events.length > 0 ? (
+                events.map((event) => (
+                  <EventsContainer key={event._id} event={event} />
+                ))
+              ) : (
+                <h2 style={{ textAlign: "center" }}>No {eventType} Events</h2>
+              )}
             </div>
           </div>
         </div>
       </div>
-	  <Footer/>
+      <Footer />
     </>
   );
 };

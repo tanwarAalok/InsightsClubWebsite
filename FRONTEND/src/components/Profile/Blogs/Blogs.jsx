@@ -5,7 +5,7 @@ import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { deleteBlogs } from "../../../actions/blogs";
 
-const url = "https://api.insights-club-vitb.ml/blog/user";
+const url = "https://insights-api.onrender.com/blog/user";
 
 function Blogs() {
 	const [blogs, setBlogs] = useState([]);
@@ -20,8 +20,8 @@ function Blogs() {
 	}, [cookies]);
 	return (
 		<>
-			{blogs.map((b, i) => (
-				<Blog blog={b} key={i} handleDelete={handleDelete} />
+			{blogs?.map((b, i) => (
+				<Blog key={i} blog={b} />
 			))}
 		</>
 	);
