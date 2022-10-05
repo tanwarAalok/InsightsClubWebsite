@@ -25,7 +25,7 @@ function App() {
         <Route path="videos" element={<VideoPage />} />
         <Route path="articles" element={<ArticleLanding />} />
         <Route path="article/:id" element={<DetailedArticle />} />
-        <Route element={<ProtectedRoute/>}>
+        <Route element={<ProtectedRoute isAdmin={true}/>}>
           <Route path="events/newEvent" element={<NewEvent />} />
         </Route>
       </Route>

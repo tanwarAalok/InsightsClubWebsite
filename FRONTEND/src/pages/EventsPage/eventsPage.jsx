@@ -40,7 +40,7 @@ const EventsPage = () => {
               cookies.hasOwnProperty("user") &&
               Object.keys(cookies.user).length !== 0 && cookies.user.isAdmin
             ) ? (
-              <Link to={"events/newEvent"}>
+              <Link to={"/newEvent"}>
                 <h4>Add Event</h4>
                 <div>
                   <img src={newEventLogo} alt="svgLogo" />
