@@ -6,7 +6,7 @@ import "./auth.css";
 import "@fontsource/mulish";
 import "@fontsource/inter";
 
-const authUrl = 'https://api.insights-club-vitb.ml/auth'
+const authUrl = `${process.env.REACT_APP_BACKEND_URL}/auth`;
 
 function SignInCard({ changeCard, handleClick, closeModal }) {
     const [username, setUsername] = useState('')

@@ -3,10 +3,16 @@ import {
 	CREATE,
 	UPDATE,
 	DELETE,
+	FAIL,
+	NEW_EVENT_REQUEST,
+	NEW_EVENT_SUCCESS,
+	NEW_EVENT_FAIL,
+	CLEAR_ERRORS,
 } from "../constants/eventsActionTypes";
 import { Fetch, Create, Update, Delete } from "../api/index.js";
+import axios from "axios";
 
-let eventsUrl = "https://api.insights-club-vitb.ml/event";
+let eventsUrl = `${process.env.REACT_APP_BACKEND_URL}/event`;  
 
 export const getEvents = () => async (dispatch) => {
 	try {
@@ -74,11 +80,20 @@ export const getPastEvents = () => async (dispatch) => {
 
 export const createEvents = (event) => async (dispatch) => {
 	try {
-		const { data } = await Create(event, eventsUrl);
+		dispatch({ type: NEW_EVENT_REQUEST });
 
-		dispatch({ type: CREATE, payload: data });
+		const config = {
+			headers: { "Content-Type": "application/json" },
+		};
+
+		const { data } = await axios.post(`${eventsUrl}/new`, event, config);
+
+		dispatch({ type: NEW_EVENT_SUCCESS, payload: data });
 	} catch (error) {
-		console.log(error.message);
+		dispatch({
+		type: NEW_EVENT_FAIL,
+		payload: error.response.data.message,
+		});
 	}
 };
 
@@ -100,4 +115,9 @@ export const deleteEvents = (id) => async (dispatch) => {
 	} catch (error) {
 		console.log(error.message);
 	}
+};
+
+// Clearing Errors
+export const clearErrors = () => async (dispatch) => {
+  dispatch({ type: CLEAR_ERRORS });
 };

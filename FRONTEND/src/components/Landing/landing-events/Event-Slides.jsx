@@ -8,7 +8,7 @@ import { PopupContext } from "../../../contexts/popupContext";
 import EventDetails from "../../DetailEvent/eventDetails";
 import axios from "axios";
 
-const eventUrl = "https://api.insights-club-vitb.ml/event";
+const eventUrl = `${process.env.REACT_APP_BACKEND_URL}/event`;
 
 function EventSlides() {
     const [currentEvent, setCurrentEvent] = useState({});
@@ -19,23 +19,22 @@ function EventSlides() {
     const { popupTrigger, setPopupTrigger } = useContext(PopupContext);
 
     useEffect(() => {
-        axios.get(`${eventUrl}/all`)
-            .then((res) => {
-                const events = res.data.events;
-                const _upcoming = events.find(event => event.status === 'upcoming')
-                const _ongoing = events.find(event => event.status === 'ongoing')
-                const _past = events.find(event => event.status === 'past')
-                console.log(_upcoming, _ongoing, _past)
-
-                if (_upcoming != undefined && _upcoming != null)
-                    setUpcomingEvent(_upcoming)
-                if (_ongoing != undefined && _ongoing != null)
-                    setCurrentEvent(_ongoing)
-                if (_past != undefined && _past != null)
-                    setPastEvent(_past)
-            }).catch((err) => {
-                console.error(err);
-            })
+      axios
+        .get(`${eventUrl}/all`)
+        .then((res) => {
+          const events = res.data.events;
+          const _upcoming = events.find((event) => event.status === "upcoming");
+          const _ongoing = events.find((event) => event.status === "ongoing");
+          const _past = events.find((event) => event.status === "past");
+          if (_upcoming !== undefined && _upcoming != null)
+            setUpcomingEvent(_upcoming);
+          if (_ongoing !== undefined && _ongoing != null)
+            setCurrentEvent(_upcoming);
+          if (_past !== undefined && _past != null) setPastEvent(_past);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }, []);
 
     const slideClickHandler = (arrow) => {

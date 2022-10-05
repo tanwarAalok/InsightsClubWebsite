@@ -5,11 +5,16 @@ import Newsarticle from "./Newsletters/Newsarticle";
 
 function ArticleLanding() {
 	return (
-		<div className="my" >
-			<Articles />
-			<Newsarticle className='we'/>
-		</div>
-	);
+    <div className="my">
+      <div className="child1">
+        <Articles />
+      </div>
+
+      <div className="child2">
+        <Newsarticle />
+      </div>
+    </div>
+  );
 }
 
 export default ArticleLanding;

@@ -1,7 +1,6 @@
 .container1{
-    height:260px;
-    width:270px;
-    border:0.2px solid black;
+    height:17rem;
+    width:16.875rem;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -9,6 +8,7 @@
     background-size: cover;
     backface-visibility: visible;
     margin-bottom: 2.1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .container1:hover{
     
@@ -39,14 +39,11 @@
         background-size: cover;
         backface-visibility: visible;
         margin-bottom: 3.9rem;
-        margin-left: 5px;
+        margin-left: 8px;
     }
     .container1:hover{
         box-shadow: 2px 2px 0.5px 0.5px gray;
         cursor: pointer;
-        width:110px;
-        height:155px;
-        margin-left: -10px;
     }
     
 }
