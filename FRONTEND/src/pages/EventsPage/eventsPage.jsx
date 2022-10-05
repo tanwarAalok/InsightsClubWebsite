@@ -10,10 +10,12 @@ import { useDispatch, useSelector } from "react-redux";
 import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 import newEventLogo from "../../assets/newEvent.svg";
+import { useCookies } from "react-cookie";
 
 const EventsPage = () => {
 	const [eventType, setEventType] = useState("Past");
-
+  const [cookies] = useCookies(["user"]);
+  console.log("cookies: ", cookies);
   const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -34,12 +36,19 @@ const EventsPage = () => {
         <div className="content">
           <div className="topDiv">
             <h1>Our Events</h1>
-            <Link to={"/newEvent"}>
-              <h4>Add Event</h4>
-              <div>
-                <img src={newEventLogo} alt="svgLogo" />
-              </div>
-            </Link>
+            {(
+              cookies.hasOwnProperty("user") &&
+              Object.keys(cookies.user).length !== 0 && cookies.user.isAdmin
+            ) ? (
+              <Link to={"events/newEvent"}>
+                <h4>Add Event</h4>
+                <div>
+                  <img src={newEventLogo} alt="svgLogo" />
+                </div>
+              </Link>
+            ) : (
+              ""
+            )}
           </div>
           <div className="pageContainer">
             <div className="divButtons">
