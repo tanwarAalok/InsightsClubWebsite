@@ -19,10 +19,6 @@ function Blog({ blog, handleDelete }) {
 			setCount(count + 1);
 		}
 	};
-	// const handleDelete = () => {
-	// 	dispatch(deleteBlogs(blog._id));
-	// 	window.location.reload(false);
-	// };
 	return (
 		<>
 			<div className='profile-blog-container'>

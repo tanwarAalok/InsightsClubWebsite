@@ -2,23 +2,33 @@ import React, { useEffect, useState } from "react";
 import "./View.css";
 import Navbar from "../../Navbar/Navbar";
 import { useParams } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import axios from "axios";
 import LIKE from "../../../media/likeVector.svg";
 
 const View = () => {
-	const blogsUrl = "https://api.insights-club-vitb.ml/blog";
+	// const blogsUrl = "https://api.insights-club-vitb.ml/blog";
 	const params = useParams();
 	const [b, setBlog] = useState({});
+	const [cookies] = useCookies();
+	const url = `${process.env.REACT_APP_BACKEND_URL}/blog`;
 	useEffect(() => {
-		axios.get(`${blogsUrl}/${params.id}`).then((res) => {
-			let data = res.data;
-			setBlog(data);
-		});
-	}, [params.id]);
+		axios
+			.get(`${process.env.REACT_APP_BACKEND_URL}/blog/${params.id}`)
+			.then((res) => {
+				let data = res.data;
+				setBlog(data);
+			});
+	}, [params.id, url]);
 
 	const handleLikes = () => {
 		//post user id
-		// axios.post(1, `${blogsUrl}/${params.id}/like`);
+		axios
+			.post(`${url}/${params.id}/like`, {
+				id: params.id,
+				user: cookies.user.id,
+			})
+			.then((res) => console.log(res));
 	};
 
 	if (b) {
