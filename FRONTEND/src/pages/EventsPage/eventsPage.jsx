@@ -36,7 +36,7 @@ const EventsPage = () => {
         <div className="content">
           <div className="topDiv">
             <h1>Our Events</h1>
-            {(
+            {!(
               cookies.hasOwnProperty("user") &&
               Object.keys(cookies.user).length !== 0 && cookies.user.isAdmin
             ) ? (
