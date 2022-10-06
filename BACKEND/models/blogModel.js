@@ -29,12 +29,24 @@ const contentSchema = new Schema(
 			ref: "Users",
 			require: true,
 		},
+		// likes: {
+		// 	type: [Schema.Types.ObjectId],
+		// 	type: Number,
+		// 	ref: "Users",
+		// 	// require: true,
+		// },
+
 		likes: {
-			type: [Schema.Types.ObjectId],
 			type: Number,
-			ref: "Users",
-			// require: true,
+			default: 0,
 		},
+
+		likedBy: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: "Users",
+			},
+		],
 
 		isReviewed: {
 			type: Boolean,
