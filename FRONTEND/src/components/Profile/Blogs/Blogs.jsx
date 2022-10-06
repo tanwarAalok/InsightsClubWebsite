@@ -21,7 +21,7 @@ function Blogs() {
 	return (
 		<>
 			{blogs?.map((b, i) => (
-				<Blog key={i} blog={b} />
+				<Blog key={i} blog={b} deleteBlogs={handleDelete} />
 			))}
 		</>
 	);
