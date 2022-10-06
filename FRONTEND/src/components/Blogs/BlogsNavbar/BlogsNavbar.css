@@ -11,8 +11,6 @@
 	);
 }
 .blogsnavbar-logo img {
-	/* width: 15%;
-	height: 15%; */
 	width: 67px;
 	height: 67px;
 	transition: ease 0.2s;
@@ -21,10 +19,6 @@
 	transform: scale(1.1);
 }
 .blogsnavbar-search_box {
-	/* display: flex; */
-	/* align-items: center;
-	justify-content: center; */
-	/* padding: 0px 100px; */
 	width: 700px;
 	margin-left: 230px;
 	margin-right: 250px;
@@ -35,7 +29,6 @@
 	border: none;
 	outline: none;
 	border-radius: 5px;
-	/* margin-right: 5rem; */
 }
 .blogsnavbar-hambugermenu {
 	margin-right: 1rem;

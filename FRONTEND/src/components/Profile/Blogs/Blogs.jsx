@@ -5,7 +5,7 @@ import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { deleteBlogs } from "../../../actions/blogs";
 
-const url = "https://insights-api.onrender.com/blog/user";
+const url = "https://api.insights-club-vitb.ml/blog/user";
 
 function Blogs() {
 	const [blogs, setBlogs] = useState([]);
@@ -16,9 +16,10 @@ function Blogs() {
 		dispatch(deleteBlogs(id));
 	};
 	console.log(cookies.user.id);
+
 	useEffect(() => {
 		axios.get(`${url}/${cookies.user.id}`).then((res) => setBlogs(res.data));
-	}, [cookies]);
+	}, []);
 	return (
 		<>
 			{blogs?.map((b, i) => (
