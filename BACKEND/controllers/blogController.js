@@ -71,7 +71,7 @@ exports.getBlogByUser = catchAsyncErrors(async (req, res, next) => {
 	)
 		.populate("author", "-email -password -verified")
 		.populate("reviewedBy", "-email -password -verified")
-		.populate("likes", "-email -password -verified")
+		.populate("likedBy", "-email -password -verified")
 		.lean();
 	res.status(200).json(blogs);
 });
@@ -83,7 +83,7 @@ exports.getBlog = catchAsyncErrors(async (req, res, next) => {
 	const blog = await Blogs.findById(req.params.id)
 		.populate("author", "-email -password -verified")
 		.populate("reviewedBy", "-email -password -verified")
-		.populate("likes", "-email -password -verified")
+		.populate("likedBy", "-email -password -verified")
 		.lean();
 	if (!blog) {
 		return next(
