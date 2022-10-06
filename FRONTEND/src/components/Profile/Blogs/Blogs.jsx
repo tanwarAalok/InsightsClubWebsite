@@ -9,12 +9,13 @@ const url = "https://insights-api.onrender.com/blog/user";
 
 function Blogs() {
 	const [blogs, setBlogs] = useState([]);
-	const [cookies, setCookies] = useCookies();
+	const [cookies] = useCookies();
 	const dispatch = useDispatch();
 
 	const handleDelete = (id) => {
 		dispatch(deleteBlogs(id));
 	};
+	console.log(cookies.user.id);
 	useEffect(() => {
 		axios.get(`${url}/${cookies.user.id}`).then((res) => setBlogs(res.data));
 	}, [cookies]);
