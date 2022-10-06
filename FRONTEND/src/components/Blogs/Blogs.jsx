@@ -21,6 +21,7 @@ function Blogs() {
 	});
 	useEffect(() => {
 		dispatch(getBlogs());
+		console.log(cookies.user);
 	}, [dispatch]);
 	const Blogs = useSelector((state) => state.blogs);
 
@@ -52,7 +53,7 @@ function Blogs() {
 							</p>
 						</div>
 						<div className='blogs-container-header-createBlog'>
-							<p>
+							<div>
 								<p
 									onClick={() => {
 										if (
@@ -71,7 +72,7 @@ function Blogs() {
 										? "Write a Blog"
 										: "Sign in to Write a blog"}
 								</p>
-							</p>
+							</div>
 							<img src={WRITE} alt='write' />
 						</div>
 					</div>
