@@ -34,6 +34,7 @@ exports.getAllBlogs = catchAsyncErrors(async (req, res, next) => {
 			content: 1,
 			tags: 1,
 			author: 1,
+			likes: 1,
 			isReviewed: 1,
 			reviewedBy: 1,
 			createdAt: 1,
@@ -42,7 +43,7 @@ exports.getAllBlogs = catchAsyncErrors(async (req, res, next) => {
 	)
 		.populate("author", "-email -password -verified")
 		.populate("reviewedBy", "-email -password -verified")
-		// .populate("likes", "-email -password -verified")
+		.populate("likes", "-email -password -verified")
 		.lean();
 	res.status(200).json(blogs);
 });
@@ -58,6 +59,7 @@ exports.getBlogByUser = catchAsyncErrors(async (req, res, next) => {
 			content: 1,
 			tags: 1,
 			author: 1,
+			likes: 1,
 			isReviewed: 1,
 			reviewedBy: 1,
 			createdAt: 1,
@@ -66,7 +68,7 @@ exports.getBlogByUser = catchAsyncErrors(async (req, res, next) => {
 	)
 		.populate("author", "-email -password -verified")
 		.populate("reviewedBy", "-email -password -verified")
-		// .populate("likes", "-email -password -verified")
+		.populate("likes", "-email -password -verified")
 		.lean();
 	res.status(200).json(blogs);
 });
@@ -77,6 +79,8 @@ exports.getBlog = catchAsyncErrors(async (req, res, next) => {
 		return next(new ErrorHandler(`${req.params.id} is not valid !!`, 400));
 	const blog = await Blogs.findById(req.params.id)
 		.populate("author", "-email -password -verified")
+		.populate("reviewedBy", "-email -password -verified")
+		.populate("likes", "-email -password -verified")
 		.lean();
 	if (!blog) {
 		return next(
