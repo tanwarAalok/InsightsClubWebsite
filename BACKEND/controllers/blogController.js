@@ -24,7 +24,6 @@ const canEdit = async (blogID, userID) => {
 	return { _canEdit: false };
 };
 
-
 //get all blogs
 exports.getAllBlogs = catchAsyncErrors(async (req, res, next) => {
 	const blogs = await Blogs.find(
@@ -159,7 +158,7 @@ exports.likeBlog = catchAsyncErrors(async (req, res, next) => {
 			new ErrorHandler(`User with id: ${req.user.id} not found !!`, 404)
 		);
 	}
-	if (blog.hasOwnProperty('likes') && blog.likes > 0) {
+	if (blog.hasOwnProperty("likes") && blog.likes > 0) {
 		var i = 0;
 		for (; i < blog.likes; i++) {
 			if (blog.likedBy[i].equals(user._id)) {
@@ -171,7 +170,8 @@ exports.likeBlog = catchAsyncErrors(async (req, res, next) => {
 					.json({ success: true, message: "Blog disliked successfully !!" });
 				return;
 			}
-		} if (i == blog.likes) {
+		}
+		if (i == blog.likes) {
 			blog.likedBy.push(user._id);
 			blog.likes = blog.likes + 1;
 			await Blogs.updateOne({ _id: blog._id }, blog);
@@ -187,5 +187,5 @@ exports.likeBlog = catchAsyncErrors(async (req, res, next) => {
 		res
 			.status(200)
 			.json({ success: true, message: "Blog liked successfully !!" });
-	}	
+	}
 });

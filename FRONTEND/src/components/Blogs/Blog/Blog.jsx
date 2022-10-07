@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import LIKE from "../../../media/likeVector.svg";
 
 function Blog({ blog }) {
-	// const url = `${process.env.REACT_APP_BACKEND_URL}/blog/${blog._id}/like`;
 	const navigate = useNavigate();
 	return (
 		<>
