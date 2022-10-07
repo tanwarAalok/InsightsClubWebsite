@@ -24,7 +24,7 @@ function Blogs() {
 		console.log(cookies.user);
 	}, [dispatch]);
 	const Blogs = useSelector((state) => state.blogs);
-
+	console.log(Blogs);
 	const sideBarElement = [
 		{ Element: { name: "Home", address: "/" } },
 		{ Element: { name: "Event", address: "/events" } },
