@@ -146,6 +146,7 @@ exports.likeBlog = catchAsyncErrors(async (req, res, next) => {
 	const isValid = mongoose.Types.ObjectId.isValid(req.params.id);
 	if (!isValid)
 		return next(new ErrorHandler(`${req.params.id} is not valid !!`, 400));
+
 	const blog = await Blogs.findById(req.params.id).lean();
 	if (!blog) {
 		return next(
@@ -158,17 +159,31 @@ exports.likeBlog = catchAsyncErrors(async (req, res, next) => {
 			new ErrorHandler(`User with id: ${req.user.id} not found !!`, 404)
 		);
 	}
-	if (blog.likedBy.includes(user.id)) {
-		blog.likedBy.splice(blog.likedBy.indexOf(user.id), 1);
-		blog.likes -= 1;
-		await blog.save();
-		res
-			.status(200)
-			.json({ success: true, message: "Blog disliked successfully !!" });
+	if (blog.hasOwnProperty('likes') && blog.likes > 0) {
+		var i = 0;
+		for (; i < blog.likes; i++) {
+			if (blog.likedBy[i].equals(user._id)) {
+				blog.likedBy.splice(i, 1);
+				blog.likes = blog.likes - 1;
+				await Blogs.updateOne({ _id: blog._id }, blog);
+				res
+					.status(200)
+					.json({ success: true, message: "Blog disliked successfully !!" });
+				return;
+			}
+		} if (i == blog.likes) {
+			blog.likedBy.push(user._id);
+			blog.likes = blog.likes + 1;
+			await Blogs.updateOne({ _id: blog._id }, blog);
+			res
+				.status(200)
+				.json({ success: true, message: "Blog liked successfully !!" });
+			return;
+		}
 	} else {
-		blog.likedBy.push(user.id);
-		blog.likes += 1;
-		await blog.save();
+		blog.likedBy = [user._id];
+		blog.likes = 1;
+		await Blogs.updateOne({ _id: blog._id }, blog);
 		res
 			.status(200)
 			.json({ success: true, message: "Blog liked successfully !!" });
