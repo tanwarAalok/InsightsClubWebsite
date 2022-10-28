@@ -204,8 +204,9 @@ exports.createNewEvent = catchAsyncErrors(async (req, res, next) => {
         const myCloud = await cloudinary.uploader.upload(img.tempFilePath, {
         folder: "Events",
         });
-        const { title, description, date, domain, department } = req.body;
+        const { title, description, date, domain, department, shortDescription, mode, status } = req.body;
         const event = await Events.create({
+          shortDescription, mode, status,
             title,
             description,
             domain, 
