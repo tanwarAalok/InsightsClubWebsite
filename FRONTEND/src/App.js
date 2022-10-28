@@ -13,6 +13,7 @@ import View from "./components/Blogs/CreateBlog/View";
 import Profile from "./pages/Profile/Profile";
 import NewEvent from "./components/NewEvent/newEvent";
 import ProtectedRoute from "./utils/ProtectedRoute";
+import NewVideo from "./components/VideoPage/NewVideo";
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="events" element={<EventsPage />} />
         <Route path="event/:id" element={<EventDetails />} />
         <Route path="about" element={<About />} />
+        <Route path="videos/new" element={<NewVideo />} />
         <Route path="videos" element={<VideoPage />} />
         <Route path="articles" element={<ArticleLanding />} />
         <Route path="article/:id" element={<DetailedArticle />} />

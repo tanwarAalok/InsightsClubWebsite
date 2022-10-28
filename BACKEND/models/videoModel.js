@@ -21,7 +21,11 @@ const videoScehma = new Schema({
 
     thumbnail: {
         type: String
-    }
+    },
+    
+    thumbnail_id: {
+        type: String
+    },
 }, {timestamps: true});
 
 const Video = mongoose.model("video", videoScehma)
