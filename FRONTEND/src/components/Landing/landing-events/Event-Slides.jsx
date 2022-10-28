@@ -58,7 +58,7 @@ function EventSlides() {
           if (_upcoming !== undefined && _upcoming != null)
             setUpcomingEvent(_upcoming);
           if (_ongoing !== undefined && _ongoing != null)
-            setCurrentEvent(_upcoming);
+            setCurrentEvent(_ongoing);
           if (_past !== undefined && _past != null) setPastEvent(_past);
         })
         .catch((err) => {
