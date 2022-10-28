@@ -20,17 +20,38 @@ exports.getAllVideos = catchAsyncErrors(async (req, res, next) => {
 
 exports.createVideo = catchAsyncErrors(async (req, res, next) => {
     if (req.user.isAdmin || req.user.isCoAdmin) {
-        const { title, description, embedLink, thumbnail } = req.body;
-        const video = await Videos.create({
-            title,
-            description,
-            embedLink,
-            thumbnail
-        });
-        res.status(201).json({
-            success: true,
-            video
-        })
+        const img = req.files.image;
+        if (img) {
+            const myCloud = await cloudinary.uploader.upload(img.tempFilePath, {
+                folder: "Videos",
+            })
+
+            const { title, description, embedLink } = req.body;
+            const video = await Videos.create({
+                title,
+                description,
+                embedLink,
+                thumbnail: myCloud.secure_url,
+                thumbnail_id: myCloud.public_id
+            })
+
+            res.status(201).json({
+                success: true,
+                video
+            })
+        } else {
+            const { title, description, embedLink } = req.body;
+            const video = await Videos.create({
+                title,
+                description,
+                embedLink
+            })
+
+            res.status(201).json({
+                success: true,
+                video
+            })
+        }
     }
     else {
         return next(new ErrorHandler(`You are not authorized to perform this action`, 401));
@@ -45,10 +66,12 @@ exports.deleteVideo = catchAsyncErrors(async (req, res, next) => {
         if (!video) {
             return next(new ErrorHandler(`Video with id: ${req.params.id} not found !!`, 404));
         }
+        if (video.thumbnail_id != undefined)
+            await cloudinary.uploader.destroy(video.thumbnail_id);
         await video.remove();
         res.status(200).json({
             success: true,
-            message: "Event deleted successfully"
+            message: "Video deleted successfully"
         })
     }
     else {

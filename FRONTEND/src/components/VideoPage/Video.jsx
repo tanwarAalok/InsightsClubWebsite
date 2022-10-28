@@ -40,9 +40,6 @@ function Video() {
           })
           .catch((err) => {
             console.error(err);
-          })
-          .then(() => {
-            console.log("Videos fetched successfully !!");
           });
     }, [])
 
