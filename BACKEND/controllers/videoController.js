@@ -20,7 +20,7 @@ exports.getAllVideos = catchAsyncErrors(async (req, res, next) => {
 
 exports.createVideo = catchAsyncErrors(async (req, res, next) => {
     if (req.user.isAdmin || req.user.isCoAdmin) {
-        const img = req.files.image;
+        const img = req.files.thumbnail;
         if (img) {
             const myCloud = await cloudinary.uploader.upload(img.tempFilePath, {
                 folder: "Videos",
