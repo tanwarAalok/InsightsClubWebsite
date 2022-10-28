@@ -62,7 +62,7 @@ const NewEvent = () => {
       myForm.set("domain", domain);
       myForm.set("department", department);
       myForm.set("status", "upcoming");
-      myForm.set("mode", "Online");
+      myForm.set("mode", mode);
       myForm.set("venue", venue);
       myForm.set("image", image);
 
