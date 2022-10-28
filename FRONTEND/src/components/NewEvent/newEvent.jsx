@@ -25,6 +25,7 @@ const NewEvent = () => {
   useEffect(() => {
     if (error) {
       alert("Something went wrong");
+      console.log(error);
       dispatch(clearErrors());
     }
 
