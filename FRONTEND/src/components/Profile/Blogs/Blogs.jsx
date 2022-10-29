@@ -15,11 +15,11 @@ function Blogs() {
 	const handleDelete = (id) => {
 		dispatch(deleteBlogs(id));
 	};
-	console.log(cookies.user.id);
 
 	useEffect(() => {
 		axios.get(`${url}/${cookies.user.id}`).then((res) => setBlogs(res.data));
-	}, []);
+	}, [blogs, dispatch, cookies.user.id]);
+
 	return (
 		<>
 			{blogs?.map((b, i) => (
