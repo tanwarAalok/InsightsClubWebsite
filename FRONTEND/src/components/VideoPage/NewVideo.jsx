@@ -16,6 +16,7 @@ function NewVideo() {
 
         const reader = new FileReader();
 
+        // convert image to base 64
         reader.readAsDataURL(file);
         reader.onloadend = () => {
             setImage(reader.result);
