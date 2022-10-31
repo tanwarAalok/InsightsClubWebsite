@@ -8,8 +8,10 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import BlogsSideBar from "./BlogSiderbar/BlogsSideBar";
 import AuthModal from "../AuthCards/Auth";
+import moment from "moment";
 
 function Blogs() {
+	const [blogOrder, setBlogOrder] = useState("LATEST");
 	const dispatch = useDispatch();
 	const [cookies] = useCookies();
 	const navigate = useNavigate();
@@ -21,7 +23,6 @@ function Blogs() {
 	});
 	useEffect(() => {
 		dispatch(getBlogs());
-		console.log(cookies.user);
 	}, [dispatch]);
 	const Blogs = useSelector((state) => state.blogs);
 	const sideBarElement = [
@@ -30,6 +31,14 @@ function Blogs() {
 		{ Element: { name: "Domains", address: "/domains" } },
 		{ Element: { name: "About", address: "/about" } },
 	];
+	console.log(Blogs);
+	function sortBlog(blog) {
+		let blogDate = moment(blog).format("MM DD YYYY");
+		let currDate = moment(new Date()).format("MM DD YYYY");
+		let diffDay = currDate.split(" ")[1] - blogDate.split(" ")[1];
+		return diffDay;
+	}
+	sortBlog("2022-08-28T04:40:53.893Z");
 	return (
 		<>
 			<div className='blogs-main-container'>
@@ -40,14 +49,17 @@ function Blogs() {
 				<div className='blogs-container'>
 					<div className='blogs-container-header'>
 						<div className='blogs-container-sort'>
-							<p>
-								<a href='#'>Latest</a>
+							<p
+								onClick={() => {
+									setBlogOrder("LATEST");
+								}}
+								className={blogOrder === "LATEST" ? "LINED" : "NON-LINED"}>
+								Latest
 							</p>
-							<p>
-								<a href='#'>Top</a>
-							</p>
-							<p>
-								<a href='#'>Saved</a>
+							<p
+								onClick={() => setBlogOrder("TOP")}
+								className={blogOrder === "TOP" ? "LINED" : "NON-LINED"}>
+								Top
 							</p>
 						</div>
 						<div className='blogs-container-header-createBlog'>
@@ -75,11 +87,26 @@ function Blogs() {
 						</div>
 					</div>
 					<div className='blogs-container-bloglist'>
-						{Blogs?.map((blog, i) => (
-							<Fragment key={i}>
-								<Blog blog={blog} />
-							</Fragment>
-						))}
+						{blogOrder === "LATEST"
+							? Blogs?.sort((blog) => {
+									let blogDate = moment(blog.createdAt).format("MM DD YYYY");
+									let currDate = moment(new Date()).format("MM DD YYYY");
+									let diffDay = currDate.split(" ")[1] - blogDate.split(" ")[1];
+									// let diffMonth =
+									// 	currDate.split(" ")[0] - blogDate.split(" ")[0];
+									return diffDay;
+							  }).map((blog, i) => (
+									<Fragment key={i}>
+										<Blog blog={blog} />
+									</Fragment>
+							  ))
+							: Blogs?.sort((blog) => blog.likes)
+									.reverse()
+									.map((blog, i) => (
+										<Fragment key={i}>
+											<Blog blog={blog} />
+										</Fragment>
+									))}
 					</div>
 				</div>
 			</div>

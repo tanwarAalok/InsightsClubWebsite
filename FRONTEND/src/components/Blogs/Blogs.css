@@ -23,11 +23,16 @@
 .blogs-container-sort p {
 	margin-right: 20px;
 	transition: ease-in 0.1s;
+	cursor: pointer;
 }
 .blogs-container-sort p:hover {
 	border-bottom: 4px solid #f7a22b;
 	border-radius: 2px;
 }
+.LINED {
+	border-bottom: 4px solid #f7a22b;
+}
+
 .blogs-container-header-createBlog {
 	display: flex;
 }
