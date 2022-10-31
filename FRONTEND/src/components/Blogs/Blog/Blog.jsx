@@ -14,7 +14,7 @@ function Blog({ blog }) {
 				<div className='blog-header'>
 					<p className='blog-header-name'>{blog?.author.name}</p>
 					<p className='blog-header-time'>
-						{moment(blog.createdAt).format("MMM Do YY")}
+						{moment(blog.createdAt).format("MMM Do YYYY")}
 					</p>
 				</div>
 				<div className='blog-main'>
@@ -24,7 +24,7 @@ function Blog({ blog }) {
 					<div className='blog-footer-like'>
 						<img src={LIKE} alt='like' />
 					</div>
-					<p className='blog-likesCounter'>{0}</p>
+					<p className='blog-likesCounter'>{blog?.likes}</p>
 				</div>
 			</div>
 		</>
