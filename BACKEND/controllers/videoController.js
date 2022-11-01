@@ -19,7 +19,7 @@ exports.getAllVideos = catchAsyncErrors(async (req, res, next) => {
 
 
 exports.createVideo = catchAsyncErrors(async (req, res, next) => {
-    if (req.user.isAdmin || req.user.isCoAdmin) {
+    if ((req.user.isAdmin || req.user.isCoAdmin) && (req.body.embedLink != undefined && req.body.embedLink != null)) {
         const img = req.body.thumbnail;
         if (img) {
             const myCloud = await cloudinary.uploader.upload(img, {
@@ -52,8 +52,9 @@ exports.createVideo = catchAsyncErrors(async (req, res, next) => {
                 video
             })
         }
-    }
-    else {
+    } else if (req.body.embedLink == undefined || req.body.embedLink == null) {
+        return next(new ErrorHandler(`Please provide an embed link`, 400));
+    } else {
         return next(new ErrorHandler(`You are not authorized to perform this action`, 401));
     }
 });
