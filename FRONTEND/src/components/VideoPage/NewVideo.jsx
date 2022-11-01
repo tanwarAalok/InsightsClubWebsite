@@ -26,6 +26,11 @@ function NewVideo() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        if (embed.trim() === "")
+            alert("Provide an embed link !!")
+        if (title.trim() === "")
+            alert("Provide a title !!")
+
         const myForm = new FormData()
 
         myForm.set("title", title)
