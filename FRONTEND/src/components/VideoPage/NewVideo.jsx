@@ -69,7 +69,9 @@ function NewVideo() {
                     type="text"
                     placeholder="Embed URL (src value of iframe)"
                 />
+                <label htmlFor="imageInput">Cover photo (prefer 1:1 resolution):</label>
                 <input
+                    id ="imageInput"
                     onChange={handleFileInputChange}
                     type="file"
                     placeholder="image"

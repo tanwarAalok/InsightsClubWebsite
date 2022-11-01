@@ -32,6 +32,14 @@
     transform: scale(1.1);
 }
 
+.video-form label {
+    box-sizing: border-box;
+    font-family: 'Mulish';
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0.6rem 0 0 0;
+}
+
 .video-form input,
 .video-form textarea {
     box-sizing: border-box;
