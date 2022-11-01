@@ -68,8 +68,8 @@ function BlogsNavbar() {
 									</a>
 								</li>
 								<li className='menu-item menu-events'>
-									<a className='nav-link' href='/domains'>
-										Domains
+									<a className='nav-link' href='/videos'>
+										Videos
 									</a>
 								</li>
 								<li className='menu-item menu-videos'>

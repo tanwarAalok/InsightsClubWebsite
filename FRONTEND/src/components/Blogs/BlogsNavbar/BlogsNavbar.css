@@ -44,3 +44,10 @@
 		margin-right: 30px;
 	}
 }
+@media only screen and (max-width: 1080px) {
+	.blogsnavbar-search_box {
+		width: 300px;
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+}

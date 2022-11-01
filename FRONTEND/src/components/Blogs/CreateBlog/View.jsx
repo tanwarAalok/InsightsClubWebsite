@@ -17,13 +17,14 @@ const View = () => {
 	const [b, setBlog] = useState({});
 	const url = `${process.env.REACT_APP_BACKEND_URL}/blog`;
 	useEffect(() => {
+		b?.likedBy?.includes(cookie.user.id) ? setLike(true) : setLike(false);
 		axios
 			.get(`${process.env.REACT_APP_BACKEND_URL}/blog/${params.id}`)
 			.then((res) => {
 				let { blog } = res.data;
 				setBlog(blog);
 			});
-	}, [params.id, like]);
+	}, [params.id, like, cookie.user.id, b]);
 
 	const handleLikes = () => {
 		axios.post(`${url}/${params.id}/like`).then((res) => console.log(res));
