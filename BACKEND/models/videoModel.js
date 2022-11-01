@@ -6,7 +6,6 @@ const videoScehma = new Schema({
     title: {
         type: String,
         require: true,
-
     },
 
     description: {
