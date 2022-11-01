@@ -23,22 +23,14 @@ function Blogs() {
 	});
 	useEffect(() => {
 		dispatch(getBlogs());
-	}, [dispatch]);
+	}, [dispatch, blogOrder]);
 	const Blogs = useSelector((state) => state.blogs);
 	const sideBarElement = [
 		{ Element: { name: "Home", address: "/" } },
 		{ Element: { name: "Event", address: "/events" } },
-		{ Element: { name: "Domains", address: "/domains" } },
+		{ Element: { name: "Videos", address: "/videos" } },
 		{ Element: { name: "About", address: "/about" } },
 	];
-	console.log(Blogs);
-	function sortBlog(blog) {
-		let blogDate = moment(blog).format("MM DD YYYY");
-		let currDate = moment(new Date()).format("MM DD YYYY");
-		let diffDay = currDate.split(" ")[1] - blogDate.split(" ")[1];
-		return diffDay;
-	}
-	sortBlog("2022-08-28T04:40:53.893Z");
 	return (
 		<>
 			<div className='blogs-main-container'>
@@ -92,9 +84,13 @@ function Blogs() {
 									let blogDate = moment(blog.createdAt).format("MM DD YYYY");
 									let currDate = moment(new Date()).format("MM DD YYYY");
 									let diffDay = currDate.split(" ")[1] - blogDate.split(" ")[1];
-									// let diffMonth =
-									// 	currDate.split(" ")[0] - blogDate.split(" ")[0];
-									return diffDay;
+									let diffMonth =
+										currDate.split(" ")[0] - blogDate.split(" ")[0];
+									if (diffMonth !== 0) {
+										return diffDay + 30 * diffMonth;
+									} else {
+										return diffDay;
+									}
 							  }).map((blog, i) => (
 									<Fragment key={i}>
 										<Blog blog={blog} />
