@@ -5,8 +5,14 @@ import { useParams } from "react-router-dom";
 import moment from "moment";
 import axios from "axios";
 import LIKE from "../../../media/likeVector.svg";
+import ACTIVE_LIKE from "../../../media/activeLikeVector.svg";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 const View = () => {
+	const navigate = useNavigate();
+	const [like, setLike] = useState(false);
+	const [cookie] = useCookies();
 	const params = useParams();
 	const [b, setBlog] = useState({});
 	const url = `${process.env.REACT_APP_BACKEND_URL}/blog`;
@@ -17,19 +23,22 @@ const View = () => {
 				let { blog } = res.data;
 				setBlog(blog);
 			});
-	}, [params.id, url]);
+	}, [params.id, like]);
 
 	const handleLikes = () => {
 		axios.post(`${url}/${params.id}/like`).then((res) => console.log(res));
-		window.location.reload(false);
+		setLike((prev) => !prev);
 	};
-
+	console.log(b);
 	if (b) {
 		return (
 			<>
 				<Navbar />
 				<div className='view-blog-container'>
 					<div className='view-blog-header'>
+						<div className='view-blog-back' onClick={() => navigate("/blogs")}>
+							&#10092;<span>back</span>
+						</div>
 						<p className='view-blog-title'>{b.title}</p>
 					</div>
 					<p className='view-blog-authorName'>
@@ -41,7 +50,11 @@ const View = () => {
 						dangerouslySetInnerHTML={{ __html: b?.content }}></div>
 					<div className='view-blog-footer'>
 						<div className='view-blog-footer-like'>
-							<img src={LIKE} alt='like' onClick={() => handleLikes()} />
+							<img
+								src={like ? ACTIVE_LIKE : LIKE}
+								alt='like'
+								onClick={() => handleLikes()}
+							/>
 						</div>
 						<p className='view-blog-likesCounter'>{b?.likes}</p>
 					</div>
